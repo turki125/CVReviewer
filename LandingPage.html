@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-
-<html dir="rtl" lang="ar"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Interview Coach - Practice Your Interview</title>
 <!-- Google Fonts: IBM Plex Sans Arabic & Inter -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Tailwind Config -->
@@ -199,29 +197,27 @@
 <nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md docked full-width top-0 sticky border-b border-border-subtle dark:border-outline-variant shadow-sm dark:shadow-none z-50">
 <div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
 <!-- Brand -->
-<div class="font-h2 text-h2 font-bold text-primary dark:text-primary-fixed flex items-center gap-1 after:content-['•'] after:text-secondary">
-                Interview Coach
-            </div>
+<div class="font-h2 text-h2 font-bold text-primary dark:text-primary-fixed flex items-center gap-1 after:text-secondary" style="opacity: 0;">Interview Coach</div>
 <!-- Navigation Links (Desktop) -->
 <div class="hidden md:flex items-center gap-8">
 <!-- Active Link -->
-<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" href="LandingPage.html">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" href="{{DATA:SCREEN:SCREEN_6}}">
                     الرئيسية / Home
                 </a>
 <!-- Inactive Links -->
-<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="FeaturesInterviewCoach.html">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="{{DATA:SCREEN:SCREEN_17}}">
                     المميزات / Features
                 </a>
-<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="PricingInterviewCoach.html">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="{{DATA:SCREEN:SCREEN_16}}">
                     الأسعار / Pricing
                 </a>
 </div>
 <!-- Actions -->
 <div class="flex items-center gap-4">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hidden md:block" href="SignInInterviewCoach.html">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hidden md:block" href="{{DATA:SCREEN:SCREEN_8}}">
                     تسجيل الدخول / Sign In
                 </a>
-<a class="bg-primary-container text-on-primary rounded-xl px-5 py-2.5 font-body-md hover:bg-surface-tint transition-colors active:scale-95" href="StartFreeTrialInterviewCoach.html">
+<a class="bg-primary-container text-on-primary rounded-xl px-5 py-2.5 font-body-md hover:bg-surface-tint transition-colors active:scale-95" href="{{DATA:SCREEN:SCREEN_12}}">
                     ابدأ مجاناً / Start Free
                 </a>
 </div>
@@ -262,14 +258,14 @@
 </p>
 <!-- Actions -->
 <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-<a class="bg-primary-container text-on-primary rounded-xl px-8 py-4 flex items-center justify-center gap-3 hover:bg-surface-tint transition-all active:scale-95 shadow-lg shadow-primary-container/20 group" href="SetupInterviewCoach.html">
+<button class="bg-primary-container text-on-primary rounded-xl px-8 py-4 flex items-center justify-center gap-3 hover:bg-surface-tint transition-all active:scale-95 shadow-lg shadow-primary-container/20 group" onclick="window.location.href='{{DATA:SCREEN:SCREEN_12}}'">
 <span class="font-body-lg text-body-lg font-medium">ابدأ المقابلة · Start Interview</span>
 <span class="material-symbols-outlined transition-transform group-hover:-translate-x-1" dir="ltr">arrow_forward</span>
-</a>
-<a class="border-[1.5px] border-border-subtle bg-surface/50 text-primary rounded-xl px-8 py-4 flex items-center justify-center gap-3 hover:bg-surface hover:border-outline-variant transition-all active:scale-95" href="FeaturesInterviewCoach.html">
+</button>
+<button class="border-[1.5px] border-border-subtle bg-surface/50 text-primary rounded-xl px-8 py-4 flex items-center justify-center gap-3 hover:bg-surface hover:border-outline-variant transition-all active:scale-95">
 <span class="font-body-lg text-body-lg font-medium">شوف كيف يشتغل · See how it works</span>
 <span class="material-symbols-outlined">play_circle</span>
-</a>
+</button>
 </div>
 </section>
 <!-- Trusted Logos Section -->
@@ -360,4 +356,14 @@
 </div>
 </div>
 </footer>
+
+
+
+
+
+
+
+
+
+
 </body></html>

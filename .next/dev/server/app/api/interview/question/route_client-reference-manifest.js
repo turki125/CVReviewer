@@ -1,0 +1,1 @@
+globalThis.__RSC_MANIFEST=(globalThis.__RSC_MANIFEST||{});globalThis.__RSC_MANIFEST["/api/interview/question/route"]={"moduleLoading":{"prefix":"/_next/"},"ssrModuleMapping":{},"edgeSSRModuleMapping":{},"clientModules":{},"entryCSSFiles":{"/Users/turkimohammed/Desktop/CV-REVIEWER/src/app/api/interview/question/route":[]},"rscModuleMapping":{},"edgeRscModuleMapping":{}};

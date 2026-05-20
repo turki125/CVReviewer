@@ -1,0 +1,373 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Interview Coach - Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002116",
+                        "surface-container": "#eeeeeb",
+                        "inverse-surface": "#2f312f",
+                        "surface": "#f9f9f6",
+                        "surface-bright": "#f9f9f6",
+                        "surface-elevated": "#F4F4F0",
+                        "secondary-fixed-dim": "#5ddda1",
+                        "on-tertiary-fixed-variant": "#5a4302",
+                        "inverse-primary": "#8ed5b7",
+                        "on-secondary-fixed-variant": "#005234",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadad7",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#83c9ac",
+                        "border-subtle": "#E5E5E0",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#3f4944",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#216a52",
+                        "secondary-container": "#7bfabb",
+                        "primary-fixed-dim": "#8ed5b7",
+                        "on-error": "#ffffff",
+                        "text-secondary": "#6B6B6B",
+                        "secondary": "#006c46",
+                        "secondary-fixed": "#7bfabb",
+                        "error-container": "#ffdad6",
+                        "outline": "#6f7974",
+                        "primary-container": "#00563f",
+                        "surface-container-low": "#f4f4f1",
+                        "error-red": "#C13C3C",
+                        "tertiary": "#443200",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#aaf1d2",
+                        "surface-container-high": "#e8e8e5",
+                        "on-secondary-fixed": "#002112",
+                        "surface-variant": "#e2e3e0",
+                        "warning-orange": "#D97757",
+                        "on-background": "#1a1c1b",
+                        "inverse-on-surface": "#f1f1ee",
+                        "on-secondary-container": "#00734b",
+                        "primary": "#003d2b",
+                        "tertiary-fixed": "#ffdf9b",
+                        "outline-variant": "#bfc9c2",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9f6",
+                        "text-primary": "#0A0A0A",
+                        "tertiary-container": "#5f4807",
+                        "on-primary-fixed-variant": "#00513b",
+                        "surface-container-highest": "#e2e3e0",
+                        "tertiary-fixed-dim": "#e4c278",
+                        "on-surface": "#1a1c1b",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-tertiary-container": "#d9b86e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "stack-sm": "12px",
+                        "margin-mobile": "16px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-hero": ["IBM Plex Sans Arabic"],
+                        "body-lg": ["Inter"],
+                        "h2": ["IBM Plex Sans Arabic"],
+                        "display-hero-mobile": ["IBM Plex Sans Arabic"],
+                        "caption": ["Inter"],
+                        "h1": ["IBM Plex Sans Arabic"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-hero": ["56px", { "lineHeight": "1.1", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-hero-mobile": ["36px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Orb Animation Waves */
+        @keyframes slow-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        @keyframes orb-alive {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(0,163,108,0.4)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 40px rgba(0,163,108,0.6)); }
+        }
+        .orb-wave {
+            animation: slow-spin 20s linear infinite;
+        }
+        .orb-wave-reverse {
+            animation: slow-spin 25s linear infinite reverse;
+        }
+        .pulse-ring-anim {
+            animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        .orb-alive-anim {
+            animation: orb-alive 4s ease-in-out infinite;
+        }
+        .skip-flash {
+            animation: flash 0.5s ease-out;
+        }
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; background-color: white; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-background text-text-primary h-screen overflow-hidden flex flex-col relative font-body-md transition-all duration-300">
+<!-- Top Bar -->
+<header class="flex justify-between items-center px-gutter py-stack-md relative z-10">
+<!-- Timer -->
+<div class="flex items-center gap-3 cursor-pointer group" dir="ltr" id="timer-container">
+<button class="flex items-center justify-center w-10 h-10 rounded-full border border-border-subtle group-hover:border-primary transition-colors" id="timer-toggle">
+<span class="material-symbols-outlined text-primary" id="timer-icon">play_arrow</span>
+</button>
+<div class="flex items-center gap-2 text-primary font-h2 text-h2 min-w-[80px]">
+<span id="timer-display" class="">00:00</span>
+</div>
+</div>
+<!-- Progress Indicator -->
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-3" id="progress-pills">
+<span class="pill w-12 h-1 bg-primary rounded-full overflow-hidden transition-all duration-300"></span>
+<span class="pill w-12 h-1 bg-primary rounded-full overflow-hidden transition-all duration-300"></span>
+<span class="pill w-12 h-1 bg-surface-variant rounded-full overflow-hidden transition-all duration-300">
+<span class="block w-1/2 h-full bg-primary rounded-full" id="active-progress-half"></span>
+</span>
+<span class="pill w-12 h-1 bg-surface-variant rounded-full transition-all duration-300"></span>
+<span class="pill w-12 h-1 bg-surface-variant rounded-full transition-all duration-300"></span>
+</div>
+<div class="mt-2 flex items-center gap-2 text-text-secondary">
+<span class="font-caption text-caption" id="progress-text-ar">السؤال 3 من 5</span>
+<span class="text-surface-variant">•</span>
+<span class="font-caption text-caption opacity-70" dir="ltr" id="progress-text-en">Question 3 of 5</span>
+</div>
+</div>
+<!-- End Early Action -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border-[1.5px] border-border-subtle text-text-secondary hover:bg-surface-elevated transition-colors">
+<span class="material-symbols-outlined text-[20px]">stop_circle</span>
+<div class="flex flex-col items-start">
+<span class="font-label-caps text-label-caps">إنهاء مبكر</span>
+<span class="font-caption text-caption text-[10px] uppercase opacity-70" dir="ltr">End early</span>
+</div>
+</button>
+</header>
+<!-- Main Stage -->
+<main class="flex-1 flex flex-col items-center justify-center relative z-0 pb-[120px]" id="main-content">
+<!-- Ambient Background Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary-fixed-dim/10 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- The AI Orb -->
+<div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center mb-stack-lg orb-alive-anim">
+<!-- Pulsing Rings -->
+<div class="absolute inset-0 rounded-full border border-secondary-fixed/30 pulse-ring-anim"></div>
+<div class="absolute inset-4 rounded-full border border-secondary-fixed/50 pulse-ring-anim" style="animation-delay: 0.8s;"></div>
+<!-- Core Orb Glow -->
+<div class="absolute inset-10 bg-secondary-fixed/40 rounded-full blur-2xl animate-pulse"></div>
+<!-- Core Orb Surface -->
+<div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary-fixed to-[#00a36c] shadow-[0_0_60px_rgba(0,163,108,0.4)] backdrop-blur-xl border-2 border-white/20 overflow-hidden flex items-center justify-center">
+<!-- Abstract Waves inside Orb -->
+<div class="absolute inset-0 opacity-40 mix-blend-overlay orb-wave" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.2) 10px, rgba(255,255,255,0.2) 20px);"></div>
+<div class="absolute inset-0 opacity-30 mix-blend-screen orb-wave-reverse" style="background-image: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, transparent 60%);"></div>
+<!-- Center point -->
+<div class="w-12 h-12 rounded-full bg-white/30 blur-md mix-blend-overlay"></div>
+</div><div class="absolute -right-16 top-1/2 -translate-y-1/2 flex flex-col items-center gap-3 z-10 animate-pulse">
+    <div class="w-2 h-32 rounded-full bg-surface-container overflow-hidden border border-white/20">
+        <div class="w-full h-[75%] bg-gradient-to-t from-[#00563F] to-[#00A36C] rounded-full shadow-[0_0_15px_rgba(0,163,108,0.5)]"></div>
+    </div>
+    <div class="flex flex-col items-center gap-1">
+        <span class="font-label-caps text-[8px] text-text-secondary whitespace-nowrap" style="writing-mode: vertical-rl; text-orientation: mixed;">مستوى الثقة | Confidence Level</span>
+    </div>
+</div>
+</div>
+<!-- Spoken Text Canvas -->
+<div class="max-w-4xl px-gutter text-center space-y-3 z-10 transition-all duration-300" id="question-container">
+<h1 class="font-h1 text-h1 text-text-primary leading-relaxed drop-shadow-sm" id="question-ar">
+            "طيب يا فهد، احكِ لي عن أصعب تحدي تقني واجهته وكيف تعاملت معه؟"
+        </h1>
+<p class="font-body-lg text-body-lg text-text-secondary/80 max-w-2xl mx-auto" dir="ltr" id="question-en">
+            "Okay Fahad, tell me about the toughest technical challenge you've faced and how you handled it?"
+        </p>
+</div>
+</main>
+<!-- Bottom Dock (Controls) -->
+<div class="absolute bottom-stack-lg left-1/2 -translate-x-1/2 flex items-center gap-stack-md bg-surface/90 backdrop-blur-md p-3 pr-6 pl-6 rounded-[3rem] shadow-[0_12px_40px_rgba(0,0,0,0.08)] border border-white/50 z-20">
+<!-- Skip Action -->
+<button class="flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-full hover:bg-surface-elevated transition-colors group" id="skip-btn">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors text-[28px]">skip_next</span>
+<span class="font-label-caps text-label-caps text-[10px] text-text-secondary group-hover:text-primary transition-colors">تخطي</span>
+</button>
+<!-- Active Mic Button -->
+<div class="relative flex items-center justify-center">
+<!-- Ripple Effect -->
+<div class="absolute inset-[-20px] rounded-full bg-error/20 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] pointer-events-none"></div>
+<button class="relative w-24 h-24 rounded-full bg-error text-on-error flex items-center justify-center shadow-[0_8px_32px_rgba(186,26,26,0.4)] border-4 border-error-container hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-[40px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<!-- Repeat Action -->
+<button class="flex flex-col items-center justify-center gap-1 w-16 h-16 rounded-full hover:bg-surface-elevated transition-colors group" id="repeat-btn">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors text-[28px]">replay</span>
+<span class="font-label-caps text-label-caps text-[10px] text-text-secondary group-hover:text-primary transition-colors">إعادة</span>
+</button>
+</div>
+<!-- Collapsed Transcript Drawer -->
+<button class="absolute top-1/2 right-0 -translate-y-1/2 bg-surface-elevated border-y border-l border-border-subtle rounded-r-xl py-6 px-3 shadow-sm hover:shadow-md hover:-translate-x-1 transition-all z-20 flex flex-col items-center gap-3">
+<span class="material-symbols-outlined text-text-secondary text-[24px]">notes</span>
+<div class="w-1 h-8 bg-surface-variant rounded-full"></div>
+<span class="font-label-caps text-label-caps text-text-secondary" style="writing-mode: vertical-rl; text-orientation: mixed;">النص</span>
+</button>
+<script>
+    // 1. Timer Logic
+    let seconds = 0;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    const timerDisplay = document.getElementById('timer-display');
+    const timerToggle = document.getElementById('timer-toggle');
+    const timerIcon = document.getElementById('timer-icon');
+    const timerContainer = document.getElementById('timer-container');
+
+    function updateTimerDisplay() {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function toggleTimer() {
+        if (isTimerRunning) {
+            clearInterval(timerInterval);
+            timerIcon.textContent = 'play_arrow';
+            isTimerRunning = false;
+        } else {
+            timerInterval = setInterval(() => {
+                seconds++;
+                updateTimerDisplay();
+            }, 1000);
+            timerIcon.textContent = 'pause';
+            isTimerRunning = true;
+        }
+    }
+
+    timerContainer.addEventListener('click', toggleTimer);
+
+    // 2. Skip Logic (تخطي)
+    const skipBtn = document.getElementById('skip-btn');
+    const mainContent = document.getElementById('main-content');
+    const pills = document.querySelectorAll('#progress-pills .pill');
+    const progressTextAr = document.getElementById('progress-text-ar');
+    const progressTextEn = document.getElementById('progress-text-en');
+    const halfProgress = document.getElementById('active-progress-half');
+    
+    let currentStep = 3; // Starting at step 3 as per UI
+
+    const questions = [
+        { ar: "\"مرحبا بك يا فهد، عرفنا بنفسك باختصار؟\"", en: "\"Welcome Fahad, tell us about yourself briefly?\"" },
+        { ar: "\"لماذا تهتم بالانضمام لفريقنا في هذا الوقت؟\"", en: "\"Why are you interested in joining our team at this time?\"" },
+        { ar: "\"طيب يا فهد، احكِ لي عن أصعب تحدي تقني واجهته وكيف تعاملت معه؟\"", en: "\"Okay Fahad, tell me about the toughest technical challenge you've faced and how you handled it?\"" },
+        { ar: "\"كيف تتعامل مع ضغوط العمل والمواعيد النهائية الضيقة؟\"", en: "\"How do you handle work pressure and tight deadlines?\"" },
+        { ar: "\"أين ترى نفسك مهنياً بعد خمس سنوات من الآن؟\"", en: "\"Where do you see yourself professionally five years from now?\"" }
+    ];
+
+    skipBtn.addEventListener('click', () => {
+        // Flash effect
+        document.body.classList.add('skip-flash');
+        setTimeout(() => document.body.classList.remove('skip-flash'), 500);
+
+        // Update step
+        if (currentStep < 5) {
+            currentStep++;
+            updateProgressUI();
+            updateQuestionContent();
+        } else {
+            // Loop back to 1 for simulation purposes
+            currentStep = 1;
+            updateProgressUI();
+            updateQuestionContent();
+        }
+    });
+
+    function updateProgressUI() {
+        progressTextAr.textContent = `السؤال ${currentStep} من 5`;
+        progressTextEn.textContent = `Question ${currentStep} of 5`;
+
+        pills.forEach((pill, index) => {
+            pill.innerHTML = ''; // Clear inner content
+            pill.classList.remove('bg-primary', 'bg-surface-variant');
+            
+            if (index < currentStep - 1) {
+                // Completed steps
+                pill.classList.add('bg-primary');
+            } else if (index === currentStep - 1) {
+                // Current step (half full for visual effect as in original)
+                pill.classList.add('bg-surface-variant');
+                pill.innerHTML = `<span class="block w-1/2 h-full bg-primary rounded-full"></span>`;
+            } else {
+                // Future steps
+                pill.classList.add('bg-surface-variant');
+            }
+        });
+    }
+
+    function updateQuestionContent() {
+        const qAr = document.getElementById('question-ar');
+        const qEn = document.getElementById('question-en');
+        
+        qAr.style.opacity = '0';
+        qEn.style.opacity = '0';
+        
+        setTimeout(() => {
+            qAr.textContent = questions[currentStep - 1].ar;
+            qEn.textContent = questions[currentStep - 1].en;
+            qAr.style.opacity = '1';
+            qEn.style.opacity = '1';
+        }, 300);
+    }
+
+    // 3. Repeat Logic (إعادة)
+    const repeatBtn = document.getElementById('repeat-btn');
+    repeatBtn.addEventListener('click', () => {
+        seconds = 0;
+        updateTimerDisplay();
+        
+        // Brief visual feedback on button
+        repeatBtn.classList.add('scale-90');
+        setTimeout(() => repeatBtn.classList.remove('scale-90'), 150);
+    });
+
+    // Initialize display
+    updateTimerDisplay();
+</script>
+
+
+</body></html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        :root {
+            --primary-green: #003d2b;
+            --accent-green: #00A36C;
+        }
+        body {
+            font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+            background-color: #f9f9f6;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E5E5E0;
+        }
+        .pro-card-glow {
+            box-shadow: 0 20px 40px rgba(0, 86, 63, 0.08);
+        }
+        [dir="rtl"] .english-sub {
+            direction: ltr;
+            display: block;
+            text-align: right;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "warning-orange": "#D97757",
+                        "outline": "#6f7974",
+                        "surface-container-low": "#f4f4f1",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#00513b",
+                        "secondary-container": "#7bfabb",
+                        "tertiary-fixed-dim": "#e4c278",
+                        "primary-container": "#00563f",
+                        "tertiary-fixed": "#ffdf9b",
+                        "on-secondary-container": "#00734b",
+                        "on-tertiary-fixed-variant": "#5a4302",
+                        "secondary-fixed-dim": "#5ddda1",
+                        "secondary-fixed": "#7bfabb",
+                        "surface-tint": "#216a52",
+                        "surface-container-highest": "#e2e3e0",
+                        "outline-variant": "#bfc9c2",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e8e8e5",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#8ed5b7",
+                        "on-surface-variant": "#3f4944",
+                        "on-primary-container": "#83c9ac",
+                        "tertiary": "#443200",
+                        "error-red": "#C13C3C",
+                        "border-subtle": "#E5E5E0",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f9f9f6",
+                        "primary-fixed": "#aaf1d2",
+                        "surface-dim": "#dadad7",
+                        "on-tertiary-fixed": "#251a00",
+                        "text-primary": "#0A0A0A",
+                        "on-primary-fixed": "#002116",
+                        "primary": "#003d2b",
+                        "on-surface": "#1a1c1b",
+                        "inverse-on-surface": "#f1f1ee",
+                        "text-secondary": "#6B6B6B",
+                        "on-tertiary-container": "#d9b86e",
+                        "primary-fixed-dim": "#8ed5b7",
+                        "surface-elevated": "#F4F4F0",
+                        "surface-container": "#eeeeeb",
+                        "inverse-surface": "#2f312f",
+                        "secondary": "#006c46",
+                        "surface-variant": "#e2e3e0",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1b",
+                        "surface": "#f9f9f6",
+                        "tertiary-container": "#5f4807",
+                        "surface-bright": "#f9f9f6",
+                        "on-secondary-fixed-variant": "#005234",
+                        "on-secondary-fixed": "#002112",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "display-hero": ["IBM Plex Sans Arabic"],
+                        "caption": ["Inter"],
+                        "display-hero-mobile": ["IBM Plex Sans Arabic"],
+                        "body-md": ["Inter"],
+                        "h1": ["IBM Plex Sans Arabic"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["IBM Plex Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "display-hero": ["56px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                        "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "display-hero-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md docked full-width top-0 sticky z-50 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-h2 text-h2-mobile md:text-h2 font-bold text-primary dark:text-primary-fixed">
+                Interview Coach | مدرب المقابلات
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">الرئيسية | Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_15}}">المميزات | Features</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-body-md text-body-md" href="#">الأسعار | Pricing</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-primary font-semibold px-4 py-2 hover:bg-surface-container-high/50 rounded-lg transition-all active:scale-95">تسجيل الدخول | Login</button>
+<button class="bg-primary-container text-on-primary font-semibold px-6 py-2 rounded-xl active:scale-95 transition-transform">ابدأ مجاناً | Start Free</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="py-stack-lg px-margin-mobile text-center max-w-[800px] mx-auto">
+<h1 class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-display-hero text-primary leading-tight">
+                اختر خطتك وابدأ التدريب
+                <span class="block text-secondary opacity-80 text-[24px] md:text-[32px] mt-2 font-normal">Choose your plan and start practicing</span>
+</h1>
+<!-- Billing Toggle -->
+<div class="mt-stack-md flex items-center justify-center gap-4">
+<span class="font-body-lg text-body-lg text-on-surface-variant">شهري | Monthly</span>
+<button class="relative w-16 h-8 bg-primary-container rounded-full p-1 transition-colors duration-300" id="billing-toggle">
+<div class="w-6 h-6 bg-white rounded-full transition-transform duration-300 translate-x-0 rtl:translate-x-0" id="toggle-knob" style="transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+</button>
+<span class="font-body-lg text-body-lg text-primary font-bold">سنوي | Yearly <span class="bg-secondary-container text-on-secondary-container text-label-caps px-2 py-0.5 rounded-full mr-2">وفر 20%</span></span>
+</div>
+</section>
+<!-- Pricing Grid -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Free Trial Card -->
+<div class="glass-card p-8 rounded-[24px] flex flex-col hover:border-primary transition-all duration-300">
+<div class="mb-6">
+<h3 class="font-h2 text-h2 text-primary">تجربة ٣ أيام مجانية</h3>
+<span class="english-sub font-caption text-caption text-text-secondary">3-Day Free Trial</span>
+</div>
+<div class="mb-8">
+<span class="text-[40px] font-bold text-primary">0</span>
+<span class="text-on-surface-variant">/ ريال</span>
+</div>
+<ul class="flex-grow space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">مقابلة تجريبية واحدة</p>
+<p class="font-caption text-caption text-text-secondary">1 Mock Interview</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">تقييم أساسي للأداء</p>
+<p class="font-caption text-caption text-text-secondary">Basic performance feedback</p>
+</div>
+</li>
+</ul>
+<button class="w-full py-4 border-[1.5px] border-border-subtle rounded-xl font-bold text-primary hover:bg-surface-elevated transition-colors active:scale-95">جرب الآن | Try Now</button>
+</div>
+<!-- Pro Card (Premium) -->
+<div class="relative bg-white p-8 rounded-[24px] flex flex-col border-2 border-primary pro-card-glow transform scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-on-primary px-6 py-1 rounded-full font-label-caps text-label-caps">الأكثر شيوعاً | MOST POPULAR</div>
+<div class="mb-6">
+<h3 class="font-h2 text-h2 text-primary">الاحترافي</h3>
+<span class="english-sub font-caption text-caption text-text-secondary">Pro Plan</span>
+</div>
+<div class="mb-8">
+<span class="text-[40px] font-bold text-primary price-value" data-monthly="99" data-yearly="79">79</span>
+<span class="text-on-surface-variant">/ ريال شهرياً</span>
+</div>
+<ul class="flex-grow space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">مقابلات غير محدودة</p>
+<p class="font-caption text-caption text-text-secondary">Unlimited Interviews</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">تقارير ذكاء اصطناعي مفصلة</p>
+<p class="font-caption text-caption text-text-secondary">Detailed AI Feedback Reports</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">مخططات الكفاءة (Radar Charts)</p>
+<p class="font-caption text-caption text-text-secondary">Competency Radar Charts</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">دعم فني متميز</p>
+<p class="font-caption text-caption text-text-secondary">Premium Support</p>
+</div>
+</li>
+</ul>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold hover:bg-opacity-90 transition-all active:scale-95 shadow-lg">ابدأ الآن | Get Started</button>
+</div>
+<!-- Enterprise Card -->
+<div class="glass-card p-8 rounded-[24px] flex flex-col hover:border-primary transition-all duration-300">
+<div class="mb-6">
+<h3 class="font-h2 text-h2 text-primary">للشركات والجامعات</h3>
+<span class="english-sub font-caption text-caption text-text-secondary">Enterprise Solutions</span>
+</div>
+<div class="mb-8">
+<span class="text-[32px] font-bold text-primary">حلول مخصصة</span>
+<span class="english-sub font-caption text-caption text-text-secondary">Custom Pricing</span>
+</div>
+<ul class="flex-grow space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">لوحة تحكم للإدارة</p>
+<p class="font-caption text-caption text-text-secondary">Admin Dashboard</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">تحليلات الأداء الجماعي</p>
+<p class="font-caption text-caption text-text-secondary">Batch Performance Analytics</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">تكامل مع الأنظمة الحالية (API)</p>
+<p class="font-caption text-caption text-text-secondary">API Integration</p>
+</div>
+</li>
+</ul>
+<button class="w-full py-4 border-[1.5px] border-border-subtle rounded-xl font-bold text-primary hover:bg-surface-elevated transition-colors active:scale-95">تواصل معنا | Contact Us</button>
+</div>
+</div>
+</section>
+<!-- Feature Comparison (Modern Bento Layout) -->
+<section class="bg-surface-container py-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile">
+<div class="text-center mb-stack-md">
+<h2 class="font-h1 text-h1 text-primary">لماذا تختار باقة برو؟</h2>
+<p class="text-text-secondary font-body-lg">Why choose the Pro Plan?</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-2 bg-white p-8 rounded-[32px] border border-border-subtle overflow-hidden relative group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-[48px] text-accent-green mb-4">insights</span>
+<h4 class="font-h2 text-h2 mb-2">تحليل المهارات المتقدم</h4>
+<p class="text-text-secondary">تقارير تعتمد على رؤية ٢٠٣٠ لقياس مهارات التواصل والقيادة.</p>
+<p class="text-caption text-on-surface-variant/60 font-caption">Advanced skill analysis based on 2030 leadership standards.</p>
+</div>
+<div class="absolute bottom-[-20%] right-[-10%] opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[200px]">finance</span>
+</div>
+</div>
+<div class="md:col-span-1 bg-white p-8 rounded-[32px] border border-border-subtle flex flex-col justify-center text-center">
+<span class="material-symbols-outlined text-[48px] text-accent-green mb-4 mx-auto" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h4 class="font-h2 text-[20px] mb-2">شهادة إتمام</h4>
+<p class="text-caption">نقدم لك شهادة رقمية تثبت جاهزيتك للمقابلة.</p>
+<p class="text-[12px] opacity-60">Completion Certificates.</p>
+</div>
+<div class="md:col-span-1 bg-primary text-on-primary p-8 rounded-[32px] flex flex-col justify-center text-center">
+<span class="text-[48px] font-bold mb-2">98%</span>
+<p class="text-on-primary/80">نسبة نجاح المشتركين في تجاوز المقابلات الحقيقية.</p>
+<p class="text-caption text-on-primary/50">User Success Rate.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-on-primary-fixed-variant full-width mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto text-center md:text-right">
+<div class="font-h2 text-h2 text-on-primary dark:text-primary-fixed font-bold mb-4 md:mb-0">
+                Interview Coach | مدرب المقابلات
+            </div>
+<div class="flex gap-8 mb-4 md:mb-0">
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 hover:underline transition-all font-body-md text-body-md" href="#">الشروط والأحكام | Terms</a>
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 hover:underline transition-all font-body-md text-body-md" href="#">سياسة الخصوصية | Privacy</a>
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 hover:underline transition-all font-body-md text-body-md" href="#">تواصل معنا | Contact</a>
+</div>
+<div class="font-body-md text-body-md text-on-primary opacity-80">
+                © 2024 Interview Coach. جميع الحقوق محفوظة لمدرب المقابلات
+            </div>
+</div>
+</footer>
+<script>
+        const toggle = document.getElementById('billing-toggle');
+        const knob = document.getElementById('toggle-knob');
+        const priceDisplay = document.querySelector('.price-value');
+        let isYearly = true;
+
+        toggle.addEventListener('click', () => {
+            isYearly = !isYearly;
+            
+            // Animation for toggle
+            if (isYearly) {
+                knob.style.transform = 'translateX(0)';
+                priceDisplay.innerText = priceDisplay.dataset.yearly;
+                toggle.classList.replace('bg-on-surface-variant', 'bg-primary-container');
+            } else {
+                knob.style.transform = 'translateX(-32px)'; // Moves opposite for RTL context if needed, but handled by absolute/paddings
+                // Correct for RTL:
+                const isRTL = document.documentElement.dir === 'rtl';
+                knob.style.transform = isRTL ? 'translateX(32px)' : 'translateX(32px)';
+                
+                priceDisplay.innerText = priceDisplay.dataset.monthly;
+                toggle.classList.replace('bg-primary-container', 'bg-on-surface-variant');
+            }
+        });
+
+        // Initialize state
+        knob.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    </script>
+
+
+</body></html>

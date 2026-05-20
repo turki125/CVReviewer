@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-
-<html dir="ltr" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html dir="ltr" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Interview Coach - Setup</title>
 <!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <!-- Google Fonts: IBM Plex Sans Arabic & Inter -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
@@ -144,7 +142,7 @@
 <p class="font-body-lg text-body-lg text-text-secondary tracking-wide">Set up your interview</p>
 </header>
 <!-- Configuration Form -->
-<form class="space-y-stack-lg" onsubmit="event.preventDefault(); window.location.href='InterviewRoomInterviewCoach.html';">
+<form class="space-y-stack-lg" onsubmit="event.preventDefault();">
 <!-- Q1: Target Company -->
 <fieldset class="space-y-stack-sm">
 <div class="flex justify-between items-baseline border-b border-border-subtle pb-2 mb-stack-sm">
@@ -154,7 +152,7 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-sm" id="company-selection">
 <!-- Option 1: Riyad Bank -->
 <label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="riyad"/>
+<input class="peer sr-only" name="company" type="radio" value="riyad">
 <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
 <span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
 <div class="relative z-10 flex flex-col items-center gap-1">
@@ -165,7 +163,7 @@
 </label>
 <!-- Option 2: Aramco (Pre-selected) -->
 <label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input checked="" class="peer sr-only" name="company" type="radio" value="aramco"/>
+<input checked="" class="peer sr-only" name="company" type="radio" value="aramco">
 <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all shadow-[0_4px_16px_rgba(0,0,0,0.02)]"></div>
 <span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
 <div class="relative z-10 flex flex-col items-center gap-1">
@@ -176,7 +174,7 @@
 </label>
 <!-- Option 3: STC -->
 <label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="stc"/>
+<input class="peer sr-only" name="company" type="radio" value="stc">
 <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
 <span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
 <div class="relative z-10 flex flex-col items-center gap-1">
@@ -195,17 +193,37 @@
 </div>
 <div class="flex flex-wrap gap-stack-sm">
 <label class="cursor-pointer">
-<input checked="" class="peer sr-only" name="track" type="radio" value="technical"/>
+<input checked="" class="peer sr-only" name="track" type="radio" value="technical">
 <div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
 <span class="material-symbols-outlined text-[20px]">code</span>
-<span>تقني · Technical</span>
+<span class="">تقني · Technical</span>
 </div>
 </label>
 <label class="cursor-pointer">
-<input class="peer sr-only" name="track" type="radio" value="business"/>
+<input class="peer sr-only" name="track" type="radio" value="business">
 <div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
 <span class="material-symbols-outlined text-[20px]">business_center</span>
-<span>أعمال · Business</span>
+<span class="">أعمال · Business</span>
+</div>
+</label>
+</div><div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" id="technical-sub-roles">
+<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">التخصص التقني / Technical Specialization</p>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="sub_track" type="radio" value="cybersecurity">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">الأمن السيبراني · CyberSecurity</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="sub_track" type="radio" value="software">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">هندسة البرمجيات · Software Engineering</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="sub_track" type="radio" value="data_science">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">علم البيانات · Data Science</span>
 </div>
 </label>
 </div>
@@ -218,7 +236,7 @@
 </div>
 <div class="flex flex-col gap-3">
 <label class="group relative flex items-center justify-between p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
-<input checked="" class="peer sr-only" name="language" type="radio" value="bilingual"/>
+<input checked="" class="peer sr-only" name="language" type="radio" value="bilingual">
 <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
 <div class="flex items-center gap-3 relative z-10">
 <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
@@ -236,7 +254,7 @@
 </label>
 <div class="grid grid-cols-2 gap-3">
 <label class="group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
-<input class="peer sr-only" name="language" type="radio" value="arabic"/>
+<input class="peer sr-only" name="language" type="radio" value="arabic">
 <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
 <div class="flex items-center gap-3 relative z-10">
 <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
@@ -249,7 +267,7 @@
 </div>
 </label>
 <label class="group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
-<input class="peer sr-only" name="language" type="radio" value="english"/>
+<input class="peer sr-only" name="language" type="radio" value="english">
 <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
 <div class="flex items-center gap-3 relative z-10">
 <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
@@ -271,7 +289,7 @@
 <span class="font-body-md text-body-md text-text-secondary text-right">First Name</span>
 </div>
 <div class="relative">
-<input class="w-full bg-surface-elevated border border-border-subtle rounded-xl p-4 font-body-lg text-body-lg text-text-primary placeholder:text-text-secondary/60 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all outline-none" dir="rtl" id="firstName" name="firstName" placeholder="فهد / Fahad" type="text"/>
+<input class="w-full bg-surface-elevated border border-border-subtle rounded-xl p-4 font-body-lg text-body-lg text-text-primary placeholder:text-text-secondary/60 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all outline-none" dir="rtl" id="firstName" name="firstName" placeholder="فهد / Fahad" type="text">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-secondary/50">
 <span class="material-symbols-outlined">person</span>
 </div>
@@ -280,16 +298,8 @@
 <!-- Footer Actions -->
 <div class="pt-stack-md mt-stack-md border-t border-border-subtle flex flex-col gap-4">
 <!-- Mic Permission Note -->
-<div class="flex items-center justify-center gap-2 text-text-secondary bg-surface-container-low py-3 px-4 rounded-lg">
-<span class="material-symbols-outlined text-[18px]">mic</span>
-<div class="flex items-center gap-2 font-caption text-caption">
-<span>نحتاج إلى صلاحية الميكروفون للبدء</span>
-<span class="opacity-50">·</span>
-<span>Microphone access is required to start</span>
-</div>
-</div>
 <!-- CTA Button -->
-<button class="group relative w-full bg-primary text-on-primary rounded-xl py-4 flex items-center justify-center gap-3 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:bg-primary-container" type="submit">
+<button class="group relative w-full bg-primary text-on-primary rounded-xl py-4 flex items-center justify-center gap-3 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:bg-primary-container" type="button">
 <!-- Button background hover effect -->
 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
 <span class="font-h2 text-h2 font-bold relative z-10">ابدأ المقابلة</span>

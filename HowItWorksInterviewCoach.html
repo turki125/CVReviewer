@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-
-<html dir="rtl" lang="ar"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>كيف يعمل - مدرب المقابلات | How it Works - Interview Coach</title>
 <!-- Google Fonts: IBM Plex Sans Arabic & Inter -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Tailwind Configuration (Provided by UI Designer Prompt) -->
@@ -137,23 +135,33 @@
 </head>
 <body class="bg-background text-text-primary min-h-screen font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar Component -->
-<nav class="bg-surface dark:bg-background docked full-width top-0 shadow-sm dark:shadow-none sticky z-50">
-<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto w-full">
-<!-- Brand Logo -->
-<a class="font-h2 text-h2 font-bold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-all duration-200" href="#">
-                Interview Coach | مدرب المقابلات
-            </a>
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md docked full-width top-0 sticky border-b border-border-subtle dark:border-outline-variant shadow-sm dark:shadow-none z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<!-- Brand -->
+<div class="font-h2 text-h2 font-bold text-primary dark:text-primary-fixed flex items-center gap-1 after:text-secondary">Interview Coach</div>
 <!-- Navigation Links (Desktop) -->
-<div class="hidden md:flex items-center gap-gutter">
-<a class="text-text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">الرئيسية / Home</a>
-<a class="text-text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">المسارات / Paths</a>
-<a class="text-text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">المجتمع / Community</a>
+<div class="hidden md:flex items-center gap-8">
+<!-- Active Link (Home) -->
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" href="#">
+                    الرئيسية / Home
+                </a>
+<!-- Inactive Links -->
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="#">
+                    المميزات / Features
+                </a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low dark:hover:bg-surface-container-highest px-3 py-2 rounded-md" href="#">
+                    الأسعار / Pricing
+                </a>
+
 </div>
-<!-- Trailing Action -->
-<div class="flex items-center gap-base">
-<button class="bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors px-6 py-2 rounded-lg font-body-md text-body-md font-semibold">
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hidden md:block" href="#">
+                    تسجيل الدخول / Sign In
+                </a>
+<a class="bg-primary-container text-on-primary rounded-xl px-5 py-2.5 font-body-md hover:bg-surface-tint transition-colors active:scale-95" href="#">
                     ابدأ الآن / Start Now
-                </button>
+                </a>
 </div>
 </div>
 </nav>
@@ -249,7 +257,7 @@
 <h3 class="font-h2 text-h2 text-text-secondary" dir="ltr">Ready to try your first interview?</h3>
 </div>
 <button class="bg-[#00563F] text-white hover:bg-primary transition-colors px-10 py-4 rounded-xl font-h2 text-h2 font-semibold inline-flex items-center gap-4">
-<span>ابدأ الآن</span>
+<span class="">ابدأ الآن</span>
 <span class="w-[1px] h-6 bg-white/30"></span>
 <span class="font-body-lg text-body-lg" dir="ltr">Start Now</span>
 <span class="material-symbols-outlined mr-2" data-icon="arrow_forward">arrow_forward</span>
@@ -273,4 +281,6 @@
             </div>
 </div>
 </footer>
+
+
 </body></html>

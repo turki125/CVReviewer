@@ -11,17 +11,14 @@ const evaluationSteps = [
   {
     ar: "استلام الإجابة المكتوبة",
     en: "Reading typed answer",
-    status: "complete",
   },
   {
     ar: "تقييم الإجابات",
     en: "Scoring",
-    status: "active",
   },
   {
     ar: "إنشاء التوصيات",
     en: "Generating recommendations",
-    status: "upcoming",
   },
 ];
 
@@ -33,6 +30,20 @@ export default function EvaluatingPage() {
     () => ((countdownSeconds - secondsLeft) / countdownSeconds) * 100,
     [secondsLeft],
   );
+  const stepDuration = countdownSeconds / evaluationSteps.length;
+  const elapsedSeconds = countdownSeconds - secondsLeft;
+
+  function getStepStatus(index: number) {
+    if (secondsLeft <= 0 || elapsedSeconds >= stepDuration * (index + 1)) {
+      return "complete";
+    }
+
+    if (elapsedSeconds >= stepDuration * index) {
+      return "active";
+    }
+
+    return "upcoming";
+  }
 
   useEffect(() => {
     if (secondsLeft <= 0) {
@@ -68,22 +79,26 @@ export default function EvaluatingPage() {
         </div>
 
         <div className="evaluation-steps" aria-label="حالة التقييم">
-          {evaluationSteps.map((step) => (
-            <article className={`evaluation-step ${step.status}`} key={step.en}>
+          {evaluationSteps.map((step, index) => {
+            const status = getStepStatus(index);
+
+            return (
+            <article className={`evaluation-step ${status}`} key={step.en}>
               <div>
                 <h2>{step.ar}</h2>
                 <p dir="ltr">{step.en}</p>
               </div>
 
-              {step.status === "complete" ? (
+              {status === "complete" ? (
                 <CheckCircle2 size={28} strokeWidth={2.4} aria-hidden="true" />
               ) : null}
-              {step.status === "active" ? (
+              {status === "active" ? (
                 <LoaderCircle className="evaluation-spinner" size={28} strokeWidth={2.4} aria-hidden="true" />
               ) : null}
-              {step.status === "upcoming" ? <Circle size={28} strokeWidth={1.9} aria-hidden="true" /> : null}
+              {status === "upcoming" ? <Circle size={28} strokeWidth={1.9} aria-hidden="true" /> : null}
             </article>
-          ))}
+            );
+          })}
         </div>
 
         <div className="evaluating-time">

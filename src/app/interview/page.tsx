@@ -216,12 +216,6 @@ export default function InterviewPage() {
             <span className="orb-core" aria-hidden="true" />
           </div>
 
-          <div className="confidence-meter" aria-hidden="true">
-            <div className="confidence-track">
-              <span />
-            </div>
-            <small>مستوى الثقة | Confidence Level</small>
-          </div>
         </section>
 
         <section className="question-panel">

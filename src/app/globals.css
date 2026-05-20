@@ -1389,47 +1389,6 @@ p {
   mix-blend-mode: overlay;
 }
 
-.confidence-meter {
-  position: absolute;
-  top: 50%;
-  right: -62px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  transform: translateY(-50%);
-  animation: confidence-pulse 1.8s ease-in-out infinite;
-}
-
-.confidence-track {
-  width: 8px;
-  height: 128px;
-  overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 22%);
-  border-radius: 999px;
-  background: var(--surface-raised);
-}
-
-.confidence-track span {
-  display: block;
-  width: 100%;
-  height: 75%;
-  margin-top: 25%;
-  border-radius: inherit;
-  background: linear-gradient(0deg, var(--primary-strong), #00a36c);
-  box-shadow: 0 0 15px rgb(0 163 108 / 50%);
-}
-
-.confidence-meter small {
-  color: var(--muted);
-  font-family: Inter, "IBM Plex Sans Arabic", Arial, sans-serif;
-  font-size: 0.56rem;
-  font-weight: 700;
-  line-height: 1.2;
-  white-space: nowrap;
-  writing-mode: vertical-rl;
-}
-
 .question-panel {
   position: relative;
   z-index: 2;
@@ -1689,17 +1648,6 @@ p {
   }
 }
 
-@keyframes confidence-pulse {
-  0%,
-  100% {
-    opacity: 0.78;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
 @keyframes interview-flash {
   0% {
     background: var(--background);
@@ -1750,10 +1698,6 @@ p {
     height: 178px;
   }
 
-  .confidence-meter {
-    right: -46px;
-  }
-
   .question-panel {
     padding: 0;
   }
@@ -1802,19 +1746,6 @@ p {
   .coach-orb {
     width: 156px;
     height: 156px;
-  }
-
-  .confidence-meter {
-    right: -28px;
-    gap: 8px;
-  }
-
-  .confidence-track {
-    height: 94px;
-  }
-
-  .confidence-meter small {
-    display: none;
   }
 
   .question-panel h1 {

@@ -88,7 +88,7 @@ export default function HomePage() {
               <span>ابدأ المقابلة</span>
               <ArrowLeft size={22} strokeWidth={2.2} aria-hidden="true" />
             </Link>
-            <a className="hero-button secondary" href="#features">
+            <a className="hero-button secondary" href="/HowItWorksInterviewCoach.html">
               <span>شوف كيف يشتغل</span>
               <PlayCircle size={22} strokeWidth={2.1} aria-hidden="true" />
             </a>

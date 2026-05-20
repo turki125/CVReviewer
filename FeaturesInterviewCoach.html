@@ -1,0 +1,417 @@
+<!DOCTYPE html><html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>المميزات | Interview Coach Features</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "warning-orange": "#D97757",
+                    "outline": "#6f7974",
+                    "surface-container-low": "#f4f4f1",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#00513b",
+                    "secondary-container": "#7bfabb",
+                    "tertiary-fixed-dim": "#e4c278",
+                    "primary-container": "#00563f",
+                    "tertiary-fixed": "#ffdf9b",
+                    "on-secondary-container": "#00734b",
+                    "on-tertiary-fixed-variant": "#5a4302",
+                    "secondary-fixed-dim": "#5ddda1",
+                    "secondary-fixed": "#7bfabb",
+                    "surface-tint": "#216a52",
+                    "surface-container-highest": "#e2e3e0",
+                    "outline-variant": "#bfc9c2",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e8e8e5",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#8ed5b7",
+                    "on-surface-variant": "#3f4944",
+                    "on-primary-container": "#83c9ac",
+                    "tertiary": "#443200",
+                    "error-red": "#C13C3C",
+                    "border-subtle": "#E5E5E0",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f9f9f6",
+                    "primary-fixed": "#aaf1d2",
+                    "surface-dim": "#dadad7",
+                    "on-tertiary-fixed": "#251a00",
+                    "text-primary": "#0A0A0A",
+                    "on-primary-fixed": "#002116",
+                    "primary": "#003d2b",
+                    "on-surface": "#1a1c1b",
+                    "inverse-on-surface": "#f1f1ee",
+                    "text-secondary": "#6B6B6B",
+                    "on-tertiary-container": "#d9b86e",
+                    "primary-fixed-dim": "#8ed5b7",
+                    "surface-elevated": "#F4F4F0",
+                    "surface-container": "#eeeeeb",
+                    "inverse-surface": "#2f312f",
+                    "secondary": "#006c46",
+                    "surface-variant": "#e2e3e0",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1b",
+                    "surface": "#f9f9f6",
+                    "tertiary-container": "#5f4807",
+                    "surface-bright": "#f9f9f6",
+                    "on-secondary-fixed-variant": "#005234",
+                    "on-secondary-fixed": "#002112",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "stack-md": "24px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "base": "8px",
+                    "container-max": "1200px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "display-hero": ["IBM Plex Sans Arabic"],
+                    "caption": ["Inter"],
+                    "display-hero-mobile": ["IBM Plex Sans Arabic"],
+                    "body-md": ["Inter"],
+                    "h1": ["IBM Plex Sans Arabic"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["IBM Plex Sans Arabic"]
+            },
+            "fontSize": {
+                    "display-hero": ["56px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-hero-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .orb-glow {
+            background: radial-gradient(circle, rgba(0, 163, 108, 0.4) 0%, rgba(0, 86, 63, 0) 70%);
+            filter: blur(20px);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md docked full-width top-0 sticky z-50 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-h2 text-h2-mobile md:text-h2 font-bold text-primary dark:text-primary-fixed">
+                Interview Coach | مدرب المقابلات
+            </div>
+<!-- Desktop Links -->
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="#">الرئيسية | Home</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1" href="#">المميزات | Features</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200" href="{{DATA:SCREEN:SCREEN_14}}">الأسعار | Pricing</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="hidden md:block text-primary font-semibold px-4 py-2 hover:bg-surface-container-high/50 rounded-lg transition-all active:scale-95">تسجيل الدخول | Login</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-xl font-semibold hover:opacity-90 transition-all active:scale-95">ابدأ مجاناً | Start Free</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative overflow-hidden py-20 md:py-32">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
+<h1 class="font-display-hero-mobile md:text-display-hero font-display-hero text-text-primary mb-6">
+                مميزات مدرب المقابلات<br>
+<span class="text-secondary">Interview Coach Features</span>
+</h1>
+<p class="font-body-lg text-text-secondary max-w-2xl mx-auto mb-10">
+                نستخدم أحدث تقنيات الذكاء الاصطناعي لتمكين الكفاءات السعودية من اجتياز أصعب المقابلات الوظيفية في كبرى الشركات العالمية والمحلية.
+            </p>
+</div>
+<!-- Decorative Orb Background -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] orb-glow -z-0"></div>
+</header>
+<!-- Feature 1: AI Voice Interviews -->
+<section class="py-stack-lg overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop transition-all duration-1000 opacity-100 translate-y-0">
+<div class="grid md:grid-cols-2 gap-gutter items-center">
+<div class="order-2 md:order-1">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-secondary/10 text-secondary font-label-caps text-label-caps mb-4">
+<span class="material-symbols-outlined text-[18px]">graphic_eq</span>
+<span class="">بث مباشر | Live AI</span>
+</div>
+<h2 class="font-h1 text-h1 text-text-primary mb-4 leading-tight">مقابلات ذكية بصوتك | AI Voice Interviews</h2>
+<p class="font-body-lg text-text-secondary mb-8">
+                        تفاعل مع مدربنا الذكي بشكل طبيعي تماماً كما في المقابلة الحقيقية. حلل نبرة صوتك، سرعة حديثك، والقدرة على التعبير عن الأفكار بوضوح ودقة عالية باللغتين العربية والإنجليزية.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="">استجابة فورية وحوار تفاعلي | Real-time voice interaction</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="">تحليل نبرة الصوت والثقة | Voice tone &amp; confidence analysis</span>
+</li>
+</ul>
+</div>
+<div class="order-1 md:order-2 relative">
+<div class="rounded-3xl overflow-hidden shadow-2xl bg-surface-container aspect-square md:aspect-video flex items-center justify-center relative">
+<!-- Simulated AI Interface -->
+<div class="absolute inset-0 orb-glow scale-75"></div>
+<img class="w-full h-full object-cover mix-blend-overlay opacity-40" data-alt="A professional Saudi woman in a modern corporate office, interacting with a glowing AI interface. The lighting is sophisticated and warm, using the brand's emerald green palette as ambient glows. The style is futuristic yet grounded in premium Saudi Vision 2030 aesthetics, focusing on high-tech career coaching." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZalanMwBWx-UIuoEVpVVxuvQKeD6bAbQxsIDYsUeE8HHrbca-lfQlW81IR26tfhWkyCy9xHsIWx3fbdaUDPFuXBOubQGua4IHWQeGzyJvMT8eoyysUbP5Ab0Bu0YU2O1Ur3wGVX0i1n3kOSOZrbXuy8WMgMHCBgq9PaQSHv5ggCmxvIBWWT4dR4i2s8n7G-1rQEBpAKXV5_xkBrVUnEXetCgKVDh3cMzUxVjkYhFtA1PJaNw9MB2p5nrjOsaL9U0CffoYwmlXwQ4">
+<div class="absolute bottom-8 left-8 right-8 glass-card p-4 rounded-xl flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-white">mic</span>
+</div>
+<div>
+<div class="h-2 w-32 bg-primary/20 rounded-full mb-2 overflow-hidden">
+<div class="h-full bg-secondary w-2/3"></div>
+</div>
+<span class="text-label-caps font-label-caps text-secondary">جاري الاستماع... | Listening...</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 2: Company Specific -->
+<section class="py-stack-lg bg-surface-elevated">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop transition-all duration-1000 opacity-100 translate-y-0">
+<div class="grid md:grid-cols-2 gap-gutter items-center">
+<div class="relative group">
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<img class="h-12 w-auto grayscale opacity-50 mb-4" data-alt="Official logo of Saudi Aramco in a clean, minimalist professional format." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbZu_n7ZuD-n1fXtWLqJRL-ni-aK7E7F30kkCTi-jAfG2sDxw7XhC03oSdnHhUfndo0IPeH8ertXWIdUZGiNZ84dQSpqnPMtkMWv7R4H1dxaNoMgj54cskaTWetiY2yuzDt1Fq0A7o689pbkBCgyoovJUSIr9iBUfjQ5_d6pvUWs2q1K8rvOcHEf1w6SnUmOnwrOK2KLcSqmkG_irzjQHGcnFXRofK462W0lvqridz7hc0j_icjJ5uXi6DdNo9-RC_gmuU39zfKzg">
+<h4 class="font-h2 text-[18px] text-text-primary">أرامكو | Aramco</h4>
+</div>
+<div class="p-6 bg-white rounded-2xl shadow-sm translate-y-8">
+<img class="h-12 w-auto grayscale opacity-50 mb-4" data-alt="Official logo of STC Saudi Telecom Company in a clean, minimalist professional format." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgPfeMstJ2lb0LgX7o6BmSq2eu_VC19VeJYtvBwQUUMD6gwJ787GpRzNVe9oNhzqv_jf3a3da1MHu6v5MbJfgDUxKFNj6xdd8e0OmNxaB2dOYXj0gNre45Gri_9zXuwwTQWvGMzn6Qq-lxXLgrZE_oYFJMpCy9jVMwxxcUzCn-H_b3lpX35JL0xOFgf8bLzDURZDTrGuBZ0Y0Wokp0esgmH7YyEC98XPmRTlfB3mxyOrd0IhtA-g0NrwSZPj0JPYzg9vicHR9I4ho">
+<h4 class="font-h2 text-[18px] text-text-primary">إس تي سي | STC</h4>
+</div>
+<div class="p-6 bg-white rounded-2xl shadow-sm">
+<img class="h-12 w-auto grayscale opacity-50 mb-4" data-alt="Official logo of Riyad Bank in a clean, minimalist professional format." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCln5QjJ5fs4h7cBxGkWA2ZCk45SaLqGOOZ6TDoYABO-lyE1Sgz2i5Ru7iyQZ7gsL5J8bbJyUKbLJOR_kDJ7wi6vP6moCOMRbKa2ydan-ZCDyy_eeY5vQAhar84aEnQtcOvT3TBdaeT6C1jBLeu-1Xeebkc5Y7qQKhelSCu7qU6kDjgiK3HX0sjdLuvzhfdyGC2-FMIleZPX5iCNieW4hKQfT6YZ949qSZ0FBMwjLLKWWV3I8F2rf20SK8NFeknp8Yrae-uA6olBHo">
+<h4 class="font-h2 text-[18px] text-text-primary">بنك الرياض | Riyad Bank</h4>
+</div>
+<div class="p-6 bg-white rounded-2xl shadow-sm translate-y-8">
+<span class="material-symbols-outlined text-primary text-[40px] mb-4">domain</span>
+<h4 class="font-h2 text-[18px] text-text-primary">+50 شركة | +50 Companies</h4>
+</div>
+</div>
+</div>
+<div class="md:pr-12 mt-12 md:mt-0">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 text-primary font-label-caps text-label-caps mb-4">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="">محتوى مخصص | Targeted Content</span>
+</div>
+<h2 class="font-h1 text-h1 text-text-primary mb-4 leading-tight">تدريب مخصص لكبرى الشركات | Tailored for Top Companies</h2>
+<p class="font-body-lg text-text-secondary mb-8">
+                        قاعدة بياناتنا تحتوي على آلاف الأسئلة الحقيقية المسربة من المقابلات في الشركات الكبرى. تدرب على الثقافة المؤسسية والأسئلة التقنية الخاصة بجهة عملك القادمة.
+                    </p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-white border border-border-subtle px-4 py-2 rounded-lg font-caption text-caption">البرامج الوطنية | National Programs</span>
+<span class="bg-white border border-border-subtle px-4 py-2 rounded-lg font-caption text-caption">البنوك | Banking</span>
+<span class="bg-white border border-border-subtle px-4 py-2 rounded-lg font-caption text-caption">الطاقة | Energy</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 3: Detailed Feedback -->
+<section class="py-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop transition-all duration-1000 opacity-100 translate-y-0">
+<div class="grid md:grid-cols-2 gap-gutter items-center">
+<div class="order-2 md:order-1">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-warning-orange/10 text-warning-orange font-label-caps text-label-caps mb-4">
+<span class="material-symbols-outlined text-[18px]">monitoring</span>
+<span class="">تحليل دقيق | Insightful Analytics</span>
+</div>
+<h2 class="font-h1 text-h1 text-text-primary mb-4 leading-tight">تقييم شامل ودقيق | Comprehensive Analytics</h2>
+<p class="font-body-lg text-text-secondary mb-8">
+                        لا نكتفي بإنهاء المقابلة فحسب، بل نزودك بتقرير تفصيلي يتضمن مخططات بيانية لمهاراتك (Radar Charts) وإجابات نموذجية لكل سؤال تم طرحه لتتعلم من أخطائك.
+                    </p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<h4 class="font-h2 text-[18px] text-text-primary">مخطط الكفاءات | Competency Map</h4>
+<p class="text-caption text-text-secondary">تقييم خماسي لمهاراتك القيادية والتقنية والشخصية.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h4 class="font-h2 text-[18px] text-text-primary">الإجابة النموذجية | Model Answers</h4>
+<p class="text-caption text-text-secondary">اقتراحات ذكية لكيفية صياغة إجابتك بشكل أكثر احترافية.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 bg-white rounded-3xl p-8 shadow-sm border border-border-subtle overflow-hidden relative">
+<!-- Fake Radar Chart -->
+<div class="flex flex-col items-center">
+<div class="w-full aspect-square max-w-[400px] relative">
+<svg class="w-full h-full rotate-18 pt-4" viewBox="0 0 100 100">
+<!-- Radar background lines -->
+<polygon fill="none" points="50,5 95,35 78,90 22,90 5,35" stroke="#E5E5E0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="50,15 85,40 70,80 30,80 15,40" stroke="#E5E5E0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="50,25 75,45 62,70 38,70 25,45" stroke="#E5E5E0" stroke-width="0.5"></polygon>
+<!-- Actual Data -->
+<polygon fill="#00A36C" fill-opacity="0.58" points="50,10 85,38 72,82 40,75 20,40" stroke="#00A36C" stroke-width="2"></polygon>
+</svg>
+<!-- Labels -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 text-center">
+<p class="font-bold text-xs">اللغة<br><span class="text-[10px] text-text-secondary">Language</span></p>
+</div>
+<div class="absolute top-1/4 right-0 text-right">
+<p class="font-bold text-xs">الثقة<br><span class="text-[10px] text-text-secondary">Confidence</span></p>
+</div>
+<div class="absolute bottom-4 right-1/4 text-right">
+<p class="font-bold text-xs">المعرفة<br><span class="text-[10px] text-text-secondary">Knowledge</span></p>
+</div>
+<div class="absolute bottom-4 left-1/4 text-left">
+<p class="font-bold text-xs">المنطق<br><span class="text-[10px] text-text-secondary">Logic</span></p>
+</div>
+<div class="absolute top-1/4 left-0 text-left">
+<p class="font-bold text-xs">التفاعل<br><span class="text-[10px] text-text-secondary">Engagement</span></p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-border-subtle text-center">
+<div class="inline-block px-6 py-2 bg-secondary text-white rounded-full font-bold">
+                            النتيجة النهائية: 88/100
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Section (Summary) -->
+<section class="py-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop transition-all duration-1000 opacity-100 translate-y-0">
+<h3 class="font-h1 text-center mb-16">كل ما تحتاجه للنجاح | Everything you need</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 p-8 bg-primary text-on-primary rounded-3xl relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-h2 mb-4">تقارير فورية بالذكاء الاصطناعي</h4>
+<p class="opacity-80">نحلل كل ثانية من مقابلتك لنقدم لك نصائح دقيقة ومباشرة.</p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-8 -right-8 text-[200px] opacity-10 group-hover:scale-110 transition-transform">insights</span>
+</div>
+<div class="p-8 bg-secondary-container text-on-secondary-container rounded-3xl">
+<h4 class="font-h2 mb-4">بوابات توظيف</h4>
+<p class="opacity-80">ربط مباشر مع مسؤولي التوظيف في الجهات الشريكة.</p>
+</div>
+<div class="p-8 bg-surface-container-high rounded-3xl">
+<h4 class="font-h2 mb-4 text-primary">دعم فني 24/7</h4>
+<p class="text-on-surface-variant">فريقنا جاهز لمساعدتك في أي وقت خلال رحلتك.</p>
+</div>
+<div class="md:col-span-2 p-8 bg-white border border-border-subtle rounded-3xl flex items-center gap-8">
+<div class="hidden sm:block">
+<div class="flex -space-x-4 space-x-reverse">
+<div class="w-12 h-12 rounded-full border-2 border-white bg-surface-dim overflow-hidden">
+<img data-alt="Close-up portrait of a young Saudi professional man, clean-shaven with a confident smile, wearing traditional attire in a high-key lighting studio. Minimalist and premium look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnLOUV2bUckE3m7lvUBpq_Um219COGZ_66i2dzS4RKgK-qMQ6GwecXMLEINhNa0yZ2eb7RQC5L7VUY37Iq3BmCaWfbojYnElK2O6yI73cZxPUfgUXc-IC5cr4AvESHontq0nTJ-FBIuJQrZwn6DvB78X084kfXnlX3ZK78QpnU7HEib7EamD5yYBLKqGifLuRgsPmFjMfybSbLe7c9WZMGrCTc48lhgAdJeTDMgNJVeS6SLPbX4YriTek5BP0-cMeEDv_mp1IOAus">
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-white bg-surface-dim overflow-hidden">
+<img data-alt="Close-up portrait of a young professional woman wearing a modest hijab, with a bright and encouraging expression, captured in soft, modern professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdHn-uLzNlKBlLLy8gORP3vSGx7Ao3uty-DsiA_NYQh2aSejmPrHslaZsGGTEOM7Zx2bskLPofeBTZQXEONpjoe_eGBmzy3C8QDNBD41O5-tyJeGKvL2woScrmx9GBT7kc35iwcmnXJSZBwsRdbimf_mMvUJLx4ZtIwMqFdcUgfVJrapQWl1GZmcVEeJ0wXWjchGHruWuUQnZZwQEzSk2UICCERiIZxdHtN9C90XrrpnVdo_PMroklGD7seCh1rAeDITEi_yDgyhQ">
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-white bg-surface-dim flex items-center justify-center font-bold text-xs bg-primary-fixed text-primary">
+                                +10k
+                            </div>
+</div>
+</div>
+<div>
+<h4 class="font-h2 text-[18px]">انضم لآلاف المتدربين</h4>
+<p class="text-caption text-text-secondary">أكثر من 10,000 خريج حصلوا على وظائفهم بفضل الله ثم بفضل تدريباتنا.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop transition-all duration-1000 opacity-100 translate-y-0">
+<div class="bg-primary-container rounded-3xl p-12 text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-display-hero-mobile md:text-h1 font-h1 text-on-primary mb-6">هل أنت مستعد لمقابلتك القادمة؟</h2>
+<p class="text-on-primary-container opacity-90 mb-10 max-w-xl mx-auto font-body-lg">ابدأ الآن وجرب مقابلة تجريبية مجانية مع مدربنا الذكي.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-white text-primary px-10 py-4 rounded-xl font-bold hover:bg-surface-elevated transition-all active:scale-95">سجل الآن مجاناً | Register Now</button>
+<button class="border border-white/30 text-white px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition-all active:scale-95">تحدث مع المبيعات | Sales</button>
+</div>
+</div>
+<!-- Background Pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 32px 32px;"></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-on-primary-fixed-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto text-center md:text-right">
+<div class="font-h2 text-h2 text-on-primary dark:text-primary-fixed font-bold mb-6 md:mb-0">
+                مدرب المقابلات
+            </div>
+<div class="flex gap-8 mb-6 md:mb-0">
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 font-body-md text-body-md hover:underline transition-all" href="#">الشروط والأحكام | Terms</a>
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 font-body-md text-body-md hover:underline transition-all" href="#">سياسة الخصوصية | Privacy</a>
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 font-body-md text-body-md hover:underline transition-all" href="#">تواصل معنا | Contact</a>
+</div>
+<div class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 font-body-md text-body-md">
+                © 2024 Interview Coach. جميع الحقوق محفوظة لمدرب المقابلات
+            </div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the orb and stats
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section > div').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(section);
+            });
+        });
+    </script>
+
+
+</body></html>

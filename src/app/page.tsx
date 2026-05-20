@@ -49,9 +49,9 @@ export default function HomePage() {
             <Link className="landing-link active" href="/">
               الرئيسية
             </Link>
-            <a className="landing-link" href="#features">
+            <Link className="landing-link" href="/features">
               المميزات
-            </a>
+            </Link>
             <a className="landing-link" href="/PricingInterviewCoach.html">
               الأسعار
             </a>

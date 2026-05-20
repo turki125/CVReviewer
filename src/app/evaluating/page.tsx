@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CheckCircle2, Circle, LoaderCircle, Timer } from "lucide-react";
 
 const evaluationSteps = [
@@ -22,13 +23,13 @@ export default function EvaluatingPage() {
   return (
     <main className="evaluating-page" aria-labelledby="evaluating-title">
       <section className="evaluating-shell">
-        <div className="evaluating-orb-wrap" aria-hidden="true">
+        <Link className="evaluating-orb-wrap" href="/feedback" aria-label="Open evaluation dashboard">
           <div className="evaluating-orb-glow" />
           <div className="evaluating-orb">
             <div className="evaluating-orb-shine" />
             <div className="evaluating-orb-depth" />
           </div>
-        </div>
+        </Link>
 
         <div className="evaluating-heading">
           <h1 id="evaluating-title">جاري تحليل أدائك...</h1>

@@ -1,5 +1,11 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { CheckCircle2, Circle, LoaderCircle, Timer } from "lucide-react";
+
+const countdownSeconds = 10;
 
 const evaluationSteps = [
   {
@@ -20,6 +26,26 @@ const evaluationSteps = [
 ];
 
 export default function EvaluatingPage() {
+  const router = useRouter();
+  const [secondsLeft, setSecondsLeft] = useState(countdownSeconds);
+  const progress = useMemo(
+    () => ((countdownSeconds - secondsLeft) / countdownSeconds) * 100,
+    [secondsLeft],
+  );
+
+  useEffect(() => {
+    if (secondsLeft <= 0) {
+      router.push("/feedback");
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      setSecondsLeft((value) => Math.max(value - 1, 0));
+    }, 1000);
+
+    return () => window.clearTimeout(timer);
+  }, [router, secondsLeft]);
+
   return (
     <main className="evaluating-page" aria-labelledby="evaluating-title">
       <section className="evaluating-shell">
@@ -58,12 +84,19 @@ export default function EvaluatingPage() {
         <div className="evaluating-time">
           <div className="evaluating-time-copy">
             <Timer size={18} strokeWidth={2.1} aria-hidden="true" />
-            <span>الوقت المقدر: 10 ثواني</span>
+            <span>الوقت المتبقي: {secondsLeft} ثواني</span>
             <span aria-hidden="true">·</span>
-            <span dir="ltr">Est time: 10 seconds</span>
+            <span dir="ltr">{secondsLeft} seconds remaining</span>
           </div>
-          <div className="evaluating-progress" aria-hidden="true">
-            <span />
+          <div
+            className="evaluating-progress"
+            aria-label={`الوقت المتبقي ${secondsLeft} ثواني`}
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={countdownSeconds}
+            aria-valuenow={countdownSeconds - secondsLeft}
+          >
+            <span style={{ width: `${progress}%` }} />
           </div>
         </div>
       </section>

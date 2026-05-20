@@ -972,7 +972,7 @@ p {
   height: 100%;
   border-radius: inherit;
   background: var(--secondary);
-  animation: evaluating-progress 4s ease-out forwards;
+  transition: width 1s linear;
 }
 
 .evaluating-progress span::after {

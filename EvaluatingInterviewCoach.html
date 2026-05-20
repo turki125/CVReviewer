@@ -189,11 +189,11 @@
         }
         @keyframes progress-bar {
             0% { width: 0%; }
-            100% { width: 65%; }
+            100% { width: 100%; }
         }
         .anim-orb-spin { animation: orb-spin 12s linear infinite; }
         .anim-orb-pulse { animation: orb-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        .anim-progress { animation: progress-bar 4s ease-out forwards; }
+        .anim-progress { animation: progress-bar 10s linear forwards; }
     </style>
 </head>
 <body class="bg-background min-h-screen w-full flex flex-col items-center justify-center overflow-hidden antialiased selection:bg-primary-fixed selection:text-primary">
@@ -237,9 +237,9 @@
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-outline text-[18px]">timer</span>
 <div class="flex items-center gap-3">
-<span class="font-caption text-caption text-outline" dir="rtl">الوقت المقدر: 10 ثواني</span>
+<span class="font-caption text-caption text-outline" dir="rtl">الوقت المتبقي: <span id="countdown-ar">10</span> ثواني</span>
 <span class="text-outline-variant text-[10px]">●</span>
-<span class="font-caption text-caption text-outline">Est time: 10 seconds</span>
+<span class="font-caption text-caption text-outline"><span id="countdown-en">10</span> seconds remaining</span>
 </div>
 </div>
 <div class="w-48 h-1.5 bg-surface-variant rounded-full overflow-hidden mt-1">
@@ -249,4 +249,20 @@
 </div>
 </div>
 </main>
+<script>
+    let secondsLeft = 10;
+    const countdownAr = document.getElementById('countdown-ar');
+    const countdownEn = document.getElementById('countdown-en');
+
+    const countdownTimer = window.setInterval(() => {
+        secondsLeft -= 1;
+        countdownAr.textContent = secondsLeft;
+        countdownEn.textContent = secondsLeft;
+
+        if (secondsLeft <= 0) {
+            window.clearInterval(countdownTimer);
+            window.location.href = 'EvaluationDashboardInterviewCoach.html';
+        }
+    }, 1000);
+</script>
 </body></html>

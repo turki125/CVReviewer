@@ -80,7 +80,7 @@ export default function FeaturesPage() {
             <a className="signin-link" href="#signin">
               تسجيل الدخول
             </a>
-            <Link className="small-cta" href="/setup">
+            <Link className="small-cta" href="/StartFreeTrialInterviewCoach.html">
               ابدأ مجانا
             </Link>
           </div>
@@ -242,7 +242,7 @@ export default function FeaturesPage() {
           <h2 id="features-cta-title">هل أنت مستعد لمقابلتك القادمة؟</h2>
           <p>ابدأ الآن وجرب مقابلة تجريبية مجانية مع مدربنا الذكي.</p>
           <div>
-            <Link className="features-cta-button primary" href="/setup">
+            <Link className="features-cta-button primary" href="/StartFreeTrialInterviewCoach.html">
               سجل الآن مجانا | Register Now
               <ArrowLeft size={21} strokeWidth={2.2} aria-hidden="true" />
             </Link>

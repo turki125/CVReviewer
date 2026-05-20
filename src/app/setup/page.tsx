@@ -102,7 +102,7 @@ export default function SetupPage() {
             <a className="signin-link" href="#signin">
               تسجيل الدخول
             </a>
-            <Link className="small-cta" href="/setup">
+            <Link className="small-cta" href="/StartFreeTrialInterviewCoach.html">
               ابدأ مجانا
             </Link>
           </div>

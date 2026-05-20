@@ -77,7 +77,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="landing-actions">
-            <a className="signin-link" href="#signin">
+            <a className="signin-link" href="/SignInInterviewCoach.html">
               تسجيل الدخول
             </a>
             <Link className="small-cta" href="/StartFreeTrialInterviewCoach.html">
@@ -246,7 +246,7 @@ export default function FeaturesPage() {
               سجل الآن مجانا | Register Now
               <ArrowLeft size={21} strokeWidth={2.2} aria-hidden="true" />
             </Link>
-            <a className="features-cta-button secondary" href="#sales">
+            <a className="features-cta-button secondary" href="/PricingInterviewCoach.html">
               تحدث مع المبيعات | Sales
             </a>
           </div>

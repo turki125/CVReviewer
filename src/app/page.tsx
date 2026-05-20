@@ -58,7 +58,7 @@ export default function HomePage() {
           </div>
 
           <div className="landing-actions">
-            <a className="signin-link" href="#signin">
+            <a className="signin-link" href="/SignInInterviewCoach.html">
               تسجيل الدخول
             </a>
             <Link className="small-cta" href="/StartFreeTrialInterviewCoach.html">

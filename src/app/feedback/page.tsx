@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -22,6 +25,10 @@ const competencies = [
   { ar: "الثقة", en: "Confidence", score: 70, className: "confidence" },
 ];
 
+const scoreTarget = 72;
+const scoreRadius = 70;
+const scoreCircumference = 2 * Math.PI * scoreRadius;
+
 const nextSteps: {
   icon: LucideIcon;
   title: string;
@@ -43,6 +50,34 @@ const nextSteps: {
 ];
 
 export default function FeedbackPage() {
+  const [score, setScore] = useState(0);
+  const scoreOffset = useMemo(
+    () => scoreCircumference - (score / 100) * scoreCircumference,
+    [score],
+  );
+
+  useEffect(() => {
+    let animationFrame = 0;
+    const duration = 1200;
+    const start = performance.now();
+
+    const animateScore = (timestamp: number) => {
+      const elapsed = timestamp - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = 1 - (1 - progress) ** 3;
+
+      setScore(Math.round(scoreTarget * easedProgress));
+
+      if (progress < 1) {
+        animationFrame = window.requestAnimationFrame(animateScore);
+      }
+    };
+
+    animationFrame = window.requestAnimationFrame(animateScore);
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, []);
+
   return (
     <div className="report-page" dir="rtl">
       <header className="report-header">
@@ -103,14 +138,14 @@ export default function FeedbackPage() {
                 cy="80"
                 fill="none"
                 r="70"
-                strokeDasharray="440"
-                strokeDashoffset="124"
+                strokeDasharray={scoreCircumference}
+                strokeDashoffset={scoreOffset}
                 strokeLinecap="round"
                 strokeWidth="12"
               />
             </svg>
             <div>
-              <strong dir="ltr">72</strong>
+              <strong dir="ltr">{score}</strong>
               <span dir="ltr">Score / 100</span>
             </div>
           </div>

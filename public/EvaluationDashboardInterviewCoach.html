@@ -231,10 +231,10 @@
 <svg class="w-full h-full transform rotate-90" viewbox="0 0 160 160">
 <circle class="text-surface-variant" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="8"></circle>
 <!-- 72% of circumference (439.8) = ~316 -->
-<circle class="text-secondary stroke-round drop-shadow-[0_0_8px_rgba(0,163,108,0.4)]" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="124" stroke-linecap="round" stroke-width="12"></circle>
+<circle class="text-secondary stroke-round drop-shadow-[0_0_8px_rgba(0,163,108,0.4)] transition-[stroke-dashoffset] duration-100 ease-linear" cx="80" cy="80" fill="transparent" id="score-progress" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round" stroke-width="12"></circle>
 </svg>
 <div class="absolute inset-0 flex flex-col items-center justify-center mt-2">
-<span class="font-display-hero text-display-hero text-primary leading-none">72</span>
+<span class="font-display-hero text-display-hero text-primary leading-none" id="score-value">0</span>
 <span class="font-label-caps text-label-caps text-text-secondary tracking-widest uppercase mt-1">Score / 100</span>
 </div>
 </div>
@@ -422,4 +422,27 @@
             </div>
 </div>
 </footer>
+<script>
+    const scoreTarget = 72;
+    const scoreCircumference = 440;
+    const scoreValue = document.getElementById('score-value');
+    const scoreProgress = document.getElementById('score-progress');
+    const scoreStart = performance.now();
+    const scoreDuration = 1200;
+
+    function animateScore(timestamp) {
+        const progress = Math.min((timestamp - scoreStart) / scoreDuration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        const score = Math.round(scoreTarget * easedProgress);
+
+        scoreValue.textContent = score;
+        scoreProgress.setAttribute('stroke-dashoffset', String(scoreCircumference - (score / 100) * scoreCircumference));
+
+        if (progress < 1) {
+            window.requestAnimationFrame(animateScore);
+        }
+    }
+
+    window.requestAnimationFrame(animateScore);
+</script>
 </body></html>

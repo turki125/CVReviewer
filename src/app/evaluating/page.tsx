@@ -28,6 +28,7 @@ const evaluationSteps = [
 export default function EvaluatingPage() {
   const router = useRouter();
   const [secondsLeft, setSecondsLeft] = useState(countdownSeconds);
+  const [isLeaving, setIsLeaving] = useState(false);
   const progress = useMemo(
     () => ((countdownSeconds - secondsLeft) / countdownSeconds) * 100,
     [secondsLeft],
@@ -35,8 +36,12 @@ export default function EvaluatingPage() {
 
   useEffect(() => {
     if (secondsLeft <= 0) {
-      router.push("/feedback");
-      return undefined;
+      setIsLeaving(true);
+      const transitionTimer = window.setTimeout(() => {
+        router.push("/feedback");
+      }, 450);
+
+      return () => window.clearTimeout(transitionTimer);
     }
 
     const timer = window.setTimeout(() => {
@@ -47,7 +52,7 @@ export default function EvaluatingPage() {
   }, [router, secondsLeft]);
 
   return (
-    <main className="evaluating-page" aria-labelledby="evaluating-title">
+    <main className={`evaluating-page${isLeaving ? " is-leaving" : ""}`} aria-labelledby="evaluating-title">
       <section className="evaluating-shell">
         <Link className="evaluating-orb-wrap" href="/feedback" aria-label="Open evaluation dashboard">
           <div className="evaluating-orb-glow" />

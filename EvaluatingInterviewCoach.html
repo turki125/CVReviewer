@@ -194,6 +194,16 @@
         .anim-orb-spin { animation: orb-spin 12s linear infinite; }
         .anim-orb-pulse { animation: orb-pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         .anim-progress { animation: progress-bar 10s linear forwards; }
+        body {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition: opacity 450ms ease, transform 450ms ease, filter 450ms ease;
+        }
+        body.page-leaving {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.985);
+            filter: blur(8px);
+        }
     </style>
 </head>
 <body class="bg-background min-h-screen w-full flex flex-col items-center justify-center overflow-hidden antialiased selection:bg-primary-fixed selection:text-primary">
@@ -261,7 +271,10 @@
 
         if (secondsLeft <= 0) {
             window.clearInterval(countdownTimer);
-            window.location.href = 'EvaluationDashboardInterviewCoach.html';
+            document.body.classList.add('page-leaving');
+            window.setTimeout(() => {
+                window.location.href = 'EvaluationDashboardInterviewCoach.html';
+            }, 450);
         }
     }, 1000);
 </script>

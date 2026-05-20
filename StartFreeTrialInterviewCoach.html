@@ -1,0 +1,287 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "warning-orange": "#D97757",
+                    "outline": "#6f7974",
+                    "surface-container-low": "#f4f4f1",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#00513b",
+                    "secondary-container": "#7bfabb",
+                    "tertiary-fixed-dim": "#e4c278",
+                    "primary-container": "#00563f",
+                    "tertiary-fixed": "#ffdf9b",
+                    "on-secondary-container": "#00734b",
+                    "on-tertiary-fixed-variant": "#5a4302",
+                    "secondary-fixed-dim": "#5ddda1",
+                    "secondary-fixed": "#7bfabb",
+                    "surface-tint": "#216a52",
+                    "surface-container-highest": "#e2e3e0",
+                    "outline-variant": "#bfc9c2",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e8e8e5",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#8ed5b7",
+                    "on-surface-variant": "#3f4944",
+                    "on-primary-container": "#83c9ac",
+                    "tertiary": "#443200",
+                    "error-red": "#C13C3C",
+                    "border-subtle": "#E5E5E0",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f9f9f6",
+                    "primary-fixed": "#aaf1d2",
+                    "surface-dim": "#dadad7",
+                    "on-tertiary-fixed": "#251a00",
+                    "text-primary": "#0A0A0A",
+                    "on-primary-fixed": "#002116",
+                    "primary": "#003d2b",
+                    "on-surface": "#1a1c1b",
+                    "inverse-on-surface": "#f1f1ee",
+                    "text-secondary": "#6B6B6B",
+                    "on-tertiary-container": "#d9b86e",
+                    "primary-fixed-dim": "#8ed5b7",
+                    "surface-elevated": "#F4F4F0",
+                    "surface-container": "#eeeeeb",
+                    "inverse-surface": "#2f312f",
+                    "secondary": "#006c46",
+                    "surface-variant": "#e2e3e0",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1b",
+                    "surface": "#f9f9f6",
+                    "tertiary-container": "#5f4807",
+                    "surface-bright": "#f9f9f6",
+                    "on-secondary-fixed-variant": "#005234",
+                    "on-secondary-fixed": "#002112",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "12px",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "stack-md": "24px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "base": "8px",
+                    "container-max": "1200px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "display-hero": ["IBM Plex Sans Arabic"],
+                    "caption": ["Inter"],
+                    "display-hero-mobile": ["IBM Plex Sans Arabic"],
+                    "body-md": ["Inter"],
+                    "h1": ["IBM Plex Sans Arabic"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["IBM Plex Sans Arabic"]
+            },
+            "fontSize": {
+                    "display-hero": ["56px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-hero-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .orb-glow {
+            background: radial-gradient(circle, rgba(0, 163, 108, 0.4) 0%, rgba(0, 86, 63, 0) 70%);
+            filter: blur(40px);
+        }
+        .bento-card {
+            border: 1px solid #E5E5E0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            border-color: #00563f;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        [dir="rtl"] .ltr-text { direction: ltr; unicode-bidi: embed; text-align: left; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md docked full-width top-0 sticky z-50 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="font-h2 text-h2-mobile md:text-h2 font-bold text-primary dark:text-primary-fixed">Interview Coach | مدرب المقابلات</span>
+</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">الرئيسية | Home</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_15}}">المميزات | Features</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_14}}">الأسعار | Pricing</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden md:block text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">تسجيل الدخول | Login</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-semibold hover:bg-on-primary-fixed-variant active:scale-95 transition-all text-body-md font-body-md">
+                    ابدأ مجاناً | Start Free
+                </button>
+</div>
+</div>
+</nav>
+<main class="min-h-[calc(100vh-80px)] flex flex-col md:flex-row max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg gap-gutter relative overflow-hidden">
+<!-- Background Ambient Effects -->
+<div class="absolute -top-20 -left-20 w-96 h-96 orb-glow pointer-events-none opacity-50" style="transform: scale(1.038);"></div>
+<div class="absolute -bottom-20 -right-20 w-96 h-96 orb-glow pointer-events-none opacity-30" style="transform: scale(1.038);"></div>
+<!-- Left Content: Sign Up Form -->
+<div class="w-full md:w-1/2 flex flex-col justify-center z-10 order-2 md:order-1">
+<div class="space-y-stack-sm mb-stack-md">
+<h1 class="font-h1 text-h1 text-primary mb-2">ابدأ تجربة ٣ أيام مجانية</h1>
+<p class="font-body-lg text-body-lg text-text-secondary ltr-text">Start your 3-day free trial</p>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full w-fit">
+<span class="material-symbols-outlined text-secondary text-[20px]">credit_card_off</span>
+<span class="font-caption text-caption text-on-surface-variant">لا يتطلب بطاقة ائتمان | No credit card required</span>
+</div>
+</div>
+<form class="space-y-6 max-w-lg">
+<div class="space-y-2">
+<label class="block font-body-md text-body-md text-on-surface font-semibold">الاسم الكامل | Full Name</label>
+<input class="w-full bg-white border-border-subtle rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="فهد بن أحمد / Fahad Ahmed" type="text">
+</div>
+<div class="space-y-2">
+<label class="block font-body-md text-body-md text-on-surface font-semibold">البريد الإلكتروني | Email Address</label>
+<input class="w-full bg-white border-border-subtle rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all ltr-text" placeholder="example@domain.com" type="email">
+</div>
+<div class="space-y-2 relative">
+<label class="block font-body-md text-body-md text-on-surface font-semibold">كلمة المرور | Password</label>
+<input class="w-full bg-white border-border-subtle rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-primary transition-all ltr-text" placeholder="••••••••" type="password">
+<button class="absolute left-4 top-[52px] text-on-surface-variant" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-h2 text-h2 hover:bg-on-primary-fixed-variant transition-all shadow-lg shadow-primary/10 flex items-center justify-center gap-3">
+<span class="">ابدأ الآن | Get Started Now</span>
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<p class="font-caption text-caption text-center text-on-surface-variant pt-2">
+                    بالتسجيل، فإنك توافق على <a class="text-primary underline" href="#">الشروط والأحكام</a>
+<br>
+<span class="ltr-text">By signing up, you agree to the <a class="text-primary underline" href="#">Terms &amp; Conditions</a></span>
+</p>
+</form>
+</div>
+<!-- Right Content: Value Proposition Bento -->
+<div class="w-full md:w-1/2 order-1 md:order-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+<!-- Why Join Hero Card -->
+<div class="col-span-1 md:col-span-2 bento-card bg-surface-elevated p-stack-md rounded-3xl flex flex-col justify-between overflow-hidden relative group">
+<div class="z-10">
+<h2 class="font-h2 text-h2 text-primary mb-2">ليش تشترك؟</h2>
+<p class="font-body-md text-body-md text-text-secondary ltr-text">Why join Interview Coach?</p>
+</div>
+<div class="mt-8 flex justify-center">
+<img class="w-full h-48 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A professional Saudi male graduate in a modern workplace setting, wearing a tailored thobe, smiling confidently while engaging with a futuristic digital hologram. The environment is a sleek, minimalist corporate office with soft natural lighting and accents of Saudi green. The overall mood is aspirational, high-end, and technologically advanced, mirroring a premium professional consultancy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfXIGn7RfYG1nTqavRYtcg0sgo2eJe0NzCvUvFQHauSCOSSD6Ft8KROzBKzuydJttQmKSrAXQQoYvfORzL5rv5haQm2RORzWM_Hfa2FDB0VtYUWoJA1LKsToHOLeuoLD6ftsw97Xv9LQuBm_2uU7bq_B1VJVlZZDaDz_pf5lESNeYJ5UydRPbjVz3v-FW2_jCrn_lTADKo5iXvJYnBYWo9kSx1zMnFdzVIr5OdiYEBZiPpGDlGgWnng55vWhnc_SMJ6bR-lyRRmJs">
+</div>
+</div>
+<!-- Feature 1: Unlimited -->
+<div class="bento-card bg-white p-6 rounded-3xl space-y-4">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">all_inclusive</span>
+</div>
+<div>
+<h3 class="font-h2 text-body-lg font-bold">تدريب غير محدود</h3>
+<p class="font-caption text-caption text-text-secondary ltr-text">Unlimited Practice</p>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm">تمرّن على مئات السيناريوهات المختلفة في أي وقت.<br>Practice 100+ scenarios anytime.</p>
+</div>
+<!-- Feature 2: Real-time AI -->
+<div class="bento-card bg-white p-6 rounded-3xl space-y-4">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-weight="fill">psychology</span>
+</div>
+<div>
+<h3 class="font-h2 text-body-lg font-bold">ذكاء اصطناعي فوري</h3>
+<p class="font-caption text-caption text-text-secondary ltr-text">Real-time AI Feedback</p>
+</div>
+<p class="font-body-md text-on-surface-variant text-sm">احصل على ملاحظات فورية على لغة جسدك ونبرة صوتك.<br>Instant tips on tone &amp; body language.</p>
+</div>
+<!-- Feature 3: Professional Reports -->
+<div class="col-span-1 md:col-span-2 bento-card bg-primary text-on-primary p-6 rounded-3xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-on-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-weight="fill">analytics</span>
+</div>
+<div>
+<h3 class="font-h2 text-body-lg font-bold">تقارير احترافية</h3>
+<p class="font-caption text-caption opacity-80 ltr-text">Professional Performance Reports</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-4xl opacity-20">trending_up</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-on-primary-fixed-variant full-width mt-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto text-center md:text-right">
+<div class="mb-6 md:mb-0">
+<span class="font-h2 text-h2 text-on-primary dark:text-primary-fixed font-bold">Interview Coach</span>
+<p class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 mt-2 font-body-md text-body-md">تمكين الكفاءات السعودية لمستقبل ٢٠٣٠</p>
+</div>
+<div class="flex flex-wrap justify-center gap-gutter mb-6 md:mb-0">
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 hover:underline transition-all font-body-md text-body-md" href="#">الشروط والأحكام | Terms</a>
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 hover:underline transition-all font-body-md text-body-md" href="#">سياسة الخصوصية | Privacy</a>
+<a class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 hover:opacity-100 hover:underline transition-all font-body-md text-body-md" href="#">تواصل معنا | Contact</a>
+</div>
+<p class="text-on-primary-container dark:text-primary-fixed-dim opacity-80 font-body-md text-body-md">© 2024 Interview Coach. جميع الحقوق محفوظة لمدرب المقابلات</p>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for input focusing
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').style.color = '#00563f';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').style.color = '';
+            });
+        });
+
+        // Pulsing orb effect logic
+        const orbs = document.querySelectorAll('.orb-glow');
+        let scale = 1;
+        let growing = true;
+
+        function animateOrbs() {
+            if (growing) {
+                scale += 0.002;
+                if (scale >= 1.2) growing = false;
+            } else {
+                scale -= 0.002;
+                if (scale <= 1) growing = true;
+            }
+            orbs.forEach(orb => {
+                orb.style.transform = `scale(${scale})`;
+            });
+            requestAnimationFrame(animateOrbs);
+        }
+        animateOrbs();
+    </script>
+
+
+
+
+</body></html>

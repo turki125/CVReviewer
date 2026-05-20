@@ -3065,6 +3065,22 @@ p {
   border-radius: 8px;
 }
 
+.chat-preview {
+  background:
+    linear-gradient(135deg, rgb(249 249 246 / 72%), rgb(170 241 210 / 48%)),
+    var(--surface-raised);
+}
+
+.chat-preview-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.34;
+  mix-blend-mode: overlay;
+}
+
 .voice-orb {
   width: min(56%, 19rem);
   aspect-ratio: 1;

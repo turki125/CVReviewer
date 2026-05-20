@@ -5,11 +5,10 @@ import {
   Building2,
   CheckCircle2,
   Headphones,
+  Keyboard,
   Lightbulb,
   LineChart,
-  Mic,
-  Radio,
-  Sparkles,
+  MessageSquare,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -89,9 +88,6 @@ export default function FeaturesPage() {
 
       <main className="features-main">
         <section className="features-hero" aria-labelledby="features-title">
-          <div className="features-hero-mark" aria-hidden="true">
-            <Sparkles size={42} strokeWidth={1.8} />
-          </div>
           <h1 id="features-title">
             مميزات مدرب المقابلات
             <span dir="ltr">Interview Coach Features</span>
@@ -102,35 +98,41 @@ export default function FeaturesPage() {
           </p>
         </section>
 
-        <section className="features-split" aria-labelledby="voice-title">
+        <section className="features-split" aria-labelledby="chat-title">
           <div className="features-copy">
             <div className="feature-pill">
-              <Radio size={18} strokeWidth={2} aria-hidden="true" />
-              بث مباشر | Live AI
+              <MessageSquare size={18} strokeWidth={2} aria-hidden="true" />
+              محادثة نصية فورية | Text Chat AI
             </div>
-            <h2 id="voice-title">مقابلات ذكية بصوتك | AI Voice Interviews</h2>
+            <h2 id="chat-title">مقابلات نصية بالذكاء الاصطناعي | AI Chat Interviews</h2>
             <p>
-              تفاعل مع مدربنا الذكي بشكل طبيعي كما في المقابلة الحقيقية. حلل
-              نبرة صوتك، سرعة حديثك، والقدرة على التعبير عن الأفكار بوضوح
-              ودقة عالية باللغتين العربية والإنجليزية.
+              تفاعل مع مدربنا الذكي من خلال المحادثة النصية الفورية. اكتب
+              إجاباتك وسيقوم النظام بتحليل أسلوب الرد، التفكير، والقدرة على
+              الإقناع باللغتين العربية والإنجليزية.
             </p>
             <ul className="feature-checks">
               <li>
                 <CheckCircle2 size={21} strokeWidth={2.2} aria-hidden="true" />
-                استجابة فورية وحوار تفاعلي | Real-time voice interaction
+                تفاعل نصي فوري | Real-time text interaction
               </li>
               <li>
                 <CheckCircle2 size={21} strokeWidth={2.2} aria-hidden="true" />
-                تحليل نبرة الصوت والثقة | Voice tone & confidence analysis
+                تحليل التفكير والوضوح | Content & clarity analysis
               </li>
             </ul>
           </div>
 
-          <div className="voice-preview" aria-label="واجهة مقابلة صوتية">
+          <div className="voice-preview chat-preview" aria-label="واجهة مقابلة نصية">
+            <img
+              className="chat-preview-image"
+              alt=""
+              aria-hidden="true"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZalanMwBWx-UIuoEVpVVxuvQKeD6bAbQxsIDYsUeE8HHrbca-lfQlW81IR26tfhWkyCy9xHsIWx3fbdaUDPFuXBOubQGua4IHWQeGzyJvMT8eoyysUbP5Ab0Bu0YU2O1Ur3wGVX0i1n3kOSOZrbXuy8WMgMHCBgq9PaQSHv5ggCmxvIBWWT4dR4i2s8n7G-1rQEBpAKXV5_xkBrVUnEXetCgKVDh3cMzUxVjkYhFtA1PJaNw9MB2p5nrjOsaL9U0CffoYwmlXwQ4"
+            />
             <div className="voice-orb" />
             <div className="voice-panel">
               <div className="voice-mic">
-                <Mic size={28} strokeWidth={2} aria-hidden="true" />
+                <Keyboard size={26} strokeWidth={2} aria-hidden="true" />
               </div>
               <div className="voice-bars" aria-hidden="true">
                 <span />
@@ -139,7 +141,7 @@ export default function FeaturesPage() {
                 <span />
                 <span />
               </div>
-              <strong>جاري الاستماع... | Listening...</strong>
+              <strong>يتم تحليل الإجابة... | Analyzing...</strong>
             </div>
           </div>
         </section>

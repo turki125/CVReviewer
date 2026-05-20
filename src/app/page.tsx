@@ -84,7 +84,7 @@ export default function HomePage() {
           </div>
 
           <div className="hero-actions">
-            <Link className="hero-button primary" href="/setup">
+            <Link className="hero-button primary" href="/SetupwithSpecificRolesInterviewCoach.html">
               <span>ابدأ المقابلة</span>
               <ArrowLeft size={22} strokeWidth={2.2} aria-hidden="true" />
             </Link>

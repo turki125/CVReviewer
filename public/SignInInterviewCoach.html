@@ -1,0 +1,222 @@
+<!DOCTYPE html><html dir="rtl" lang="ar"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>تسجيل الدخول | Sign In - Interview Coach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "warning-orange": "#D97757",
+                        "outline": "#6f7974",
+                        "surface-container-low": "#f4f4f1",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#00513b",
+                        "secondary-container": "#7bfabb",
+                        "tertiary-fixed-dim": "#e4c278",
+                        "primary-container": "#00563f",
+                        "tertiary-fixed": "#ffdf9b",
+                        "on-secondary-container": "#00734b",
+                        "on-tertiary-fixed-variant": "#5a4302",
+                        "secondary-fixed-dim": "#5ddda1",
+                        "secondary-fixed": "#7bfabb",
+                        "surface-tint": "#216a52",
+                        "surface-container-highest": "#e2e3e0",
+                        "outline-variant": "#bfc9c2",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e8e8e5",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#8ed5b7",
+                        "on-surface-variant": "#3f4944",
+                        "on-primary-container": "#83c9ac",
+                        "tertiary": "#443200",
+                        "error-red": "#C13C3C",
+                        "border-subtle": "#E5E5E0",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f9f9f6",
+                        "primary-fixed": "#aaf1d2",
+                        "surface-dim": "#dadad7",
+                        "on-tertiary-fixed": "#251a00",
+                        "text-primary": "#0A0A0A",
+                        "on-primary-fixed": "#002116",
+                        "primary": "#003d2b",
+                        "on-surface": "#1a1c1b",
+                        "inverse-on-surface": "#f1f1ee",
+                        "text-secondary": "#6B6B6B",
+                        "on-tertiary-container": "#d9b86e",
+                        "primary-fixed-dim": "#8ed5b7",
+                        "surface-elevated": "#F4F4F0",
+                        "surface-container": "#eeeeeb",
+                        "inverse-surface": "#2f312f",
+                        "secondary": "#006c46",
+                        "surface-variant": "#e2e3e0",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1b",
+                        "surface": "#f9f9f6",
+                        "tertiary-container": "#5f4807",
+                        "surface-bright": "#f9f9f6",
+                        "on-secondary-fixed-variant": "#005234",
+                        "on-secondary-fixed": "#002112",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "display-hero": ["IBM Plex Sans Arabic"],
+                        "caption": ["Inter"],
+                        "display-hero-mobile": ["IBM Plex Sans Arabic"],
+                        "body-md": ["Inter"],
+                        "h1": ["IBM Plex Sans Arabic"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["IBM Plex Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "display-hero": ["56px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                        "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "display-hero-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f9f9f6; /* Surface color */
+        }
+        .orb-glow {
+            filter: blur(60px);
+            background: radial-gradient(circle, rgba(0, 163, 108, 0.15) 0%, rgba(0, 86, 63, 0) 70%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+    <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+        <div class="font-h2 text-h2 text-primary font-bold">
+            Interview Coach | مدرب المقابلات
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md" href="LandingPage.html">الرئيسية | Home</a>
+            <a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md" href="{{DATA:SCREEN:SCREEN_14}}">الأسعار | Pricing</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="#" class="bg-primary-container text-on-primary font-semibold px-6 py-2 rounded-xl active:scale-95 transition-transform text-center">ابدأ مجاناً | Start Free</a>
+        </div>
+    </div>
+</header>
+<!-- Background Atmospheric Effect -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="orb-glow absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full"></div>
+<div class="orb-glow absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full"></div>
+</div>
+<!-- Main Content Shell -->
+<main class="min-h-screen flex items-center justify-center relative z-10 px-margin-mobile">
+<div class="w-full max-w-[480px] bg-surface-container-lowest rounded-xl shadow-[0_4px_16px_rgba(0,0,0,0.04)] border border-border-subtle overflow-hidden">
+<!-- Branding Header -->
+<div class="pt-stack-lg px-stack-md text-center">
+<div class="mb-stack-sm flex justify-center items-center">
+<span class="material-symbols-outlined text-primary text-[40px]" data-icon="cognition">cognition</span>
+</div>
+<h1 class="font-h1 text-h1 text-primary mb-2">تسجيل الدخول | Sign In</h1>
+<p class="font-body-md text-on-surface-variant">أهلاً بك مجدداً في مدرب المقابلات | Welcome back to Interview Coach</p>
+</div>
+<!-- Form Body -->
+<div class="p-stack-md space-y-gutter">
+<form action="#" class="space-y-stack-md" method="POST">
+<!-- Email Field -->
+<div class="space-y-base">
+<label class="flex flex-col gap-1" for="email">
+<span class="font-h2 text-[14px] text-primary">البريد الإلكتروني | Email</span>
+</label>
+<div class="relative group">
+<input class="w-full h-[56px] px-stack-md bg-surface border border-outline-variant rounded-lg text-right md:text-right placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="email" name="email" placeholder="example@domain.com" required="" type="email">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary" data-icon="mail">mail</span>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-base">
+<label class="flex flex-col gap-1" for="password">
+<span class="font-h2 text-[14px] text-primary">كلمة المرور | Password</span>
+</label>
+<div class="relative group">
+<input class="w-full h-[56px] px-stack-md bg-surface border border-outline-variant rounded-lg text-right md:text-right placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="password" name="password" placeholder="••••••••" required="" type="password">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary" data-icon="lock">lock</span>
+</div>
+<div class="flex justify-end">
+<a class="font-caption text-secondary hover:text-on-secondary-container transition-colors" href="#">هل نسيت كلمة المرور؟ | Forgot password?</a>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-[56px] bg-primary text-on-primary rounded-lg font-h2 text-[18px] hover:bg-on-primary-fixed-variant transition-all active:scale-[0.98] flex items-center justify-center gap-2 mt-4" type="submit">
+<span class="material-symbols-outlined" data-icon="login">login</span>
+                        دخول | Login
+                    </button>
+</form>
+<!-- Divider -->
+<div class="relative flex items-center gap-4 py-2">
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+<span class="font-caption text-on-surface-variant px-2">أو | Or</span>
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+</div>
+<!-- Social Login -->
+<button class="w-full h-[56px] border-[1.5px] border-outline-variant bg-surface-container-lowest text-on-surface rounded-lg font-body-md hover:bg-surface-elevated transition-all active:scale-[0.98] flex items-center justify-center gap-3" type="button">
+<img alt="Google Logo" class="w-6 h-6" data-alt="A clean, high-resolution graphic of the Google logo centered on a white circular background. The logo uses its signature vibrant colors—blue, red, yellow, and green—in a minimalist, modern corporate style. The overall lighting is bright and even, fitting a premium tech interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdrPY3rTqA8aVKpErOVO0aG8MzpuZwglcVxidTQBFnUpl3tiiqHlj7KfkO_mJnp7pVRGIeW-tyPNZ0pqi-Kgt_d-0hSNcDzZWfdAA8XBl3W0VXC1nVczQVuMkQblY-yahOgqeJ0ITVpxnJh98Oo3xWEJY5GV7Sh4_UDOZV7J3FN0Ad62Bv8QW02huTaU4kifh7g2iozObAqrgSlI9yiYT2ZTVeTzAAZtl0ovjRzic_1JDgMkKmvsvUlM43Gnenx3OXPZ-5sBifFOI">
+<span class="">Continue with Google | المتابعة باستخدام جوجل</span>
+</button>
+</div>
+<!-- Footer Link -->
+<div class="bg-surface-elevated p-stack-md text-center">
+<p class="font-body-md text-on-surface-variant">
+                    ليس لديك حساب؟ | Don't have an account? 
+                    <a class="text-secondary font-bold hover:underline" href="#">سجل الآن | Sign Up</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Simple Interactivity for password visibility (Bonus Micro-interaction) -->
+<script>
+        document.querySelectorAll('input[type="password"]').forEach(input => {
+            // Optional: You could add a toggle icon here if desired
+        });
+
+        // Add subtle hover effect to cards
+        const card = document.querySelector('.bg-surface-container-lowest');
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 100;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 100;
+            // card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`; // Keeping it subtle
+        });
+    </script>
+
+
+</body></html>

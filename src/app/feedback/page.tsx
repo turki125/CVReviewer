@@ -36,38 +36,6 @@ const fallbackSetup: InterviewSetupInput = {
   interviewLanguage: "Bilingual",
 };
 
-const fallbackAnswers: SavedInterviewAnswer[] = [
-  {
-    question: "No completed interview answers were found.",
-    answer: "ابدأ مقابلة جديدة حتى يظهر تقرير مبني على إجاباتك الفعلية.",
-    evaluation: {
-      score: 7,
-      feedback:
-        "هذا تقرير تجريبي. بعد إرسال إجاباتك في المقابلة، سيتم حساب النتيجة النهائية من تقييماتك الفعلية.",
-      improvedAnswer:
-        "Start a new mock interview and submit answers to generate a report based on your real performance.",
-      tip: "أكمل سؤالا واحدا على الأقل ثم افتح التقرير.",
-    },
-    answeredAt: new Date().toISOString(),
-  },
-];
-
-const englishFallbackAnswers: SavedInterviewAnswer[] = [
-  {
-    question: "No completed interview answers were found.",
-    answer: "Start a new interview so this report can be based on your actual answers.",
-    evaluation: {
-      score: 7,
-      feedback:
-        "This is a sample report. After you submit answers in the interview, the final score will be calculated from your real evaluations.",
-      improvedAnswer:
-        "Start a new mock interview and submit answers to generate a report based on your real performance.",
-      tip: "Complete at least one question, then open the report.",
-    },
-    answeredAt: new Date().toISOString(),
-  },
-];
-
 const nextSteps: {
   icon: LucideIcon;
   titleAr: string;
@@ -123,7 +91,28 @@ function getReportCopy(isEnglish: boolean) {
 }
 
 function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInput, isEnglish: boolean) {
-  const validAnswers = answers.length > 0 ? answers : isEnglish ? englishFallbackAnswers : fallbackAnswers;
+  if (answers.length === 0) {
+    const emptyAnswer = getEmptyReportAnswer(isEnglish);
+    const emptyCompetencies = buildEmptyCompetencyScores();
+
+    return {
+      answerCount: 0,
+      competencies: emptyCompetencies,
+      headline: isEnglish ? "No answers were submitted." : "لم يتم إرسال أي إجابة.",
+      improvementTitle: isEnglish ? "No score reason available" : "لا يوجد سبب للدرجة",
+      radarCircles: buildRadarCirclePoints(emptyCompetencies.map((item) => item.score)),
+      radarPoints: buildRadarPoints(emptyCompetencies.map((item) => item.score)),
+      scoreTarget: 0,
+      strongest: emptyAnswer,
+      strengthTitle: isEnglish ? "No completed answers" : "لا توجد إجابات مكتملة",
+      summary: isEnglish
+        ? `Your score is 0 because no answers were submitted for the ${setup.company} interview. Answer at least one question to generate a real performance score and feedback.`
+        : `درجتك 0 لأنه لم يتم إرسال أي إجابة في مقابلة ${setup.company}. أجب عن سؤال واحد على الأقل حتى يظهر تقييم فعلي وأسباب واضحة للنتيجة.`,
+      weakest: emptyAnswer,
+    };
+  }
+
+  const validAnswers = answers;
   const sortedByScore = [...validAnswers].sort((a, b) => a.evaluation.score - b.evaluation.score);
   const weakest = sortedByScore[0];
   const strongest = sortedByScore[sortedByScore.length - 1];
@@ -150,6 +139,28 @@ function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInpu
       : `أفضل إجابة: ${normalizeScore(strongest.evaluation.score)}/10`,
     summary: buildSummary(scoreTarget, setup, weakest, isEnglish),
     weakest,
+  };
+}
+
+function getEmptyReportAnswer(isEnglish: boolean): SavedInterviewAnswer {
+  return {
+    question: isEnglish ? "No completed interview answers were found." : "لم يتم العثور على إجابات مكتملة.",
+    answer: isEnglish
+      ? "No answer was submitted."
+      : "لم يتم إرسال أي إجابة.",
+    evaluation: {
+      score: 0,
+      feedback: isEnglish
+        ? "There is no performance feedback yet because no answer was submitted."
+        : "لا توجد ملاحظات أداء حتى الآن لأنه لم يتم إرسال أي إجابة.",
+      improvedAnswer: isEnglish
+        ? "Start a new mock interview and submit answers to generate a report based on your real performance."
+        : "ابدأ مقابلة تجريبية جديدة وأرسل إجاباتك حتى يظهر تقرير مبني على أدائك الفعلي.",
+      tip: isEnglish
+        ? "Submit at least one answer before opening the report."
+        : "أرسل إجابة واحدة على الأقل قبل فتح التقرير.",
+    },
+    answeredAt: new Date().toISOString(),
   };
 }
 
@@ -218,6 +229,16 @@ function buildCompetencyScores(answers: SavedInterviewAnswer[], scoreTarget: num
   ];
 }
 
+function buildEmptyCompetencyScores() {
+  return [
+    { ar: "القوة", en: "Best", score: 0, className: "technical" },
+    { ar: "المتوسط", en: "Average", score: 0, className: "behavioral" },
+    { ar: "التفصيل", en: "Detail", score: 0, className: "communication" },
+    { ar: "الثبات", en: "Consistency", score: 0, className: "culture" },
+    { ar: "أقل إجابة", en: "Lowest", score: 0, className: "confidence" },
+  ];
+}
+
 function buildRadarPoints(scores: number[]) {
   return scores
     .map((score, index) => {
@@ -243,7 +264,7 @@ function buildRadarCirclePoints(scores: number[]) {
 
 export default function FeedbackPage() {
   const [score, setScore] = useState(0);
-  const [answers, setAnswers] = useState<SavedInterviewAnswer[]>(fallbackAnswers);
+  const [answers, setAnswers] = useState<SavedInterviewAnswer[]>([]);
   const [setup, setSetup] = useState<InterviewSetupInput>(fallbackSetup);
   const isEnglish = setup.interviewLanguage === "English";
   const copy = useMemo(() => getReportCopy(isEnglish), [isEnglish]);

@@ -16,18 +16,41 @@ import {
   X,
   type LucideIcon,
 } from "lucide-react";
+import type { AnswerEvaluationResponse, InterviewSetupInput } from "@/lib/types";
 
-const competencies = [
-  { ar: "التقنية", en: "Technical", score: 80, className: "technical" },
-  { ar: "السلوك", en: "Behavioral", score: 75, className: "behavioral" },
-  { ar: "التواصل", en: "Comm", score: 65, className: "communication" },
-  { ar: "الثقافة", en: "Culture", score: 55, className: "culture" },
-  { ar: "الثقة", en: "Confidence", score: 70, className: "confidence" },
-];
-
-const scoreTarget = 72;
 const scoreRadius = 70;
 const scoreCircumference = 2 * Math.PI * scoreRadius;
+
+type SavedInterviewAnswer = {
+  question: string;
+  answer: string;
+  evaluation: AnswerEvaluationResponse;
+  answeredAt: string;
+};
+
+const fallbackSetup: InterviewSetupInput = {
+  name: "فهد",
+  company: "Aramco",
+  track: "Product Manager",
+  specialization: "Software Engineering",
+  interviewLanguage: "Bilingual",
+};
+
+const fallbackAnswers: SavedInterviewAnswer[] = [
+  {
+    question: "No completed interview answers were found.",
+    answer: "ابدأ مقابلة جديدة حتى يظهر تقرير مبني على إجاباتك الفعلية.",
+    evaluation: {
+      score: 7,
+      feedback:
+        "هذا تقرير تجريبي. بعد إرسال إجاباتك في المقابلة، سيتم حساب النتيجة النهائية من تقييماتك الفعلية.",
+      improvedAnswer:
+        "Start a new mock interview and submit answers to generate a report based on your real performance.",
+      tip: "أكمل سؤالا واحدا على الأقل ثم افتح التقرير.",
+    },
+    answeredAt: new Date().toISOString(),
+  },
+];
 
 const nextSteps: {
   icon: LucideIcon;
@@ -49,12 +72,132 @@ const nextSteps: {
   },
 ];
 
+function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInput) {
+  const validAnswers = answers.length > 0 ? answers : fallbackAnswers;
+  const sortedByScore = [...validAnswers].sort((a, b) => a.evaluation.score - b.evaluation.score);
+  const weakest = sortedByScore[0];
+  const strongest = sortedByScore[sortedByScore.length - 1];
+  const averageScore =
+    validAnswers.reduce((total, item) => total + normalizeScore(item.evaluation.score), 0) / validAnswers.length;
+  const scoreTarget = Math.round(averageScore * 10);
+  const competencyScores = buildCompetencyScores(validAnswers, scoreTarget);
+  const radarPoints = buildRadarPoints(competencyScores.map((item) => item.score));
+  const radarCircles = buildRadarCirclePoints(competencyScores.map((item) => item.score));
+
+  return {
+    answerCount: validAnswers.length,
+    competencies: competencyScores,
+    headline: getHeadline(scoreTarget),
+    improvementTitle: `سبب الخصم: سؤال بدرجة ${normalizeScore(weakest.evaluation.score)}/10`,
+    radarCircles,
+    radarPoints,
+    scoreTarget,
+    strongest,
+    strengthTitle: `أفضل إجابة: ${normalizeScore(strongest.evaluation.score)}/10`,
+    summary: buildSummary(scoreTarget, setup, weakest),
+    weakest,
+  };
+}
+
+function normalizeScore(score: number) {
+  return Math.max(1, Math.min(10, Number(score) || 1));
+}
+
+function getHeadline(score: number) {
+  if (score >= 85) return "أداء قوي جدا، إجاباتك جاهزة للمقابلة.";
+  if (score >= 70) return "أداء جيد، مع نقاط واضحة للتحسين.";
+  if (score >= 50) return "أداء متوسط، تحتاج إلى أمثلة أوضح.";
+  return "تحتاج إلى تدريب أكثر قبل المقابلة.";
+}
+
+function buildSummary(score: number, setup: InterviewSetupInput, weakest: SavedInterviewAnswer) {
+  const base = `نتيجتك مبنية على إجاباتك الفعلية في مقابلة ${setup.company} لمسار ${setup.track}.`;
+
+  if (score >= 85) {
+    return `${base} السبب الرئيسي للنتيجة المرتفعة هو وضوح الإجابات وقوة الأمثلة. أهم ملاحظة متبقية: ${weakest.evaluation.tip}`;
+  }
+  if (score >= 70) {
+    return `${base} أداؤك جيد، لكن الدرجة تأثرت بالإجابات التي تحتاج تفاصيل أكثر أو نتيجة قابلة للقياس. أهم سبب: ${weakest.evaluation.feedback}`;
+  }
+  if (score >= 50) {
+    return `${base} التقرير يظهر أنك تحتاج إلى تنظيم الإجابات بطريقة أوضح وربطها بتخصصك. أهم سبب: ${weakest.evaluation.feedback}`;
+  }
+  return `${base} الدرجة منخفضة لأن الإجابات تحتاج أمثلة محددة وهيكلة أفضل. ابدأ من هذه الملاحظة: ${weakest.evaluation.tip}`;
+}
+
+function buildCompetencyScores(answers: SavedInterviewAnswer[], scoreTarget: number) {
+  const average = scoreTarget;
+  const best = Math.round(Math.max(...answers.map((item) => normalizeScore(item.evaluation.score))) * 10);
+  const lowest = Math.round(Math.min(...answers.map((item) => normalizeScore(item.evaluation.score))) * 10);
+  const answerLengthAverage =
+    answers.reduce((total, item) => total + item.answer.trim().split(/\s+/).filter(Boolean).length, 0) / answers.length;
+  const detailScore = Math.max(35, Math.min(100, Math.round(answerLengthAverage * 4)));
+
+  return [
+    { ar: "القوة", en: "Best", score: best, className: "technical" },
+    { ar: "المتوسط", en: "Average", score: average, className: "behavioral" },
+    { ar: "التفصيل", en: "Detail", score: detailScore, className: "communication" },
+    { ar: "الثبات", en: "Consistency", score: Math.max(30, 100 - (best - lowest)), className: "culture" },
+    { ar: "أقل إجابة", en: "Lowest", score: lowest, className: "confidence" },
+  ];
+}
+
+function buildRadarPoints(scores: number[]) {
+  return scores
+    .map((score, index) => {
+      const angle = -Math.PI / 2 + (index * 2 * Math.PI) / scores.length;
+      const radius = 18 + (Math.max(0, Math.min(100, score)) / 100) * 72;
+      const x = 100 + Math.cos(angle) * radius;
+      const y = 100 + Math.sin(angle) * radius;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    })
+    .join(" ");
+}
+
+function buildRadarCirclePoints(scores: number[]) {
+  return scores.map((score, index) => {
+    const angle = -Math.PI / 2 + (index * 2 * Math.PI) / scores.length;
+    const radius = 18 + (Math.max(0, Math.min(100, score)) / 100) * 72;
+    return {
+      x: Number((100 + Math.cos(angle) * radius).toFixed(1)),
+      y: Number((100 + Math.sin(angle) * radius).toFixed(1)),
+    };
+  });
+}
+
 export default function FeedbackPage() {
   const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState<SavedInterviewAnswer[]>(fallbackAnswers);
+  const [setup, setSetup] = useState<InterviewSetupInput>(fallbackSetup);
+  const report = useMemo(() => createReport(answers, setup), [answers, setup]);
   const scoreOffset = useMemo(
     () => scoreCircumference - (score / 100) * scoreCircumference,
     [score],
   );
+
+  useEffect(() => {
+    const savedAnswers = window.localStorage.getItem("interviewAnswers");
+    const savedSetup = window.localStorage.getItem("interviewSetup");
+
+    if (savedAnswers) {
+      try {
+        const parsedAnswers = JSON.parse(savedAnswers) as SavedInterviewAnswer[];
+        if (Array.isArray(parsedAnswers) && parsedAnswers.length > 0) {
+          setAnswers(parsedAnswers);
+        }
+      } catch {
+        window.localStorage.removeItem("interviewAnswers");
+      }
+    }
+
+    if (savedSetup) {
+      try {
+        setSetup({ ...fallbackSetup, ...(JSON.parse(savedSetup) as Partial<InterviewSetupInput>) });
+      } catch {
+        window.localStorage.removeItem("interviewSetup");
+      }
+    }
+  }, []);
 
   useEffect(() => {
     let animationFrame = 0;
@@ -66,7 +209,7 @@ export default function FeedbackPage() {
       const progress = Math.min(elapsed / duration, 1);
       const easedProgress = 1 - (1 - progress) ** 3;
 
-      setScore(Math.round(scoreTarget * easedProgress));
+      setScore(Math.round(report.scoreTarget * easedProgress));
 
       if (progress < 1) {
         animationFrame = window.requestAnimationFrame(animateScore);
@@ -76,7 +219,7 @@ export default function FeedbackPage() {
     animationFrame = window.requestAnimationFrame(animateScore);
 
     return () => window.cancelAnimationFrame(animationFrame);
-  }, []);
+  }, [report.scoreTarget]);
 
   return (
     <div className="report-page" dir="rtl">
@@ -110,26 +253,23 @@ export default function FeedbackPage() {
             </div>
 
             <div>
-              <h2 id="report-hero-title">أداء ممتاز، مع مساحة للنمو.</h2>
-              <p dir="ltr">
-                Solid performance with room to grow. You demonstrated strong technical knowledge, but could improve how
-                you structure complex behavioral answers.
-              </p>
+              <h2 id="report-hero-title">{report.headline}</h2>
+              <p>{report.summary}</p>
             </div>
 
             <dl className="report-meta">
               <div>
-                <dt>مدة المقابلة / DURATION</dt>
-                <dd dir="ltr">45 Min</dd>
+                <dt>عدد الإجابات / ANSWERS</dt>
+                <dd dir="ltr">{report.answerCount} Answers</dd>
               </div>
               <div>
                 <dt>الدور / ROLE</dt>
-                <dd dir="ltr">Product Manager</dd>
+                <dd dir="ltr">{setup.track}</dd>
               </div>
             </dl>
           </div>
 
-          <div className="score-gauge" aria-label="النتيجة 72 من 100">
+          <div className="score-gauge" aria-label={`النتيجة ${report.scoreTarget} من 100`}>
             <svg viewBox="0 0 160 160" aria-hidden="true">
               <circle className="score-track" cx="80" cy="80" fill="none" r="70" strokeWidth="8" />
               <circle
@@ -168,15 +308,13 @@ export default function FeedbackPage() {
                 <line x1="100" x2="155" y1="100" y2="180" />
                 <line x1="100" x2="45" y1="100" y2="180" />
                 <line x1="100" x2="10" y1="100" y2="75" />
-                <polygon className="radar-data" points="100,28 172,70 137,162 63,144 28,84" />
-                <circle cx="100" cy="28" r="4" />
-                <circle cx="172" cy="70" r="4" />
-                <circle cx="137" cy="162" r="4" />
-                <circle cx="63" cy="144" r="4" />
-                <circle cx="28" cy="84" r="4" />
+                <polygon className="radar-data" points={report.radarPoints} />
+                {report.radarCircles.map((point) => (
+                  <circle cx={point.x} cy={point.y} key={`${point.x}-${point.y}`} r="4" />
+                ))}
               </svg>
 
-              {competencies.map((item) => (
+              {report.competencies.map((item) => (
                 <div className={`radar-label ${item.className}`} key={item.en}>
                   <strong>{item.ar}</strong>
                   <span dir="ltr">
@@ -194,16 +332,13 @@ export default function FeedbackPage() {
                   <ThumbsUp size={21} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
                   <span>نقطة قوة / Strength</span>
                 </div>
-                <h3>وضوح التواصل التقني</h3>
-                <p dir="ltr">
-                  Your explanation of system architecture was concise. You successfully distilled complex concepts into
-                  understandable analogies.
-                </p>
+                <h3>{report.strengthTitle}</h3>
+                <p>{report.strongest.evaluation.feedback}</p>
               </div>
 
-              <blockquote dir="ltr">
+              <blockquote>
                 <Quote size={24} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
-                <p>"The way we structured the microservices is similar to a well-organized library..."</p>
+                <p>"{report.strongest.answer}"</p>
               </blockquote>
             </article>
 
@@ -213,18 +348,15 @@ export default function FeedbackPage() {
                   <TrendingUp size={21} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
                   <span>مجال للتحسين / Area to Improve</span>
                 </div>
-                <h3>هيكلة الإجابات السلوكية</h3>
-                <p dir="ltr">
-                  You missed the Result phase in the STAR method when discussing team conflicts. Always conclude with
-                  measurable outcomes.
-                </p>
+                <h3>{report.improvementTitle}</h3>
+                <p>{report.weakest.evaluation.feedback}</p>
               </div>
 
               <div className="star-tags" dir="ltr">
                 <span>Situation</span>
                 <span>Task</span>
                 <span>Action</span>
-                <span className="missing">Missing Result</span>
+                <span className="missing">{report.weakest.evaluation.tip}</span>
               </div>
             </article>
           </div>
@@ -247,10 +379,7 @@ export default function FeedbackPage() {
                 <User size={20} strokeWidth={2} aria-hidden="true" />
                 <span>إجابتك / Your Answer</span>
               </div>
-              <p dir="ltr">
-                "I had a disagreement with a designer about the layout. I told him we needed to change it because users
-                were confused. We eventually changed it and it was better."
-              </p>
+              <p>"{report.weakest.answer}"</p>
             </article>
 
             <article className="answer-column model-answer">
@@ -258,11 +387,7 @@ export default function FeedbackPage() {
                 <CheckCircle2 size={20} strokeWidth={2.1} fill="currentColor" aria-hidden="true" />
                 <span>الإجابة النموذجية / Model Answer</span>
               </div>
-              <p dir="ltr">
-                "We encountered a UX misalignment on the dashboard project. I initiated a brief sync with the design
-                lead, presenting user drop-off metrics to ground our discussion. We collaborated on a revised flow,
-                which ultimately increased completion rates by 15%."
-              </p>
+              <p>{report.weakest.evaluation.improvedAnswer}</p>
             </article>
           </div>
 

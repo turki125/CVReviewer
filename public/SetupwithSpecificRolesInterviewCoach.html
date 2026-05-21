@@ -373,6 +373,7 @@
             };
 
             window.localStorage.setItem('interviewSetup', JSON.stringify(setup));
+            window.localStorage.removeItem('interviewAnswers');
             window.location.href = '/interview';
         }
 

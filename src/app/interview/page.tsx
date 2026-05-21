@@ -17,6 +17,13 @@ import type { AnswerEvaluationResponse, InterviewSetupInput, InterviewLanguage }
 
 const totalQuestions = 5;
 
+type SavedInterviewAnswer = {
+  question: string;
+  answer: string;
+  evaluation: AnswerEvaluationResponse;
+  answeredAt: string;
+};
+
 const defaultSetup: InterviewSetupInput = {
   name: "فهد",
   company: "Aramco",
@@ -150,6 +157,12 @@ export default function InterviewPage() {
       }
 
       setEvaluation(data);
+      saveEvaluatedAnswer({
+        question,
+        answer,
+        evaluation: data,
+        answeredAt: new Date().toISOString(),
+      });
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "Could not evaluate the answer.");
     } finally {
@@ -309,6 +322,17 @@ export default function InterviewPage() {
       </button>
     </div>
   );
+}
+
+function saveEvaluatedAnswer(answer: SavedInterviewAnswer) {
+  const storedAnswers = window.localStorage.getItem("interviewAnswers");
+
+  try {
+    const previousAnswers = storedAnswers ? (JSON.parse(storedAnswers) as SavedInterviewAnswer[]) : [];
+    window.localStorage.setItem("interviewAnswers", JSON.stringify([...previousAnswers, answer]));
+  } catch {
+    window.localStorage.setItem("interviewAnswers", JSON.stringify([answer]));
+  }
 }
 
 function normalizeInterviewLanguage(language: unknown): InterviewLanguage {

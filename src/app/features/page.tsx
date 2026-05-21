@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -13,11 +16,13 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+type WebsiteLanguage = "ar" | "en";
+
 const companyCards = [
-  { name: "أرامكو", label: "Aramco" },
-  { name: "إس تي سي", label: "STC" },
-  { name: "بنك الرياض", label: "Riyad Bank" },
-  { name: "+50 شركة", label: "+50 Companies" },
+  { ar: "أرامكو", en: "Aramco", label: "Aramco" },
+  { ar: "إس تي سي", en: "STC", label: "STC" },
+  { ar: "بنك الرياض", en: "Riyad Bank", label: "Riyad Bank" },
+  { ar: "+50 شركة", en: "+50 Companies", label: "+50 Companies" },
 ];
 
 const analyticsItems: { icon: LucideIcon; title: string; description: string }[] = [
@@ -30,6 +35,19 @@ const analyticsItems: { icon: LucideIcon; title: string; description: string }[]
     icon: Lightbulb,
     title: "الإجابة النموذجية | Model Answers",
     description: "اقتراحات ذكية لصياغة إجابتك بشكل أكثر احترافية.",
+  },
+];
+
+const englishAnalyticsItems: { icon: LucideIcon; title: string; description: string }[] = [
+  {
+    icon: BarChart3,
+    title: "Competency Map",
+    description: "Clear scoring for your leadership, technical, and communication skills.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Model Answers",
+    description: "Smart suggestions that help you rewrite your answer more professionally.",
   },
 ];
 
@@ -54,33 +72,66 @@ const summaryCards = [
   },
 ];
 
+const englishSummaryCards = [
+  {
+    className: "features-summary-card primary",
+    icon: LineChart,
+    title: "Instant AI reports",
+    description: "We analyze your interview and give you precise, direct improvement notes.",
+  },
+  {
+    className: "features-summary-card mint",
+    icon: Building2,
+    title: "Hiring pathways",
+    description: "Practice for the expectations of major employers and partner hiring programs.",
+  },
+  {
+    className: "features-summary-card neutral",
+    icon: Headphones,
+    title: "24/7 support",
+    description: "Our support team is ready to help throughout your preparation journey.",
+  },
+];
+
 export default function FeaturesPage() {
+  const [websiteLanguage, setWebsiteLanguage] = useState<WebsiteLanguage>("ar");
+  const isEnglish = websiteLanguage === "en";
+  const activeAnalyticsItems = isEnglish ? englishAnalyticsItems : analyticsItems;
+  const activeSummaryCards = isEnglish ? englishSummaryCards : summaryCards;
+
+  useEffect(() => {
+    const savedLanguage = window.localStorage.getItem("websiteLanguage");
+    if (savedLanguage === "en" || savedLanguage === "ar") {
+      setWebsiteLanguage(savedLanguage);
+    }
+  }, []);
+
   return (
-    <div className="landing-page features-page" dir="rtl">
-      <nav className="landing-nav" aria-label="التنقل الرئيسي">
+    <div className="landing-page features-page" dir={isEnglish ? "ltr" : "rtl"}>
+      <nav className="landing-nav" aria-label={isEnglish ? "Main navigation" : "التنقل الرئيسي"}>
         <div className="landing-nav-inner">
           <Link className="landing-brand" href="/">
-            مدرب المقابلات
+            {isEnglish ? "Interview Coach" : "مدرب المقابلات"}
           </Link>
 
-          <div className="landing-links" aria-label="روابط الصفحة">
+          <div className="landing-links" aria-label={isEnglish ? "Page links" : "روابط الصفحة"}>
             <Link className="landing-link" href="/">
-              الرئيسية
+              {isEnglish ? "Home" : "الرئيسية"}
             </Link>
             <Link className="landing-link active" href="/features">
-              المميزات
+              {isEnglish ? "Features" : "المميزات"}
             </Link>
             <a className="landing-link" href="/PricingInterviewCoach.html">
-              الأسعار
+              {isEnglish ? "Pricing" : "الأسعار"}
             </a>
           </div>
 
           <div className="landing-actions">
             <a className="signin-link" href="/SignInInterviewCoach.html">
-              تسجيل الدخول
+              {isEnglish ? "Sign in" : "تسجيل الدخول"}
             </a>
             <Link className="small-cta" href="/StartFreeTrialInterviewCoach.html">
-              ابدأ مجانا
+              {isEnglish ? "Start free" : "ابدأ مجانا"}
             </Link>
           </div>
         </div>
@@ -89,12 +140,13 @@ export default function FeaturesPage() {
       <main className="features-main">
         <section className="features-hero" aria-labelledby="features-title">
           <h1 id="features-title">
-            مميزات مدرب المقابلات
-            <span dir="ltr">Interview Coach Features</span>
+            {isEnglish ? "Interview Coach Features" : "مميزات مدرب المقابلات"}
+            {!isEnglish ? <span dir="ltr">Interview Coach Features</span> : null}
           </h1>
           <p>
-            نستخدم أحدث تقنيات الذكاء الاصطناعي لتمكين الكفاءات السعودية من
-            اجتياز أصعب المقابلات الوظيفية في كبرى الشركات العالمية والمحلية.
+            {isEnglish
+              ? "We use AI to help Saudi talent prepare for demanding interviews at leading local and global companies."
+              : "نستخدم أحدث تقنيات الذكاء الاصطناعي لتمكين الكفاءات السعودية من اجتياز أصعب المقابلات الوظيفية في كبرى الشركات العالمية والمحلية."}
           </p>
         </section>
 
@@ -102,22 +154,22 @@ export default function FeaturesPage() {
           <div className="features-copy">
             <div className="feature-pill">
               <MessageSquare size={18} strokeWidth={2} aria-hidden="true" />
-              محادثة نصية فورية | Text Chat AI
+              {isEnglish ? "Text Chat AI" : "محادثة نصية فورية | Text Chat AI"}
             </div>
-            <h2 id="chat-title">مقابلات نصية بالذكاء الاصطناعي | AI Chat Interviews</h2>
+            <h2 id="chat-title">{isEnglish ? "AI Chat Interviews" : "مقابلات نصية بالذكاء الاصطناعي | AI Chat Interviews"}</h2>
             <p>
-              تفاعل مع مدربنا الذكي من خلال المحادثة النصية الفورية. اكتب
-              إجاباتك وسيقوم النظام بتحليل أسلوب الرد، التفكير، والقدرة على
-              الإقناع باللغتين العربية والإنجليزية.
+              {isEnglish
+                ? "Interact with the AI coach through instant text chat. Write your answers and the system analyzes clarity, reasoning, and persuasion."
+                : "تفاعل مع مدربنا الذكي من خلال المحادثة النصية الفورية. اكتب إجاباتك وسيقوم النظام بتحليل أسلوب الرد، التفكير، والقدرة على الإقناع باللغتين العربية والإنجليزية."}
             </p>
             <ul className="feature-checks">
               <li>
                 <CheckCircle2 size={21} strokeWidth={2.2} aria-hidden="true" />
-                تفاعل نصي فوري | Real-time text interaction
+                {isEnglish ? "Real-time text interaction" : "تفاعل نصي فوري | Real-time text interaction"}
               </li>
               <li>
                 <CheckCircle2 size={21} strokeWidth={2.2} aria-hidden="true" />
-                تحليل التفكير والوضوح | Content & clarity analysis
+                {isEnglish ? "Content and clarity analysis" : "تحليل التفكير والوضوح | Content & clarity analysis"}
               </li>
             </ul>
           </div>
@@ -151,7 +203,7 @@ export default function FeaturesPage() {
             {companyCards.map((company) => (
               <article className="company-card" key={company.label}>
                 <Building2 size={34} strokeWidth={1.8} aria-hidden="true" />
-                <h3>{company.name}</h3>
+                <h3>{isEnglish ? company.en : company.ar}</h3>
                 <p dir="ltr">{company.label}</p>
               </article>
             ))}
@@ -160,18 +212,18 @@ export default function FeaturesPage() {
           <div className="features-copy">
             <div className="feature-pill dark">
               <CheckCircle2 size={18} strokeWidth={2} aria-hidden="true" />
-              محتوى مخصص | Targeted Content
+              {isEnglish ? "Targeted Content" : "محتوى مخصص | Targeted Content"}
             </div>
-            <h2 id="company-title">تدريب مخصص لكبرى الشركات | Tailored for Top Companies</h2>
+            <h2 id="company-title">{isEnglish ? "Tailored for Top Companies" : "تدريب مخصص لكبرى الشركات | Tailored for Top Companies"}</h2>
             <p>
-              قاعدة بياناتنا تحتوي على آلاف الأسئلة الواقعية من مقابلات الشركات
-              الكبرى. تدرب على الثقافة المؤسسية والأسئلة التقنية الخاصة بجهة
-              عملك القادمة.
+              {isEnglish
+                ? "Practice realistic questions shaped around major employers, company culture, and the role you are targeting."
+                : "قاعدة بياناتنا تحتوي على آلاف الأسئلة الواقعية من مقابلات الشركات الكبرى. تدرب على الثقافة المؤسسية والأسئلة التقنية الخاصة بجهة عملك القادمة."}
             </p>
             <div className="feature-tags">
-              <span>البرامج الوطنية | National Programs</span>
-              <span>البنوك | Banking</span>
-              <span>الطاقة | Energy</span>
+              <span>{isEnglish ? "National Programs" : "البرامج الوطنية | National Programs"}</span>
+              <span>{isEnglish ? "Banking" : "البنوك | Banking"}</span>
+              <span>{isEnglish ? "Energy" : "الطاقة | Energy"}</span>
             </div>
           </div>
         </section>
@@ -180,15 +232,16 @@ export default function FeaturesPage() {
           <div className="features-copy">
             <div className="feature-pill warm">
               <BarChart3 size={18} strokeWidth={2} aria-hidden="true" />
-              تحليل دقيق | Insightful Analytics
+              {isEnglish ? "Insightful Analytics" : "تحليل دقيق | Insightful Analytics"}
             </div>
-            <h2 id="analytics-title">تقييم شامل ودقيق | Comprehensive Analytics</h2>
+            <h2 id="analytics-title">{isEnglish ? "Comprehensive Analytics" : "تقييم شامل ودقيق | Comprehensive Analytics"}</h2>
             <p>
-              لا نكتفي بإنهاء المقابلة، بل نزودك بتقرير تفصيلي يتضمن مخططات
-              بيانية لمهاراتك وإجابات نموذجية لكل سؤال تم طرحه.
+              {isEnglish
+                ? "After the interview, you receive a detailed report with skill insights and stronger model answers."
+                : "لا نكتفي بإنهاء المقابلة، بل نزودك بتقرير تفصيلي يتضمن مخططات بيانية لمهاراتك وإجابات نموذجية لكل سؤال تم طرحه."}
             </p>
             <div className="analytics-list">
-              {analyticsItems.map((item) => (
+              {activeAnalyticsItems.map((item) => (
                 <article key={item.title}>
                   <span>
                     <item.icon size={24} strokeWidth={1.9} aria-hidden="true" />
@@ -210,20 +263,20 @@ export default function FeaturesPage() {
                 <polygon points="50,29 70,45 62,66 38,66 30,45" />
                 <polygon className="radar-score" points="50,10 85,38 72,82 40,75 20,40" />
               </svg>
-              <span className="radar-label top">اللغة<br />Language</span>
-              <span className="radar-label right">الثقة<br />Confidence</span>
-              <span className="radar-label bottom-right">المعرفة<br />Knowledge</span>
-              <span className="radar-label bottom-left">المنطق<br />Logic</span>
-              <span className="radar-label left">التفاعل<br />Engagement</span>
+              <span className="radar-label top">{isEnglish ? "Language" : <>اللغة<br />Language</>}</span>
+              <span className="radar-label right">{isEnglish ? "Confidence" : <>الثقة<br />Confidence</>}</span>
+              <span className="radar-label bottom-right">{isEnglish ? "Knowledge" : <>المعرفة<br />Knowledge</>}</span>
+              <span className="radar-label bottom-left">{isEnglish ? "Logic" : <>المنطق<br />Logic</>}</span>
+              <span className="radar-label left">{isEnglish ? "Engagement" : <>التفاعل<br />Engagement</>}</span>
             </div>
-            <strong>النتيجة النهائية: 88/100</strong>
+            <strong>{isEnglish ? "Final score: 88/100" : "النتيجة النهائية: 88/100"}</strong>
           </div>
         </section>
 
         <section className="features-summary" aria-labelledby="summary-title">
-          <h2 id="summary-title">كل ما تحتاجه للنجاح | Everything you need</h2>
+          <h2 id="summary-title">{isEnglish ? "Everything you need to succeed" : "كل ما تحتاجه للنجاح | Everything you need"}</h2>
           <div className="features-summary-grid">
-            {summaryCards.map((card) => (
+            {activeSummaryCards.map((card) => (
               <article className={card.className} key={card.title}>
                 <card.icon size={34} strokeWidth={1.8} aria-hidden="true" />
                 <h3>{card.title}</h3>
@@ -234,18 +287,18 @@ export default function FeaturesPage() {
               <Users size={34} strokeWidth={1.8} aria-hidden="true" />
               <div>
                 <h3>انضم لآلاف المتدربين</h3>
-                <p>أكثر من 10,000 خريج حصلوا على وظائفهم بفضل الله ثم بفضل تدريباتنا.</p>
+                <p>{isEnglish ? "Thousands of graduates use Interview Coach to prepare with confidence." : "أكثر من 10,000 خريج حصلوا على وظائفهم بفضل الله ثم بفضل تدريباتنا."}</p>
               </div>
             </article>
           </div>
         </section>
 
         <section className="features-cta" aria-labelledby="features-cta-title">
-          <h2 id="features-cta-title">هل أنت مستعد لمقابلتك القادمة؟</h2>
-          <p>ابدأ الآن وجرب مقابلة تجريبية مجانية مع مدربنا الذكي.</p>
+          <h2 id="features-cta-title">{isEnglish ? "Ready for your next interview?" : "هل أنت مستعد لمقابلتك القادمة؟"}</h2>
+          <p>{isEnglish ? "Start now and try a free mock interview with the AI coach." : "ابدأ الآن وجرب مقابلة تجريبية مجانية مع مدربنا الذكي."}</p>
           <div>
             <Link className="features-cta-button primary" href="/StartFreeTrialInterviewCoach.html">
-              سجل الآن مجانا | Register Now
+              {isEnglish ? "Register now" : "سجل الآن مجانا | Register Now"}
               <ArrowLeft size={21} strokeWidth={2.2} aria-hidden="true" />
             </Link>
           </div>
@@ -255,13 +308,13 @@ export default function FeaturesPage() {
       <footer className="landing-footer">
         <div className="landing-footer-inner">
           <div className="footer-brand-group">
-            <div className="footer-brand">مدرب المقابلات</div>
-            <p>© 2024 مدرب المقابلات. جميع الحقوق محفوظة.</p>
+            <div className="footer-brand">{isEnglish ? "Interview Coach" : "مدرب المقابلات"}</div>
+            <p>{isEnglish ? "© 2024 Interview Coach. All rights reserved." : "© 2024 مدرب المقابلات. جميع الحقوق محفوظة."}</p>
           </div>
           <div className="footer-links">
-            <a href="#privacy">الخصوصية</a>
-            <a href="#terms">الشروط</a>
-            <a href="#contact">اتصل بنا</a>
+            <a href="#privacy">{isEnglish ? "Privacy" : "الخصوصية"}</a>
+            <a href="#terms">{isEnglish ? "Terms" : "الشروط"}</a>
+            <a href="#contact">{isEnglish ? "Contact" : "اتصل بنا"}</a>
           </div>
         </div>
       </footer>

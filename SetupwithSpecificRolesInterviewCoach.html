@@ -128,6 +128,16 @@
         .glow-active {
             box-shadow: 0 0 0 4px rgba(0, 108, 70, 0.1);
         }
+        .language-option:has(input:checked) .language-check {
+            border-color: #006c46;
+            background-color: #006c46;
+            color: #ffffff;
+            transform: scale(1.04);
+        }
+        .language-option:has(input:checked) .language-check .material-symbols-outlined {
+            opacity: 1;
+            transform: scale(1);
+        }
     </style>
 </head>
 <body class="bg-background text-text-primary min-h-screen flex items-center justify-center py-margin-mobile md:py-margin-desktop px-margin-mobile md:px-margin-desktop font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
@@ -241,12 +251,12 @@
 <span class="font-body-md text-body-md text-text-secondary text-right">Language</span>
 </div>
 <div class="flex flex-col gap-3">
-<label class="group relative flex items-center justify-between p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
+<label class="language-option group relative flex items-center justify-between p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
 <input checked="" class="peer sr-only" name="language" type="radio" value="bilingual">
 <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
 <div class="flex items-center gap-3 relative z-10">
-<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
-<div class="w-2 h-2 rounded-full bg-surface scale-0 peer-checked:scale-100 transition-transform"></div>
+<div class="language-check w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200">
+<span class="material-symbols-outlined text-[15px] opacity-0 scale-50 transition-all duration-200">check</span>
 </div>
 <div class="flex flex-col">
 <span class="font-body-lg text-body-lg font-bold text-text-primary">ثنائية اللغة</span>
@@ -259,12 +269,12 @@
                             </div>
 </label>
 <div class="grid grid-cols-2 gap-3">
-<label class="group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
+<label class="language-option group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
 <input class="peer sr-only" name="language" type="radio" value="arabic">
 <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
 <div class="flex items-center gap-3 relative z-10">
-<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
-<div class="w-2 h-2 rounded-full bg-surface scale-0 peer-checked:scale-100 transition-transform"></div>
+<div class="language-check w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200">
+<span class="material-symbols-outlined text-[15px] opacity-0 scale-50 transition-all duration-200">check</span>
 </div>
 <div class="flex flex-col">
 <span class="font-body-lg text-body-lg font-bold text-text-primary">العربية</span>
@@ -272,12 +282,12 @@
 </div>
 </div>
 </label>
-<label class="group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
+<label class="language-option group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
 <input class="peer sr-only" name="language" type="radio" value="english">
 <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
 <div class="flex items-center gap-3 relative z-10">
-<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
-<div class="w-2 h-2 rounded-full bg-surface scale-0 peer-checked:scale-100 transition-transform"></div>
+<div class="language-check w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200">
+<span class="material-symbols-outlined text-[15px] opacity-0 scale-50 transition-all duration-200">check</span>
 </div>
 <div class="flex flex-col">
 <span class="font-body-lg text-body-lg font-bold text-text-primary">English</span>

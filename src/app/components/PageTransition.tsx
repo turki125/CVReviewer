@@ -54,7 +54,7 @@ export function PageTransition({ children }: PageTransitionProps) {
       document.documentElement.classList.add("is-navigating");
       window.setTimeout(() => {
         document.documentElement.classList.remove("is-navigating");
-      }, 900);
+      }, 1200);
     }
 
     window.addEventListener("click", handleClick, { capture: true });

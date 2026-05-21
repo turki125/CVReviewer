@@ -45,6 +45,7 @@ export default function InterviewPage() {
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [error, setError] = useState("");
   const [isFlashing, setIsFlashing] = useState(false);
+  const [isTimerStoppedFeedback, setIsTimerStoppedFeedback] = useState(false);
   const progress = useMemo(
     () =>
       Array.from({ length: totalQuestions }, (_, index) => {
@@ -96,6 +97,7 @@ export default function InterviewPage() {
   async function loadQuestion() {
     setIsLoadingQuestion(true);
     setIsTimerRunning(false);
+    setIsTimerStoppedFeedback(false);
     setSeconds(0);
     setError("");
     setEvaluation(null);
@@ -123,8 +125,11 @@ export default function InterviewPage() {
   }
 
   async function handleSubmitAnswer() {
-    if (!answer.trim() || !question || isEvaluating) return;
+    if (!answer.trim() || !question || isEvaluating || evaluation) return;
 
+    setIsTimerRunning(false);
+    setIsTimerStoppedFeedback(true);
+    window.setTimeout(() => setIsTimerStoppedFeedback(false), 5000);
     setIsEvaluating(true);
     setError("");
 
@@ -160,6 +165,7 @@ export default function InterviewPage() {
 
   function handleRepeat() {
     setIsTimerRunning(false);
+    setIsTimerStoppedFeedback(false);
     setSeconds(0);
     setAnswer("");
     setEvaluation(null);
@@ -169,6 +175,7 @@ export default function InterviewPage() {
     setAnswer(value);
 
     if (!isTimerRunning && value.length > 0 && question && !isLoadingQuestion) {
+      setIsTimerStoppedFeedback(false);
       setIsTimerRunning(true);
     }
   }
@@ -178,7 +185,7 @@ export default function InterviewPage() {
       <header className="interview-topbar" aria-label="أدوات المقابلة">
         <div className="interview-timer-tools">
           <button
-            className="interview-timer"
+            className={`interview-timer${isTimerStoppedFeedback ? " timer-stopped-feedback" : ""}`}
             type="button"
             onClick={() => setIsTimerRunning((value) => !value)}
             aria-label={isTimerRunning ? "إيقاف المؤقت مؤقتا" : "تشغيل المؤقت"}
@@ -284,7 +291,7 @@ export default function InterviewPage() {
           className="submit-answer-button"
           type="button"
           onClick={handleSubmitAnswer}
-          disabled={!answer.trim() || isLoadingQuestion || isEvaluating}
+          disabled={!answer.trim() || isLoadingQuestion || isEvaluating || Boolean(evaluation)}
         >
           {isEvaluating ? (
             <LoaderCircle className="evaluation-spinner" size={26} strokeWidth={2.4} aria-hidden="true" />

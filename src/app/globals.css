@@ -1707,6 +1707,20 @@ p {
   color: var(--primary);
 }
 
+.dock-button.report-ready-button {
+  width: auto;
+  min-width: 120px;
+  padding: 0 16px;
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.dock-button.report-ready-button:hover:not(:disabled) {
+  background: var(--primary-strong);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgb(0 61 43 / 18%);
+}
+
 .dock-button:active,
 .submit-answer-button:active {
   transform: scale(0.96);

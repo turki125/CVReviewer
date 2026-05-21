@@ -52,28 +52,78 @@ const fallbackAnswers: SavedInterviewAnswer[] = [
   },
 ];
 
+const englishFallbackAnswers: SavedInterviewAnswer[] = [
+  {
+    question: "No completed interview answers were found.",
+    answer: "Start a new interview so this report can be based on your actual answers.",
+    evaluation: {
+      score: 7,
+      feedback:
+        "This is a sample report. After you submit answers in the interview, the final score will be calculated from your real evaluations.",
+      improvedAnswer:
+        "Start a new mock interview and submit answers to generate a report based on your real performance.",
+      tip: "Complete at least one question, then open the report.",
+    },
+    answeredAt: new Date().toISOString(),
+  },
+];
+
 const nextSteps: {
   icon: LucideIcon;
-  title: string;
+  titleAr: string;
+  titleEn: string;
   description: string;
   href: string;
 }[] = [
   {
     icon: BookOpen,
-    title: "مراجعة منهجية STAR",
+    titleAr: "مراجعة منهجية STAR",
+    titleEn: "Review the STAR method",
     description: "Practice framing 3 new stories focusing heavily on the Result metric.",
     href: "/setup",
   },
   {
     icon: Mic,
-    title: "مقابلة تجريبية جديدة",
+    titleAr: "مقابلة تجريبية جديدة",
+    titleEn: "Start a new mock interview",
     description: "Start a new mock session focused solely on behavioral questions.",
     href: "/interview",
   },
 ];
 
-function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInput) {
-  const validAnswers = answers.length > 0 ? answers : fallbackAnswers;
+function getReportCopy(isEnglish: boolean) {
+  return {
+    aiBadge: isEnglish ? "Enhanced by AI" : "محسن بالذكاء الاصطناعي",
+    answersLabel: isEnglish ? "ANSWERS" : "عدد الإجابات / ANSWERS",
+    answerUnit: isEnglish ? "Answers" : "Answers",
+    closeAria: isEnglish ? "Close report" : "إغلاق التقرير",
+    competencyAria: isEnglish ? "Competency and feedback analysis" : "تحليل الكفاءات والملاحظات",
+    competencyHeading: isEnglish ? "Competency analysis" : "تحليل الكفاءات",
+    copyButton: isEnglish ? "Copy to Clipboard" : "نسخ للإستفادة / Copy to Clipboard",
+    download: isEnglish ? "Download PDF" : "Download PDF / تحميل",
+    footerRights: isEnglish
+      ? "© 2024 Interview Coach. All rights reserved."
+      : "© 2024 إنترفيو كوتش. جميع الحقوق محفوظة / Interview Coach. All rights reserved.",
+    improvementKicker: isEnglish ? "Area to Improve" : "مجال للتحسين / Area to Improve",
+    modelAnswer: isEnglish ? "Model Answer" : "الإجابة النموذجية / Model Answer",
+    nextSteps: isEnglish ? "Next Steps" : "الخطوات التالية",
+    privacy: isEnglish ? "Privacy" : "الخصوصية / Privacy",
+    reportTitle: isEnglish ? "Your Interview Report" : "تقرير مقابلتك",
+    rewriteHeading: isEnglish ? "Suggested rewrite" : "إعادة صياغة مقترحة",
+    rewriteSubheading: isEnglish ? "Suggested Rewrite for Impact" : "Suggested Rewrite for Impact",
+    roleLabel: isEnglish ? "ROLE" : "الدور / ROLE",
+    scoreAria: (score: number) => (isEnglish ? `Score ${score} out of 100` : `النتيجة ${score} من 100`),
+    scoreLabel: isEnglish ? "Score / 100" : "Score / 100",
+    strengthKicker: isEnglish ? "Strength" : "نقطة قوة / Strength",
+    terms: isEnglish ? "Terms" : "الشروط / Terms",
+    contact: isEnglish ? "Contact" : "اتصل بنا / Contact",
+    subtitle: isEnglish ? "" : "Your Interview Report",
+    yourAnswer: isEnglish ? "Your Answer" : "إجابتك / Your Answer",
+  };
+}
+
+function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInput, isEnglish: boolean) {
+  const validAnswers = answers.length > 0 ? answers : isEnglish ? englishFallbackAnswers : fallbackAnswers;
   const sortedByScore = [...validAnswers].sort((a, b) => a.evaluation.score - b.evaluation.score);
   const weakest = sortedByScore[0];
   const strongest = sortedByScore[sortedByScore.length - 1];
@@ -87,14 +137,18 @@ function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInpu
   return {
     answerCount: validAnswers.length,
     competencies: competencyScores,
-    headline: getHeadline(scoreTarget),
-    improvementTitle: `سبب الخصم: سؤال بدرجة ${normalizeScore(weakest.evaluation.score)}/10`,
+    headline: getHeadline(scoreTarget, isEnglish),
+    improvementTitle: isEnglish
+      ? `Reason to improve: question scored ${normalizeScore(weakest.evaluation.score)}/10`
+      : `سبب الخصم: سؤال بدرجة ${normalizeScore(weakest.evaluation.score)}/10`,
     radarCircles,
     radarPoints,
     scoreTarget,
     strongest,
-    strengthTitle: `أفضل إجابة: ${normalizeScore(strongest.evaluation.score)}/10`,
-    summary: buildSummary(scoreTarget, setup, weakest),
+    strengthTitle: isEnglish
+      ? `Best answer: ${normalizeScore(strongest.evaluation.score)}/10`
+      : `أفضل إجابة: ${normalizeScore(strongest.evaluation.score)}/10`,
+    summary: buildSummary(scoreTarget, setup, weakest, isEnglish),
     weakest,
   };
 }
@@ -103,14 +157,36 @@ function normalizeScore(score: number) {
   return Math.max(1, Math.min(10, Number(score) || 1));
 }
 
-function getHeadline(score: number) {
+function getHeadline(score: number, isEnglish: boolean) {
+  if (isEnglish) {
+    if (score >= 85) return "Very strong performance. You are interview-ready.";
+    if (score >= 70) return "Good performance, with clear areas to improve.";
+    if (score >= 50) return "Average performance. Your examples need more clarity.";
+    return "You need more practice before the interview.";
+  }
+
   if (score >= 85) return "أداء قوي جدا، إجاباتك جاهزة للمقابلة.";
   if (score >= 70) return "أداء جيد، مع نقاط واضحة للتحسين.";
   if (score >= 50) return "أداء متوسط، تحتاج إلى أمثلة أوضح.";
   return "تحتاج إلى تدريب أكثر قبل المقابلة.";
 }
 
-function buildSummary(score: number, setup: InterviewSetupInput, weakest: SavedInterviewAnswer) {
+function buildSummary(score: number, setup: InterviewSetupInput, weakest: SavedInterviewAnswer, isEnglish: boolean) {
+  if (isEnglish) {
+    const base = `Your score is based on your actual answers for the ${setup.company} interview in the ${setup.track} track.`;
+
+    if (score >= 85) {
+      return `${base} The main reason for the high score is clear structure and strong examples. Remaining note: ${weakest.evaluation.tip}`;
+    }
+    if (score >= 70) {
+      return `${base} Your performance is good, but the score was affected by answers that needed more detail or measurable outcomes. Main reason: ${weakest.evaluation.feedback}`;
+    }
+    if (score >= 50) {
+      return `${base} The report shows that your answers need clearer structure and stronger links to your specialization. Main reason: ${weakest.evaluation.feedback}`;
+    }
+    return `${base} The score is low because the answers need more specific examples and better structure. Start with this note: ${weakest.evaluation.tip}`;
+  }
+
   const base = `نتيجتك مبنية على إجاباتك الفعلية في مقابلة ${setup.company} لمسار ${setup.track}.`;
 
   if (score >= 85) {
@@ -169,7 +245,9 @@ export default function FeedbackPage() {
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState<SavedInterviewAnswer[]>(fallbackAnswers);
   const [setup, setSetup] = useState<InterviewSetupInput>(fallbackSetup);
-  const report = useMemo(() => createReport(answers, setup), [answers, setup]);
+  const isEnglish = setup.interviewLanguage === "English";
+  const copy = useMemo(() => getReportCopy(isEnglish), [isEnglish]);
+  const report = useMemo(() => createReport(answers, setup, isEnglish), [answers, setup, isEnglish]);
   const scoreOffset = useMemo(
     () => scoreCircumference - (score / 100) * scoreCircumference,
     [score],
@@ -222,24 +300,22 @@ export default function FeedbackPage() {
   }, [report.scoreTarget]);
 
   return (
-    <div className="report-page" dir="rtl">
+    <div className="report-page" dir={isEnglish ? "ltr" : "rtl"}>
       <header className="report-header">
         <div className="report-header-inner">
           <div className="report-title-group">
-            <Link className="report-close-button" href="/" aria-label="إغلاق التقرير">
+            <Link className="report-close-button" href="/" aria-label={copy.closeAria}>
               <X size={22} strokeWidth={2.2} aria-hidden="true" />
             </Link>
             <div>
-              <h1>تقرير مقابلتك</h1>
-              <p dir="ltr">Your Interview Report</p>
+              <h1>{copy.reportTitle}</h1>
+              {copy.subtitle ? <p dir="ltr">{copy.subtitle}</p> : null}
             </div>
           </div>
 
           <button className="report-download" type="button">
             <Download size={20} strokeWidth={2.1} aria-hidden="true" />
-            <span>
-              <span dir="ltr">Download PDF</span> / تحميل
-            </span>
+            <span>{copy.download}</span>
           </button>
         </div>
       </header>
@@ -249,7 +325,7 @@ export default function FeedbackPage() {
           <div className="report-hero-copy">
             <div className="report-badge">
               <Sparkles size={18} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
-              <span>واعد · Promising</span>
+              <span>{isEnglish ? "Promising" : "واعد · Promising"}</span>
             </div>
 
             <div>
@@ -259,17 +335,17 @@ export default function FeedbackPage() {
 
             <dl className="report-meta">
               <div>
-                <dt>عدد الإجابات / ANSWERS</dt>
-                <dd dir="ltr">{report.answerCount} Answers</dd>
+                <dt>{copy.answersLabel}</dt>
+                <dd dir="ltr">{report.answerCount} {copy.answerUnit}</dd>
               </div>
               <div>
-                <dt>الدور / ROLE</dt>
+                <dt>{copy.roleLabel}</dt>
                 <dd dir="ltr">{setup.track}</dd>
               </div>
             </dl>
           </div>
 
-          <div className="score-gauge" aria-label={`النتيجة ${report.scoreTarget} من 100`}>
+          <div className="score-gauge" aria-label={copy.scoreAria(report.scoreTarget)}>
             <svg viewBox="0 0 160 160" aria-hidden="true">
               <circle className="score-track" cx="80" cy="80" fill="none" r="70" strokeWidth="8" />
               <circle
@@ -286,16 +362,16 @@ export default function FeedbackPage() {
             </svg>
             <div>
               <strong dir="ltr">{score}</strong>
-              <span dir="ltr">Score / 100</span>
+              <span dir="ltr">{copy.scoreLabel}</span>
             </div>
           </div>
         </section>
 
-        <section className="report-analysis-grid" aria-label="تحليل الكفاءات والملاحظات">
+        <section className="report-analysis-grid" aria-label={copy.competencyAria}>
           <article className="report-card competency-card">
             <header className="section-heading">
-              <h2>تحليل الكفاءات</h2>
-              <p dir="ltr">Competency Radar</p>
+              <h2>{copy.competencyHeading}</h2>
+              {!isEnglish ? <p dir="ltr">Competency Radar</p> : null}
             </header>
 
             <div className="radar-wrap">
@@ -316,9 +392,9 @@ export default function FeedbackPage() {
 
               {report.competencies.map((item) => (
                 <div className={`radar-label ${item.className}`} key={item.en}>
-                  <strong>{item.ar}</strong>
+                  <strong>{isEnglish ? item.en : item.ar}</strong>
                   <span dir="ltr">
-                    {item.en} ({item.score})
+                    {!isEnglish ? `${item.en} ` : null}({item.score})
                   </span>
                 </div>
               ))}
@@ -330,7 +406,7 @@ export default function FeedbackPage() {
               <div>
                 <div className="feedback-kicker">
                   <ThumbsUp size={21} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
-                  <span>نقطة قوة / Strength</span>
+                  <span>{copy.strengthKicker}</span>
                 </div>
                 <h3>{report.strengthTitle}</h3>
                 <p>{report.strongest.evaluation.feedback}</p>
@@ -346,7 +422,7 @@ export default function FeedbackPage() {
               <div>
                 <div className="feedback-kicker">
                   <TrendingUp size={21} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
-                  <span>مجال للتحسين / Area to Improve</span>
+                  <span>{copy.improvementKicker}</span>
                 </div>
                 <h3>{report.improvementTitle}</h3>
                 <p>{report.weakest.evaluation.feedback}</p>
@@ -365,19 +441,19 @@ export default function FeedbackPage() {
         <section className="rewrite-panel" aria-labelledby="rewrite-title">
           <div className="ai-badge" dir="ltr">
             <Sparkles size={16} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
-            <span>Enhanced by AI</span>
+            <span>{copy.aiBadge}</span>
           </div>
 
           <header className="section-heading">
-            <h2 id="rewrite-title">إعادة صياغة مقترحة</h2>
-            <p dir="ltr">Suggested Rewrite for Impact</p>
+            <h2 id="rewrite-title">{copy.rewriteHeading}</h2>
+            {!isEnglish ? <p dir="ltr">{copy.rewriteSubheading}</p> : null}
           </header>
 
           <div className="rewrite-grid">
             <article className="answer-column">
               <div className="answer-heading">
                 <User size={20} strokeWidth={2} aria-hidden="true" />
-                <span>إجابتك / Your Answer</span>
+                <span>{copy.yourAnswer}</span>
               </div>
               <p>"{report.weakest.answer}"</p>
             </article>
@@ -385,32 +461,32 @@ export default function FeedbackPage() {
             <article className="answer-column model-answer">
               <div className="answer-heading">
                 <CheckCircle2 size={20} strokeWidth={2.1} fill="currentColor" aria-hidden="true" />
-                <span>الإجابة النموذجية / Model Answer</span>
+                <span>{copy.modelAnswer}</span>
               </div>
               <p>{report.weakest.evaluation.improvedAnswer}</p>
             </article>
           </div>
 
           <button className="copy-answer" type="button">
-            <span>نسخ للإستفادة / Copy to Clipboard</span>
+            <span>{copy.copyButton}</span>
             <Copy size={18} strokeWidth={2} aria-hidden="true" />
           </button>
         </section>
 
         <section className="next-steps" aria-labelledby="next-steps-title">
           <header className="section-heading">
-            <h2 id="next-steps-title">الخطوات التالية</h2>
-            <p dir="ltr">Actionable Next Steps</p>
+            <h2 id="next-steps-title">{copy.nextSteps}</h2>
+            {!isEnglish ? <p dir="ltr">Actionable Next Steps</p> : null}
           </header>
 
           <div className="next-step-grid">
             {nextSteps.map((step) => (
-              <Link className="next-step-card" href={step.href} key={step.title}>
+              <Link className="next-step-card" href={step.href} key={step.titleEn}>
                 <span className="next-step-icon">
                   <step.icon size={24} strokeWidth={2} aria-hidden="true" />
                 </span>
                 <span>
-                  <strong>{step.title}</strong>
+                  <strong>{isEnglish ? step.titleEn : step.titleAr}</strong>
                   <small dir="ltr">{step.description}</small>
                 </span>
               </Link>
@@ -423,12 +499,12 @@ export default function FeedbackPage() {
         <div className="landing-footer-inner">
           <div className="footer-brand-group">
             <div className="footer-brand">Interview Coach</div>
-            <p>© 2024 إنترفيو كوتش. جميع الحقوق محفوظة / Interview Coach. All rights reserved.</p>
+            <p>{copy.footerRights}</p>
           </div>
           <div className="footer-links">
-            <a href="#privacy">الخصوصية / Privacy</a>
-            <a href="#terms">الشروط / Terms</a>
-            <a href="#contact">اتصل بنا / Contact</a>
+            <a href="#privacy">{copy.privacy}</a>
+            <a href="#terms">{copy.terms}</a>
+            <a href="#contact">{copy.contact}</a>
           </div>
         </div>
       </footer>

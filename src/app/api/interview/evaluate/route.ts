@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
     const setup = answer.setup;
 
-    const userPrompt = `Evaluate the candidate's written interview answer in the context of the target company, role track, and specialization. Reward concrete examples, STAR structure, alignment with the company's mission, and domain accuracy for the specialization. Penalize vagueness or generic answers.
+    const userPrompt = `Evaluate the candidate's written interview answer in the context of the target company, role track, and specialization. Reward concrete examples, STAR structure, alignment with the company's mission, and domain accuracy for the specialization. Penalize vagueness, generic answers, and any drift away from the candidate's declared specialization. If the answer is off-topic for the specialization, cap the score at 4 and call out the drift in feedback.
 
 Candidate setup:
 - Name: ${setup?.name ?? ""}

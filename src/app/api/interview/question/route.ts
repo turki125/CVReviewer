@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   try {
     setup = (await request.json()) as InterviewSetupInput;
 
-    const userPrompt = `Generate one realistic, role-specific interview question for the following candidate. The question must reflect the target company's culture and the candidate's specialization. Vary question type across behavioral, situational, and technical so repeated calls feel different. Avoid generic openers like "tell me about yourself".
+    const userPrompt = `Generate ONE realistic, domain-specific interview question for this candidate.
 
 Candidate setup:
 - Name: ${setup?.name ?? ""}
@@ -26,6 +26,13 @@ Candidate setup:
 - Role track: ${setup?.track ?? ""}
 - Field specialization: ${setup?.specialization ?? ""}
 - Interview language: ${setup?.interviewLanguage ?? "Bilingual"}
+
+HARD CONSTRAINTS (do not violate):
+1. The question MUST be specific to the field specialization above. It must use vocabulary, tools, concepts, problems, or scenarios that only a practitioner of that exact specialization would face. A reader should be able to identify the specialization from the question alone.
+2. The question MUST be plausible coming from a recruiter or hiring manager at the target company, reflecting that company's industry (energy, banking, telecom, real estate, tourism, mining, etc.) and Saudi/Vision 2030 context where relevant.
+3. Do NOT ask generic questions like "tell me about yourself", "what are your strengths/weaknesses", "where do you see yourself in 5 years", or any question that could be asked of any candidate in any field. Reject hobbies, personality, or life-story prompts.
+4. Vary the question type across calls: behavioral STAR (about a past project in the specialization), situational/case (a problem typical for the specialization at this company), or technical (a concept/tool/scenario from the specialization). Pick one type only for this call.
+5. Keep the question concise (1-3 sentences) and answerable in 1-3 minutes.
 
 Language rule: ${languageInstruction(setup?.interviewLanguage ?? "Bilingual")}
 
@@ -38,7 +45,7 @@ Return this exact JSON shape and nothing else:
       {
         role: "system",
         content:
-          "You are a senior interview coach who prepares students and fresh graduates in Saudi Arabia for interviews at major Saudi employers (Aramco, PIF, NEOM, SABIC, stc, banks, hospitals, hospitality, etc.). You tailor questions to the candidate's company, track, and specialization. Return only valid JSON.",
+          "You are a senior interview coach preparing students and fresh graduates in Saudi Arabia for interviews at major Saudi employers (Aramco, PIF, NEOM, Qiddiya, Red Sea Global, ROSHN, Misk, SABIC, Ma'aden, stc, SNB, Riyad Bank, Saudia Airlines, Almarai). Every question you produce must be tightly bound to the candidate's declared field specialization and to the target company's industry. Never produce generic interview filler. Return only valid JSON.",
       },
       { role: "user", content: userPrompt },
     ]);
@@ -68,17 +75,17 @@ function generateFallbackQuestion(setup?: InterviewSetupInput) {
   const specialization = setup?.specialization || "your field";
 
   const englishSamples = [
-    `Walk me through a project in ${specialization} where you delivered a measurable outcome.`,
-    `Why ${company}? What about its mission aligns with your goals?`,
-    `Describe a time you handled disagreement on a team. What did you do?`,
-    `What is a recent challenge in ${specialization} you find interesting, and how would you approach it?`,
+    `Walk me through a recent project in ${specialization} where you delivered a measurable outcome relevant to ${company}'s work.`,
+    `Describe a technical or domain-specific challenge you faced in ${specialization}. What was your approach and the result?`,
+    `Give a situation where you applied a core concept from ${specialization} to solve a real problem similar to one ${company} might face.`,
+    `What is a current trend or hard problem in ${specialization}, and how would you address it at ${company}?`,
   ];
 
   const arabicSamples = [
-    `حدثني عن مشروع في ${specialization} حققت فيه نتيجة ملموسة.`,
-    `لماذا ${company} تحديدًا؟ وما الذي يجذبك في رسالتها؟`,
-    `صف موقفًا اختلفت فيه مع زميل في الفريق، وكيف تصرفت؟`,
-    `ما تحدٍّ حديث في ${specialization} يثير اهتمامك، وكيف ستتعامل معه؟`,
+    `حدثني عن مشروع حديث في ${specialization} حققت فيه نتيجة قابلة للقياس وذو صلة بعمل ${company}.`,
+    `صف تحديًا تقنيًا أو مهنيًا في ${specialization} واجهته. ما الذي فعلته وما كانت النتيجة؟`,
+    `اذكر موقفًا طبقت فيه مفهومًا أساسيًا من ${specialization} لحل مشكلة واقعية قد تواجه ${company}.`,
+    `ما هو اتجاه حديث أو تحدٍّ صعب في ${specialization}، وكيف ستعالجه في ${company}؟`,
   ];
 
   const lang = setup?.interviewLanguage ?? "Bilingual";

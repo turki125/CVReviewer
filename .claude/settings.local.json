@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/c/Users/ffhd5/Desktop/Tuwaiq/CVReviewer/**)",
+      "Read(//mnt/c/Users/ffhd5/Desktop/Tuwaiq/**)"
+    ]
+  }
+}

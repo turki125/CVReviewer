@@ -31,7 +31,7 @@ export async function callOpenRouter(messages: OpenRouterMessage[]) {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
       "HTTP-Referer": process.env.OPENROUTER_SITE_URL ?? "http://localhost:3000",
-      "X-Title": process.env.OPENROUTER_APP_NAME ?? "Saudi Interview Coach",
+      "X-Title": process.env.OPENROUTER_APP_NAME ?? "Taaheel",
     },
     body: JSON.stringify({
       model: process.env.OPENROUTER_MODEL ?? "openai/gpt-4o-mini",

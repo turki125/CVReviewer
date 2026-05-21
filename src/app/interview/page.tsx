@@ -240,6 +240,10 @@ export default function InterviewPage() {
   return (
     <div className={`interview-room${isFlashing ? " interview-room-flash" : ""}`} dir={isEnglishInterview ? "ltr" : "rtl"}>
       <header className="interview-topbar" aria-label={isEnglishInterview ? "Interview tools" : "أدوات المقابلة"}>
+        <Link className="interview-brand" href="/">
+          تاهيل Taaheel
+        </Link>
+
         <div className="interview-timer-tools">
           <button
             className={`interview-timer${isTimerStoppedFeedback ? " timer-stopped-feedback" : ""}`}

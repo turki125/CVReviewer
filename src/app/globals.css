@@ -1311,10 +1311,33 @@ p {
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+  grid-template-columns: auto minmax(150px, 1fr) auto minmax(150px, 1fr);
   align-items: center;
   gap: 24px;
   padding: 24px;
+}
+
+.interview-brand,
+.page-corner-brand,
+.report-brand-inline {
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.interview-brand {
+  justify-self: start;
+  white-space: nowrap;
+  font-size: 1.15rem;
+}
+
+.page-corner-brand {
+  position: fixed;
+  top: 24px;
+  inset-inline-start: 24px;
+  z-index: 10;
+  font-size: 1.15rem;
 }
 
 .interview-timer,
@@ -1953,17 +1976,26 @@ p {
     padding: 18px 16px;
   }
 
+  .interview-brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
   .interview-progress {
     grid-column: 1 / -1;
-    grid-row: 2;
+    grid-row: 3;
     order: 3;
   }
 
   .interview-timer-tools {
+    grid-column: 1 / -1;
+    grid-row: 2;
     justify-self: start;
   }
 
   .end-early-button {
+    grid-column: 2;
+    grid-row: 1;
     justify-self: end;
   }
 
@@ -2510,6 +2542,7 @@ p {
 }
 
 .report-header-inner {
+  position: relative;
   min-height: 80px;
   display: flex;
   align-items: center;
@@ -2579,6 +2612,21 @@ p {
   letter-spacing: 0;
   line-height: 1.35;
   text-transform: none;
+}
+
+.report-header-brand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: var(--primary);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 .report-close-button,
@@ -3128,6 +3176,13 @@ p {
 @media (max-width: 640px) {
   .report-header-inner {
     min-height: 72px;
+  }
+
+  .report-header-brand {
+    position: static;
+    transform: none;
+    order: -1;
+    width: 100%;
   }
 
   .report-download {

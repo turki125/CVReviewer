@@ -4,7 +4,7 @@
   if (language !== "en") return;
 
   const replacements = new Map([
-    ["مدرب المقابلات", "Interview Coach"],
+    ["تاهيل", "Taaheel"],
     ["الرئيسية", "Home"],
     ["المميزات", "Features"],
     ["الأسعار", "Pricing"],
@@ -26,7 +26,7 @@
     ["لماذا تختار باقة برو؟", "Why choose Pro?"],
     ["جاهز لتجربة أول مقابلة؟", "Ready to try your first interview?"],
     ["كيف يعمل", "How it works"],
-    ["مميزات مدرب المقابلات", "Interview Coach Features"],
+    ["مميزات تاهيل", "Taaheel Features"],
     ["هل أنت مستعد لمقابلتك القادمة؟", "Ready for your next interview?"],
     ["ابدأ الآن وجرب مقابلة تجريبية مجانية مع مدربنا الذكي.", "Start now and try a free mock interview with our AI coach."],
     ["ابدأ الآن وجرب مقابلة تجريبية مجانية تماماً مع مدربنا الذكي وطوّر مهاراتك اليوم.", "Start now with a free mock interview and improve your skills today."],
@@ -55,7 +55,7 @@
     ["شهادة إتمام", "Completion certificate"],
     ["نقدم لك شهادة رقمية تثبت جاهزيتك للمقابلة.", "Receive a digital certificate that shows your interview readiness."],
     ["نسبة نجاح المشتركين في تجاوز المقابلات الحقيقية.", "Subscriber success rate in passing real interviews."],
-    ["أهلاً بك مجدداً في مدرب المقابلات", "Welcome back to Interview Coach"],
+    ["أهلاً بك مجدداً في تاهيل", "Welcome back to Taaheel"],
     ["البريد الإلكتروني", "Email"],
     ["كلمة المرور", "Password"],
     ["هل نسيت كلمة المرور؟", "Forgot password?"],
@@ -73,7 +73,7 @@
     ["احصل على ملاحظات فورية على لغة جسدك ونبرة صوتك.", "Get instant feedback on your delivery and answer quality."],
     ["تقارير احترافية", "Professional reports"],
     ["تمكين الكفاءات السعودية لمستقبل ٢٠٣٠", "Empowering Saudi talent for Vision 2030."],
-    ["كيف يعمل مدرب المقابلات؟", "How does Interview Coach work?"],
+    ["كيف يعمل تاهيل؟", "How does Taaheel work?"],
     ["رحلتك نحو الوظيفة الحلم في ٣ خطوات بسيطة.", "Your path to your dream job in 3 simple steps."],
     ["١. جهّز جلستك", "1. Set up your session"],
     ["اختر الشركة المستهدفة، المسار الوظيفي، وتخصصك الدقيق.", "Choose your target company, role track, and field specialization."],

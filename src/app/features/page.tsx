@@ -111,7 +111,7 @@ export default function FeaturesPage() {
       <nav className="landing-nav" aria-label={isEnglish ? "Main navigation" : "التنقل الرئيسي"}>
         <div className="landing-nav-inner">
           <Link className="landing-brand" href="/">
-            {isEnglish ? "Interview Coach" : "مدرب المقابلات"}
+            تاهيل Taaheel
           </Link>
 
           <div className="landing-links" aria-label={isEnglish ? "Page links" : "روابط الصفحة"}>
@@ -140,8 +140,8 @@ export default function FeaturesPage() {
       <main className="features-main">
         <section className="features-hero" aria-labelledby="features-title">
           <h1 id="features-title">
-            {isEnglish ? "Interview Coach Features" : "مميزات مدرب المقابلات"}
-            {!isEnglish ? <span dir="ltr">Interview Coach Features</span> : null}
+            {isEnglish ? "Taaheel Features" : "مميزات تاهيل"}
+            {!isEnglish ? <span dir="ltr">Taaheel Features</span> : null}
           </h1>
           <p>
             {isEnglish
@@ -287,7 +287,7 @@ export default function FeaturesPage() {
               <Users size={34} strokeWidth={1.8} aria-hidden="true" />
               <div>
                 <h3>انضم لآلاف المتدربين</h3>
-                <p>{isEnglish ? "Thousands of graduates use Interview Coach to prepare with confidence." : "أكثر من 10,000 خريج حصلوا على وظائفهم بفضل الله ثم بفضل تدريباتنا."}</p>
+                <p>{isEnglish ? "Thousands of graduates use Taaheel to prepare with confidence." : "أكثر من 10,000 خريج حصلوا على وظائفهم بفضل الله ثم بفضل تدريباتنا."}</p>
               </div>
             </article>
           </div>
@@ -308,8 +308,8 @@ export default function FeaturesPage() {
       <footer className="landing-footer">
         <div className="landing-footer-inner">
           <div className="footer-brand-group">
-            <div className="footer-brand">{isEnglish ? "Interview Coach" : "مدرب المقابلات"}</div>
-            <p>{isEnglish ? "© 2024 Interview Coach. All rights reserved." : "© 2024 مدرب المقابلات. جميع الحقوق محفوظة."}</p>
+            <div className="footer-brand">تاهيل Taaheel</div>
+            <p>{isEnglish ? "© 2024 Taaheel. All rights reserved." : "© 2024 تاهيل Taaheel. جميع الحقوق محفوظة."}</p>
           </div>
           <div className="footer-links">
             <a href="#privacy">{isEnglish ? "Privacy" : "الخصوصية"}</a>

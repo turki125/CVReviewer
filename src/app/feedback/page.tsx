@@ -62,8 +62,8 @@ function getReportCopy(isEnglish: boolean) {
     copyButton: isEnglish ? "Copy to Clipboard" : "نسخ للإستفادة / Copy to Clipboard",
     download: isEnglish ? "Download PDF" : "Download PDF / تحميل",
     footerRights: isEnglish
-      ? "© 2024 Interview Coach. All rights reserved."
-      : "© 2024 إنترفيو كوتش. جميع الحقوق محفوظة / Interview Coach. All rights reserved.",
+      ? "© 2024 Taaheel. All rights reserved."
+      : "© 2024 تاهيل. جميع الحقوق محفوظة / Taaheel. All rights reserved.",
     improvementKicker: isEnglish ? "Area to Improve" : "مجال للتحسين / Area to Improve",
     modelAnswer: isEnglish ? "Model Answer" : "الإجابة النموذجية / Model Answer",
     nextSteps: isEnglish ? "Next Steps" : "الخطوات التالية",
@@ -353,6 +353,10 @@ export default function FeedbackPage() {
             </div>
           </div>
 
+          <Link className="report-header-brand" href="/">
+            تاهيل Taaheel
+          </Link>
+
           <button className="report-download" type="button" onClick={handleDownloadPdf}>
             <Download size={20} strokeWidth={2.1} aria-hidden="true" />
             <span>{copy.download}</span>
@@ -538,7 +542,7 @@ export default function FeedbackPage() {
       <footer className="landing-footer">
         <div className="landing-footer-inner">
           <div className="footer-brand-group">
-            <div className="footer-brand">Interview Coach</div>
+            <div className="footer-brand">تاهيل Taaheel</div>
             <p>{copy.footerRights}</p>
           </div>
           <div className="footer-links">

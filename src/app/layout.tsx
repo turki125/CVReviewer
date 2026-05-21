@@ -3,7 +3,7 @@ import { PageTransition } from "./components/PageTransition";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "مدرب المقابلات",
+  title: "تاهيل Taaheel",
   description: "تدرّب على مقابلات العمل السعودية بالذكاء الاصطناعي.",
 };
 

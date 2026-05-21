@@ -13,13 +13,13 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const trustedCompanies = ["RIYAD BANK", "aramco", "stc", "SABIC", "NEOM"];
+const trustedCompanies = ["RIYADH BANK", "aramco", "stc", "SABIC", "NEOM"];
 
 type WebsiteLanguage = "ar" | "en";
 
 const content = {
   ar: {
-    brand: "مدرب المقابلات",
+    brand: "تاهيل Taaheel",
     navAria: "التنقل الرئيسي",
     linksAria: "روابط الصفحة",
     home: "الرئيسية",
@@ -33,8 +33,8 @@ const content = {
     startInterview: "ابدأ المقابلة",
     howItWorks: "شوف كيف يشتغل",
     trusted: "يثق بنا خريجون يعملون في",
-    featuresAria: "مميزات مدرب المقابلات",
-    footerRights: "© 2024 مدرب المقابلات. جميع الحقوق محفوظة.",
+    featuresAria: "مميزات تاهيل",
+    footerRights: "© 2024 تاهيل Taaheel. جميع الحقوق محفوظة.",
     privacy: "الخصوصية",
     terms: "الشروط",
     contact: "اتصل بنا",
@@ -62,7 +62,7 @@ const content = {
     ],
   },
   en: {
-    brand: "Interview Coach",
+    brand: "تاهيل Taaheel",
     navAria: "Main navigation",
     linksAria: "Page links",
     home: "Home",
@@ -76,8 +76,8 @@ const content = {
     startInterview: "Start interview",
     howItWorks: "See how it works",
     trusted: "Trusted by graduates working at",
-    featuresAria: "Interview Coach features",
-    footerRights: "© 2024 Interview Coach. All rights reserved.",
+    featuresAria: "Taaheel features",
+    footerRights: "© 2024 Taaheel. All rights reserved.",
     privacy: "Privacy",
     terms: "Terms",
     contact: "Contact",

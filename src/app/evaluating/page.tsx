@@ -97,6 +97,10 @@ export default function EvaluatingPage() {
       dir={isEnglish ? "ltr" : "rtl"}
       aria-labelledby="evaluating-title"
     >
+      <Link className="page-corner-brand" href="/">
+        تاهيل Taaheel
+      </Link>
+
       <section className="evaluating-shell">
         <Link className="evaluating-orb-wrap" href="/feedback" aria-label={copy.dashboardAria}>
           <div className="evaluating-orb-glow" />

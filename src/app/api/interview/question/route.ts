@@ -12,6 +12,16 @@ function languageInstruction(language: InterviewSetupInput["interviewLanguage"])
   return "Write the question bilingually: first in Modern Standard Arabic, then a blank line, then the same question in English.";
 }
 
+function nameInstruction(name?: string) {
+  const candidateName = name?.trim();
+
+  if (!candidateName) {
+    return "Ask the question directly to the candidate.";
+  }
+
+  return `Address the candidate naturally by name at the beginning. For example, use "Hi ${candidateName}," in English or "${candidateName}،" in Arabic, then ask the question.`;
+}
+
 export async function POST(request: Request) {
   let setup: InterviewSetupInput | undefined;
 
@@ -35,6 +45,7 @@ HARD CONSTRAINTS (do not violate):
 5. Keep the question concise (1-3 sentences) and answerable in 1-3 minutes.
 
 Language rule: ${languageInstruction(setup?.interviewLanguage ?? "Bilingual")}
+Personalization rule: ${nameInstruction(setup?.name)}
 
 Return this exact JSON shape and nothing else:
 {
@@ -73,6 +84,9 @@ Return this exact JSON shape and nothing else:
 function generateFallbackQuestion(setup?: InterviewSetupInput) {
   const company = setup?.company || "this company";
   const specialization = setup?.specialization || "your field";
+  const name = setup?.name?.trim();
+  const englishGreeting = name ? `Hi ${name}, ` : "";
+  const arabicGreeting = name ? `${name}، ` : "";
 
   const englishSamples = [
     `Walk me through a recent project in ${specialization} where you delivered a measurable outcome relevant to ${company}'s work.`,

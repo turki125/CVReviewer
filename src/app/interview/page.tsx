@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   CheckCircle2,
   FileText,
@@ -32,6 +33,39 @@ const defaultSetup: InterviewSetupInput = {
   interviewLanguage: "Bilingual",
 };
 
+function getInterviewCopy(language: InterviewLanguage) {
+  const isEnglish = language === "English";
+
+  return {
+    answerAria: isEnglish ? "Candidate answer" : "إجابة المتقدم",
+    clear: isEnglish ? "Clear" : "مسح",
+    endEarly: isEnglish ? "End early" : "إنهاء مبكر",
+    evaluating: isEnglish ? "Evaluating" : "جاري التقييم",
+    improvedAnswer: isEnglish ? "Stronger answer" : "إجابة أقوى",
+    loadingQuestion: isEnglish ? "Preparing your question..." : "جاري تجهيز السؤال...",
+    next: isEnglish ? "Next" : "التالي",
+    progressAria: (current: number, total: number) =>
+      isEnglish ? `Question ${current} of ${total}` : `السؤال ${current} من ${total}`,
+    progressLabel: (current: number, total: number) =>
+      isEnglish ? `Question ${current} of ${total}` : `السؤال ${current} من ${total}`,
+    questionHelp: isEnglish
+      ? "Type your answer below. No microphone or speech capture is used."
+      : "اكتب إجابتك في الأسفل. لا يتم استخدام الميكروفون أو تسجيل الصوت.",
+    questionLoadingHelp: isEnglish
+      ? "Preparing your next interview question..."
+      : "نجهز لك سؤال المقابلة التالي...",
+    report: isEnglish ? "View report" : "عرض التقرير",
+    submit: isEnglish ? "Submit answer" : "إرسال الإجابة",
+    timerPauseAria: isEnglish ? "Pause timer" : "إيقاف المؤقت مؤقتا",
+    timerPlayAria: isEnglish ? "Start timer" : "تشغيل المؤقت",
+    transcript: isEnglish ? "Text" : "النص",
+    transcriptAria: isEnglish ? "Open interview transcript" : "فتح نص المقابلة",
+    coachAria: isEnglish ? "Interview coach indicator" : "مؤشر مدرب المقابلة",
+    unableToLoad: isEnglish ? "Could not load the question" : "تعذر تحميل السؤال",
+    writePlaceholder: isEnglish ? "Type your answer here..." : "اكتب إجابتك هنا...",
+  };
+}
+
 function formatTime(totalSeconds: number) {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
@@ -40,6 +74,7 @@ function formatTime(totalSeconds: number) {
 }
 
 export default function InterviewPage() {
+  const router = useRouter();
   const [setup, setSetup] = useState<InterviewSetupInput>(defaultSetup);
   const [isSetupReady, setIsSetupReady] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -62,6 +97,10 @@ export default function InterviewPage() {
       }),
     [currentQuestion],
   );
+  const isFinalQuestion = currentQuestion === totalQuestions - 1;
+  const isReportReady = isFinalQuestion && Boolean(evaluation);
+  const copy = useMemo(() => getInterviewCopy(setup.interviewLanguage), [setup.interviewLanguage]);
+  const isEnglishInterview = setup.interviewLanguage === "English";
 
   useEffect(() => {
     if (!isTimerRunning) return undefined;
@@ -171,6 +210,11 @@ export default function InterviewPage() {
   }
 
   function handleNextQuestion() {
+    if (isReportReady) {
+      router.push("/feedback");
+      return;
+    }
+
     setIsFlashing(true);
     window.setTimeout(() => setIsFlashing(false), 500);
     setCurrentQuestion((value) => (value + 1) % totalQuestions);
@@ -194,14 +238,14 @@ export default function InterviewPage() {
   }
 
   return (
-    <div className={`interview-room${isFlashing ? " interview-room-flash" : ""}`} dir="rtl">
-      <header className="interview-topbar" aria-label="أدوات المقابلة">
+    <div className={`interview-room${isFlashing ? " interview-room-flash" : ""}`} dir={isEnglishInterview ? "ltr" : "rtl"}>
+      <header className="interview-topbar" aria-label={isEnglishInterview ? "Interview tools" : "أدوات المقابلة"}>
         <div className="interview-timer-tools">
           <button
             className={`interview-timer${isTimerStoppedFeedback ? " timer-stopped-feedback" : ""}`}
             type="button"
             onClick={() => setIsTimerRunning((value) => !value)}
-            aria-label={isTimerRunning ? "إيقاف المؤقت مؤقتا" : "تشغيل المؤقت"}
+            aria-label={isTimerRunning ? copy.timerPauseAria : copy.timerPlayAria}
           >
             <span className="timer-toggle" aria-hidden="true">
               {isTimerRunning ? <Pause size={22} strokeWidth={2.4} /> : <Play size={22} strokeWidth={2.4} />}
@@ -213,11 +257,11 @@ export default function InterviewPage() {
 
           <button className="clear-answer-button" type="button" onClick={handleRepeat}>
             <RotateCcw size={20} strokeWidth={2.1} aria-hidden="true" />
-            <span>مسح</span>
+            <span>{copy.clear}</span>
           </button>
         </div>
 
-        <div className="interview-progress" aria-label={`السؤال ${currentQuestion + 1} من ${totalQuestions}`}>
+        <div className="interview-progress" aria-label={copy.progressAria(currentQuestion + 1, totalQuestions)}>
           <div className="progress-pills" aria-hidden="true">
             {progress.map((status, index) => (
               <span className={`progress-pill ${status}`} key={index}>
@@ -226,16 +270,20 @@ export default function InterviewPage() {
             ))}
           </div>
           <div className="progress-label">
-            <span>السؤال {currentQuestion + 1} من {totalQuestions}</span>
-            <span aria-hidden="true">·</span>
-            <span dir="ltr">Question {currentQuestion + 1} of {totalQuestions}</span>
+            <span>{copy.progressLabel(currentQuestion + 1, totalQuestions)}</span>
+            {!isEnglishInterview ? (
+              <>
+                <span aria-hidden="true">·</span>
+                <span dir="ltr">Question {currentQuestion + 1} of {totalQuestions}</span>
+              </>
+            ) : null}
           </div>
         </div>
 
         <Link className="end-early-button" href="/evaluating">
           <StopCircle size={22} strokeWidth={2.1} aria-hidden="true" />
           <span>
-            <strong>إنهاء مبكر</strong>
+            <strong>{copy.endEarly}</strong>
             <small dir="ltr">End early</small>
           </span>
         </Link>
@@ -244,7 +292,7 @@ export default function InterviewPage() {
       <main className="interview-stage" aria-labelledby="interview-question">
         <div className="interview-ambient" aria-hidden="true" />
 
-        <section className="coach-orb-wrap" aria-label="مؤشر مدرب المقابلة">
+        <section className="coach-orb-wrap" aria-label={copy.coachAria}>
           <div className="orb-pulse orb-pulse-one" aria-hidden="true" />
           <div className="orb-pulse orb-pulse-two" aria-hidden="true" />
           <div className="coach-orb">
@@ -257,20 +305,18 @@ export default function InterviewPage() {
 
         <section className="question-panel">
           <h1 id="interview-question">
-            {isLoadingQuestion ? "جاري تجهيز السؤال..." : question || "تعذر تحميل السؤال"}
+            {isLoadingQuestion ? copy.loadingQuestion : question || copy.unableToLoad}
           </h1>
-          <p dir="ltr">
-            {isLoadingQuestion
-              ? "Preparing your next interview question..."
-              : "Type your answer below. No microphone or speech capture is used."}
+          <p dir={isEnglishInterview ? "ltr" : "rtl"}>
+            {isLoadingQuestion ? copy.questionLoadingHelp : copy.questionHelp}
           </p>
         </section>
 
-        <section className="answer-panel" aria-label="إجابة المتقدم">
+        <section className="answer-panel" aria-label={copy.answerAria}>
           <textarea
             value={answer}
             onChange={(event) => handleAnswerChange(event.target.value)}
-            placeholder="اكتب إجابتك هنا..."
+            placeholder={copy.writePlaceholder}
             dir={setup.interviewLanguage === "Arabic" ? "rtl" : "ltr"}
             disabled={isLoadingQuestion || isEvaluating}
           />
@@ -285,7 +331,7 @@ export default function InterviewPage() {
               </header>
               <p>{evaluation.feedback}</p>
               <div>
-                <span>إجابة أقوى</span>
+                <span>{copy.improvedAnswer}</span>
                 <p>{evaluation.improvedAnswer}</p>
               </div>
               <small>{evaluation.tip}</small>
@@ -294,10 +340,19 @@ export default function InterviewPage() {
         </section>
       </main>
 
-      <div className="interview-dock text-answer-dock" aria-label="أزرار التحكم">
-        <button className="dock-button" type="button" onClick={handleNextQuestion} disabled={isLoadingQuestion}>
-          <SkipForward size={30} strokeWidth={2.1} aria-hidden="true" />
-          <span>التالي</span>
+      <div className="interview-dock text-answer-dock" aria-label={isEnglishInterview ? "Controls" : "أزرار التحكم"}>
+        <button
+          className={`dock-button${isReportReady ? " report-ready-button" : ""}`}
+          type="button"
+          onClick={handleNextQuestion}
+          disabled={isLoadingQuestion || (isFinalQuestion && !evaluation)}
+        >
+          {isReportReady ? (
+            <CheckCircle2 size={30} strokeWidth={2.1} aria-hidden="true" />
+          ) : (
+            <SkipForward size={30} strokeWidth={2.1} aria-hidden="true" />
+          )}
+          <span>{isReportReady ? copy.report : copy.next}</span>
         </button>
 
         <button
@@ -311,14 +366,14 @@ export default function InterviewPage() {
           ) : (
             <Send size={26} strokeWidth={2.3} aria-hidden="true" />
           )}
-          <span>{isEvaluating ? "جاري التقييم" : "إرسال الإجابة"}</span>
+          <span>{isEvaluating ? copy.evaluating : copy.submit}</span>
         </button>
       </div>
 
-      <button className="transcript-tab" type="button" aria-label="فتح نص المقابلة">
+      <button className="transcript-tab" type="button" aria-label={copy.transcriptAria}>
         <FileText size={25} strokeWidth={2} aria-hidden="true" />
         <span aria-hidden="true" />
-        <strong>النص</strong>
+        <strong>{copy.transcript}</strong>
       </button>
     </div>
   );

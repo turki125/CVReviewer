@@ -764,6 +764,10 @@
                 hospitality: 'Hospitality & Tourism', media: 'Media & Communications',
                 education: 'Education & Academia'
             };
+            const selectedTrack = getCheckedValue('track', 'technical');
+            const selectedSpecialization = selectedTrack === 'business'
+                ? businessSpecializationLabels[getCheckedValue('business_sub_track', 'marketing')]
+                : specializationLabels[getCheckedValue('sub_track', 'software')];
 
             const setup = {
                 name,

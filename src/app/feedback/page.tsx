@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
-  BookOpen,
   CheckCircle2,
   Copy,
   Download,
@@ -43,13 +42,6 @@ const nextSteps: {
   description: string;
   href: string;
 }[] = [
-  {
-    icon: BookOpen,
-    titleAr: "مراجعة منهجية STAR",
-    titleEn: "Review the STAR method",
-    description: "Practice framing 3 new stories focusing heavily on the Result metric.",
-    href: "/setup",
-  },
   {
     icon: Mic,
     titleAr: "مقابلة تجريبية جديدة",

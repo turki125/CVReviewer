@@ -364,6 +364,29 @@ p {
   color: var(--primary);
 }
 
+.language-toggle-button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 56%);
+  color: var(--primary);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.language-toggle-button:hover {
+  border-color: var(--primary);
+  background: var(--surface);
+}
+
 .small-cta,
 .hero-button {
   display: inline-flex;
@@ -394,6 +417,20 @@ p {
 .landing-main {
   flex: 1;
   overflow: hidden;
+}
+
+.language-swap .landing-nav-inner,
+.language-swap .landing-main,
+.language-swap .landing-footer-inner {
+  transition: opacity 160ms ease, transform 160ms ease;
+  will-change: opacity, transform;
+}
+
+.language-swap.is-switching .landing-nav-inner,
+.language-swap.is-switching .landing-main,
+.language-swap.is-switching .landing-footer-inner {
+  opacity: 0.18;
+  transform: translateY(3px);
 }
 
 .landing-hero {

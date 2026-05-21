@@ -220,14 +220,14 @@
 </div>
 <div class="flex flex-wrap gap-stack-sm">
 <label class="cursor-pointer">
-<input checked="" class="peer sr-only" name="track" type="radio" value="technical">
+<input checked="" class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="technical">
 <div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
 <span class="material-symbols-outlined text-[20px]">code</span>
 <span class="">تقني · Technical</span>
 </div>
 </label>
 <label class="cursor-pointer">
-<input class="peer sr-only" name="track" type="radio" value="business">
+<input class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="business">
 <div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
 <span class="material-symbols-outlined text-[20px]">business_center</span>
 <span class="">أعمال · Business</span>
@@ -251,6 +251,39 @@
 <input class="peer sr-only" name="sub_track" type="radio" value="data_science">
 <div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
 <span class="font-medium">علم البيانات · Data Science</span>
+</div>
+</label>
+</div>
+<div class="hidden flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" id="business-sub-roles">
+<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">تخصص الأعمال / Business Specialization</p>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="business_sub_track" type="radio" value="marketing">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">التسويق · Marketing</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="business_sub_track" type="radio" value="finance">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">المالية · Finance</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="business_sub_track" type="radio" value="human_resources">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">الموارد البشرية · Human Resources</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="business_sub_track" type="radio" value="operations">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">العمليات · Operations</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="business_sub_track" type="radio" value="strategy">
+<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
+<span class="font-medium">الاستراتيجية · Strategy</span>
 </div>
 </label>
 </div>
@@ -344,6 +377,15 @@
             return checked ? checked.value : fallback;
         }
 
+        function syncSpecializationOptions() {
+            const selectedTrack = getCheckedValue('track', 'technical');
+            const technicalRoles = document.querySelector('#technical-sub-roles');
+            const businessRoles = document.querySelector('#business-sub-roles');
+
+            technicalRoles?.classList.toggle('hidden', selectedTrack !== 'technical');
+            businessRoles?.classList.toggle('hidden', selectedTrack !== 'business');
+        }
+
         function startInterviewWithSetup() {
             const firstNameInput = document.querySelector('#firstName');
             const firstNameError = document.querySelector('#firstNameError');
@@ -373,17 +415,28 @@
                 software: "Software Engineering",
                 data_science: "Data Science"
             };
+            const businessSpecializationLabels = {
+                marketing: "Marketing",
+                finance: "Finance",
+                human_resources: "Human Resources",
+                operations: "Operations",
+                strategy: "Strategy"
+            };
             const languageLabels = {
                 arabic: "Arabic",
                 english: "English",
                 bilingual: "Bilingual"
             };
+            const selectedTrack = getCheckedValue('track', 'technical');
+            const selectedSpecialization = selectedTrack === 'business'
+                ? businessSpecializationLabels[getCheckedValue('business_sub_track', 'marketing')]
+                : specializationLabels[getCheckedValue('sub_track', 'software')];
 
             const setup = {
                 name: firstName,
                 company: companyLabels[getCheckedValue('company', 'aramco')] || "Aramco",
-                track: trackLabels[getCheckedValue('track', 'technical')] || "Technical",
-                specialization: specializationLabels[getCheckedValue('sub_track', 'software')] || "Software Engineering",
+                track: trackLabels[selectedTrack] || "Technical",
+                specialization: selectedSpecialization || "Software Engineering",
                 interviewLanguage: languageLabels[getCheckedValue('language', 'bilingual')] || "Bilingual"
             };
 
@@ -395,6 +448,8 @@
         // Simple script to handle custom radio button styles if needed beyond CSS peer classes
         // Currently handled purely by CSS peer-checked, keeping it lightweight as requested.
         document.addEventListener('DOMContentLoaded', () => {
+            syncSpecializationOptions();
+
             const inputs = document.querySelectorAll('input[type="radio"]');
             inputs.forEach(input => {
                 input.addEventListener('change', (e) => {

@@ -97,6 +97,7 @@ function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInpu
 
     return {
       answerCount: 0,
+      badge: isEnglish ? "No score" : "لا توجد درجة",
       competencies: emptyCompetencies,
       headline: isEnglish ? "No answers were submitted." : "لم يتم إرسال أي إجابة.",
       improvementTitle: isEnglish ? "No score reason available" : "لا يوجد سبب للدرجة",
@@ -125,6 +126,7 @@ function createReport(answers: SavedInterviewAnswer[], setup: InterviewSetupInpu
 
   return {
     answerCount: validAnswers.length,
+    badge: getScoreBadge(scoreTarget, isEnglish),
     competencies: competencyScores,
     headline: getHeadline(scoreTarget, isEnglish),
     improvementTitle: isEnglish
@@ -166,6 +168,22 @@ function getEmptyReportAnswer(isEnglish: boolean): SavedInterviewAnswer {
 
 function normalizeScore(score: number) {
   return Math.max(1, Math.min(10, Number(score) || 1));
+}
+
+function getScoreBadge(score: number, isEnglish: boolean) {
+  if (isEnglish) {
+    if (score >= 90) return "Excellent";
+    if (score >= 80) return "Strong";
+    if (score >= 70) return "Promising";
+    if (score >= 50) return "Needs practice";
+    return "Needs work";
+  }
+
+  if (score >= 90) return "ممتاز · Excellent";
+  if (score >= 80) return "قوي · Strong";
+  if (score >= 70) return "واعد · Promising";
+  if (score >= 50) return "يحتاج تدريب · Needs practice";
+  return "يحتاج عمل · Needs work";
 }
 
 function getHeadline(score: number, isEnglish: boolean) {
@@ -350,7 +368,7 @@ export default function FeedbackPage() {
           <div className="report-hero-copy">
             <div className="report-badge">
               <Sparkles size={18} strokeWidth={2.2} fill="currentColor" aria-hidden="true" />
-              <span>{isEnglish ? "Promising" : "واعد · Promising"}</span>
+              <span>{report.badge}</span>
             </div>
 
             <div>

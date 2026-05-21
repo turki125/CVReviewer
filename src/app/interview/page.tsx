@@ -95,6 +95,8 @@ export default function InterviewPage() {
 
   async function loadQuestion() {
     setIsLoadingQuestion(true);
+    setIsTimerRunning(false);
+    setSeconds(0);
     setError("");
     setEvaluation(null);
     setAnswer("");
@@ -157,27 +159,43 @@ export default function InterviewPage() {
   }
 
   function handleRepeat() {
+    setIsTimerRunning(false);
     setSeconds(0);
     setAnswer("");
     setEvaluation(null);
   }
 
+  function handleAnswerChange(value: string) {
+    setAnswer(value);
+
+    if (!isTimerRunning && value.length > 0 && question && !isLoadingQuestion) {
+      setIsTimerRunning(true);
+    }
+  }
+
   return (
     <div className={`interview-room${isFlashing ? " interview-room-flash" : ""}`} dir="rtl">
       <header className="interview-topbar" aria-label="أدوات المقابلة">
-        <button
-          className="interview-timer"
-          type="button"
-          onClick={() => setIsTimerRunning((value) => !value)}
-          aria-label={isTimerRunning ? "إيقاف المؤقت مؤقتا" : "تشغيل المؤقت"}
-        >
-          <span className="timer-toggle" aria-hidden="true">
-            {isTimerRunning ? <Pause size={22} strokeWidth={2.4} /> : <Play size={22} strokeWidth={2.4} />}
-          </span>
-          <span className="timer-value" dir="ltr">
-            {formatTime(seconds)}
-          </span>
-        </button>
+        <div className="interview-timer-tools">
+          <button
+            className="interview-timer"
+            type="button"
+            onClick={() => setIsTimerRunning((value) => !value)}
+            aria-label={isTimerRunning ? "إيقاف المؤقت مؤقتا" : "تشغيل المؤقت"}
+          >
+            <span className="timer-toggle" aria-hidden="true">
+              {isTimerRunning ? <Pause size={22} strokeWidth={2.4} /> : <Play size={22} strokeWidth={2.4} />}
+            </span>
+            <span className="timer-value" dir="ltr">
+              {formatTime(seconds)}
+            </span>
+          </button>
+
+          <button className="clear-answer-button" type="button" onClick={handleRepeat}>
+            <RotateCcw size={20} strokeWidth={2.1} aria-hidden="true" />
+            <span>مسح</span>
+          </button>
+        </div>
 
         <div className="interview-progress" aria-label={`السؤال ${currentQuestion + 1} من ${totalQuestions}`}>
           <div className="progress-pills" aria-hidden="true">
@@ -231,7 +249,7 @@ export default function InterviewPage() {
         <section className="answer-panel" aria-label="إجابة المتقدم">
           <textarea
             value={answer}
-            onChange={(event) => setAnswer(event.target.value)}
+            onChange={(event) => handleAnswerChange(event.target.value)}
             placeholder="اكتب إجابتك هنا..."
             dir={setup.interviewLanguage === "Arabic" ? "rtl" : "ltr"}
             disabled={isLoadingQuestion || isEvaluating}
@@ -274,11 +292,6 @@ export default function InterviewPage() {
             <Send size={26} strokeWidth={2.3} aria-hidden="true" />
           )}
           <span>{isEvaluating ? "جاري التقييم" : "إرسال الإجابة"}</span>
-        </button>
-
-        <button className="dock-button" type="button" onClick={handleRepeat}>
-          <RotateCcw size={30} strokeWidth={2.1} aria-hidden="true" />
-          <span>مسح</span>
         </button>
       </div>
 

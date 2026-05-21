@@ -1281,6 +1281,7 @@ p {
 }
 
 .interview-timer,
+.clear-answer-button,
 .end-early-button,
 .interview-dock,
 .dock-button,
@@ -1289,8 +1290,14 @@ p {
   font: inherit;
 }
 
-.interview-timer {
+.interview-timer-tools {
   justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.interview-timer {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -1323,6 +1330,32 @@ p {
   font-weight: 600;
   line-height: 1.2;
   text-align: left;
+}
+
+.clear-answer-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 62%);
+  color: var(--muted);
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.clear-answer-button:hover {
+  border-color: var(--primary);
+  background: var(--surface-soft);
+  color: var(--primary);
+}
+
+.clear-answer-button span {
+  font-size: 0.78rem;
+  line-height: 1.2;
 }
 
 .interview-progress {
@@ -1809,7 +1842,7 @@ p {
     order: 3;
   }
 
-  .interview-timer {
+  .interview-timer-tools {
     justify-self: start;
   }
 
@@ -1849,6 +1882,19 @@ p {
   .timer-value {
     min-width: 74px;
     font-size: 1.5rem;
+  }
+
+  .interview-timer-tools {
+    gap: 8px;
+  }
+
+  .clear-answer-button {
+    min-height: 38px;
+    padding: 0 10px;
+  }
+
+  .clear-answer-button span {
+    display: none;
   }
 
   .end-early-button {

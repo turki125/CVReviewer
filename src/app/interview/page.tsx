@@ -19,11 +19,10 @@ const totalQuestions = 5;
 
 const defaultSetup: InterviewSetupInput = {
   name: "فهد",
-  major: "Computer Science",
-  targetRole: "Software Engineer",
-  companyType: "Saudi company",
-  experienceLevel: "Fresh graduate",
-  interviewLanguage: "Arabic",
+  company: "Aramco",
+  track: "Information Technology",
+  specialization: "Software Engineering",
+  interviewLanguage: "Bilingual",
 };
 
 function formatTime(totalSeconds: number) {
@@ -293,5 +292,7 @@ export default function InterviewPage() {
 }
 
 function normalizeInterviewLanguage(language: unknown): InterviewLanguage {
-  return language === "English" ? "English" : "Arabic";
+  if (language === "English") return "English";
+  if (language === "Arabic") return "Arabic";
+  return "Bilingual";
 }

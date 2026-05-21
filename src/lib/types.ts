@@ -1,11 +1,10 @@
-export type InterviewLanguage = "Arabic" | "English";
+export type InterviewLanguage = "Arabic" | "English" | "Bilingual";
 
 export type InterviewSetupInput = {
   name: string;
-  major: string;
-  targetRole: string;
-  companyType: string;
-  experienceLevel: string;
+  company: string;
+  track: string;
+  specialization: string;
   interviewLanguage: InterviewLanguage;
 };
 

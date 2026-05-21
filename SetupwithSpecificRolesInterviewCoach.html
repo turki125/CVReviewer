@@ -1,696 +1,791 @@
-<!DOCTYPE html><html dir="ltr" lang="en"><head>
+<!DOCTYPE html>
+<html dir="ltr" lang="en" style="">
+<head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Interview Coach - Setup</title>
+
 <!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
 <!-- Google Fonts: IBM Plex Sans Arabic & Inter -->
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "background": "#f9f9f6",
-                      "tertiary-fixed-dim": "#e4c278",
-                      "error": "#ba1a1a",
-                      "tertiary-container": "#5f4807",
-                      "primary-container": "#00563f",
-                      "primary-fixed": "#aaf1d2",
-                      "primary-fixed-dim": "#8ed5b7",
-                      "surface-container": "#eeeeeb",
-                      "outline-variant": "#bfc9c2",
-                      "on-tertiary": "#ffffff",
-                      "on-primary-fixed-variant": "#00513b",
-                      "on-secondary-fixed": "#002112",
-                      "inverse-primary": "#8ed5b7",
-                      "secondary": "#006c46",
-                      "error-container": "#ffdad6",
-                      "tertiary": "#443200",
-                      "on-secondary": "#ffffff",
-                      "on-secondary-fixed-variant": "#005234",
-                      "inverse-surface": "#2f312f",
-                      "border-subtle": "#E5E5E0",
-                      "surface-variant": "#e2e3e0",
-                      "warning-orange": "#D97757",
-                      "secondary-container": "#7bfabb",
-                      "surface-dim": "#dadad7",
-                      "outline": "#6f7974",
-                      "surface-container-high": "#e8e8e5",
-                      "on-surface": "#1a1c1b",
-                      "on-error": "#ffffff",
-                      "surface": "#f9f9f6",
-                      "secondary-fixed-dim": "#5ddda1",
-                      "tertiary-fixed": "#ffdf9b",
-                      "on-tertiary-fixed-variant": "#5a4302",
-                      "text-secondary": "#6B6B6B",
-                      "primary": "#003d2b",
-                      "on-primary-container": "#83c9ac",
-                      "on-primary": "#ffffff",
-                      "surface-container-low": "#f4f4f1",
-                      "inverse-on-surface": "#f1f1ee",
-                      "on-tertiary-container": "#d9b86e",
-                      "error-red": "#C13C3C",
-                      "surface-container-highest": "#e2e3e0",
-                      "on-tertiary-fixed": "#251a00",
-                      "on-background": "#1a1c1b",
-                      "surface-tint": "#216a52",
-                      "surface-bright": "#f9f9f6",
-                      "on-secondary-container": "#00734b",
-                      "on-surface-variant": "#3f4944",
-                      "text-primary": "#0A0A0A",
-                      "surface-elevated": "#F4F4F0",
-                      "secondary-fixed": "#7bfabb",
-                      "on-error-container": "#93000a",
-                      "on-primary-fixed": "#002116",
-                      "surface-container-lowest": "#ffffff"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "container-max": "1200px",
-                      "stack-lg": "48px",
-                      "base": "8px",
-                      "gutter": "24px",
-                      "margin-desktop": "48px",
-                      "stack-sm": "12px",
-                      "stack-md": "24px",
-                      "margin-mobile": "16px"
-              },
-              "fontFamily": {
-                      "display-hero": ["IBM Plex Sans Arabic"],
-                      "display-hero-mobile": ["IBM Plex Sans Arabic"],
-                      "label-caps": ["Inter"],
-                      "h2": ["IBM Plex Sans Arabic"],
-                      "h1": ["IBM Plex Sans Arabic"],
-                      "body-lg": ["Inter"],
-                      "body-md": ["Inter"],
-                      "caption": ["Inter"]
-              },
-              "fontSize": {
-                      "display-hero": ["56px", {"lineHeight": "1.1", "fontWeight": "700"}],
-                      "display-hero-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                      "h2": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                      "h1": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                      "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}]
-              }
-            }
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#f9f9f6",
+            "tertiary-fixed-dim": "#e4c278",
+            "error": "#ba1a1a",
+            "tertiary-container": "#5f4807",
+            "primary-container": "#00563f",
+            "primary-fixed": "#aaf1d2",
+            "primary-fixed-dim": "#8ed5b7",
+            "surface-container": "#eeeeeb",
+            "outline-variant": "#bfc9c2",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#00513b",
+            "on-secondary-fixed": "#002112",
+            "inverse-primary": "#8ed5b7",
+            "secondary": "#006c46",
+            "error-container": "#ffdad6",
+            "tertiary": "#443200",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#005234",
+            "inverse-surface": "#2f312f",
+            "border-subtle": "#E5E5E0",
+            "surface-variant": "#e2e3e0",
+            "warning-orange": "#D97757",
+            "secondary-container": "#7bfabb",
+            "surface-dim": "#dadad7",
+            "outline": "#6f7974",
+            "surface-container-high": "#e8e8e5",
+            "on-surface": "#1a1c1b",
+            "on-error": "#ffffff",
+            "surface": "#f9f9f6",
+            "secondary-fixed-dim": "#5ddda1",
+            "tertiary-fixed": "#ffdf9b",
+            "on-tertiary-fixed-variant": "#5a4302",
+            "text-secondary": "#6B6B6B",
+            "primary": "#003d2b",
+            "on-primary-container": "#83c9ac",
+            "on-primary": "#ffffff",
+            "surface-container-low": "#f4f4f1",
+            "inverse-on-surface": "#f1f1ee",
+            "on-tertiary-container": "#d9b86e",
+            "error-red": "#C13C3C",
+            "surface-container-highest": "#e2e3e0",
+            "on-tertiary-fixed": "#251a00",
+            "on-background": "#1a1c1b",
+            "surface-tint": "#216a52",
+            "surface-bright": "#f9f9f6",
+            "on-secondary-container": "#00734b",
+            "on-surface-variant": "#3f4944",
+            "text-primary": "#0A0A0A",
+            "surface-elevated": "#F4F4F0",
+            "secondary-fixed": "#7bfabb",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#002116",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-max": "1200px",
+            "stack-lg": "48px",
+            "base": "8px",
+            "gutter": "24px",
+            "margin-desktop": "48px",
+            "stack-sm": "12px",
+            "stack-md": "24px",
+            "margin-mobile": "16px"
+          },
+          "fontFamily": {
+            "display-hero": ["IBM Plex Sans Arabic"],
+            "display-hero-mobile": ["IBM Plex Sans Arabic"],
+            "label-caps": ["Inter"],
+            "h2": ["IBM Plex Sans Arabic"],
+            "h1": ["IBM Plex Sans Arabic"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "caption": ["Inter"]
+          },
+          "fontSize": {
+            "display-hero": ["56px", {"lineHeight": "1.1", "fontWeight": "700"}],
+            "display-hero-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+            "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "h2": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+            "h1": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}]
           }
         }
-    </script>
+      }
+    }
+</script>
+
 <style>
-        @view-transition { navigation: auto; }
-        html { scroll-behavior: smooth; }
-        body { animation: static-page-enter 780ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-        a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease; }
-        a:active, button:active { transform: translateY(1px) scale(0.985); }
-        ::view-transition-old(root) { animation: static-page-view-out 520ms cubic-bezier(0.33, 0, 0.2, 1) both; }
-        ::view-transition-new(root) { animation: static-page-view-in 760ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-        @keyframes static-page-enter { from { opacity: 0; transform: translateY(12px) scale(0.992); filter: blur(8px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
-        @keyframes static-page-view-out { from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } to { opacity: 0; transform: translateY(-8px) scale(0.992); filter: blur(6px); } }
-        @keyframes static-page-view-in { from { opacity: 0; transform: translateY(12px) scale(0.992); filter: blur(8px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; } ::view-transition-old(root), ::view-transition-new(root), body { animation: none !important; } }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .material-symbols-outlined.filled {
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        
-        /* Custom scrollbar for modern feel */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background-color: #E5E5E0; border-radius: 10px; }
-        
-        /* Glassy subtle glow for active states */
-        .glow-active {
-            box-shadow: 0 0 0 4px rgba(0, 108, 70, 0.1);
-        }
-        .language-option:has(input:checked) .language-check {
-            border-color: #006c46;
-            background-color: #006c46;
-            color: #ffffff;
-            transform: scale(1.04);
-        }
-        .language-option:has(input:checked) .language-check .material-symbols-outlined {
-            opacity: 1;
-            transform: scale(1);
-        }
-    </style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.filled {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* Custom scrollbar for modern feel */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background-color: #E5E5E0; border-radius: 10px; }
+
+    /* Glassy subtle glow for active states */
+    .glow-active {
+        box-shadow: 0 0 0 4px rgba(0, 108, 70, 0.1);
+    }
+
+    /* Dynamic specialization panels — hidden by default, revealed by the matching track radio */
+    .spec-panel { display: none; }
+
+    #track-it:checked            ~ .spec-wrapper #spec-it,
+    #track-engineering:checked   ~ .spec-wrapper #spec-engineering,
+    #track-business:checked      ~ .spec-wrapper #spec-business,
+    #track-healthcare:checked    ~ .spec-wrapper #spec-healthcare,
+    #track-energy:checked        ~ .spec-wrapper #spec-energy,
+    #track-legal:checked         ~ .spec-wrapper #spec-legal,
+    #track-hospitality:checked   ~ .spec-wrapper #spec-hospitality,
+    #track-media:checked         ~ .spec-wrapper #spec-media,
+    #track-education:checked     ~ .spec-wrapper #spec-education {
+        display: block;
+        animation: fadeSlide 0.25s ease-out;
+    }
+
+    @keyframes fadeSlide {
+        from { opacity: 0; transform: translateY(-4px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+</style>
 </head>
+
 <body class="bg-background text-text-primary min-h-screen flex items-center justify-center py-margin-mobile md:py-margin-desktop px-margin-mobile md:px-margin-desktop font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+
 <!-- Main Setup Canvas -->
 <main class="w-full max-w-[720px] bg-surface rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-border-subtle overflow-hidden relative">
-<!-- Decorative Header Bar -->
-<div class="h-2 w-full bg-gradient-to-r from-primary via-secondary to-primary-container"></div>
-<div class="p-stack-md md:p-margin-desktop flex flex-col gap-stack-lg">
-<div class="flex justify-start" dir="rtl">
-<a class="inline-flex items-center gap-2 rounded-lg border border-border-subtle bg-surface-container-low px-4 py-2 font-body-md text-body-md font-semibold text-primary transition-all duration-300 hover:border-primary hover:bg-surface-elevated hover:shadow-[0_6px_18px_rgba(0,61,43,0.08)]" href="/">
-<span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
-<span>العودة للرئيسية</span>
-</a>
-</div>
-<!-- Header -->
-<header class="text-center space-y-2">
-<h1 class="font-h1 text-h1 text-primary">جهّز مقابلتك</h1>
-<p class="font-body-lg text-body-lg text-text-secondary tracking-wide">Set up your interview</p>
-</header>
-<!-- Configuration Form -->
-<form class="space-y-stack-lg" onsubmit="event.preventDefault();">
-<!-- Q1: Target Company -->
-<fieldset class="space-y-stack-sm">
-<div class="flex justify-between items-baseline border-b border-border-subtle pb-2 mb-stack-sm">
-<h2 class="font-h2 text-h2 text-text-primary">الشركة المستهدفة</h2>
-<span class="font-body-md text-body-md text-text-secondary text-right">Target Company</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-sm" id="company-selection">
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input checked="" class="peer sr-only" name="company" type="radio" value="aramco">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">oil_barrel</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">أرامكو</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Aramco</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="pif">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">account_balance_wallet</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">صندوق الاستثمارات</span>
-<span class="font-label-caps text-label-caps text-text-secondary">PIF</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="neom">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">location_city</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">نيوم</span>
-<span class="font-label-caps text-label-caps text-text-secondary">NEOM</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="qiddiya">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">sports_esports</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">القدية</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Qiddiya</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="red_sea">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">beach_access</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">البحر الأحمر</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Red Sea Global</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="roshn">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">apartment</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">روشن</span>
-<span class="font-label-caps text-label-caps text-text-secondary">ROSHN</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="misk">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">volunteer_activism</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">مسك</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Misk Foundation</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="sabic">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">science</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">سابك</span>
-<span class="font-label-caps text-label-caps text-text-secondary">SABIC</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="maaden">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">diamond</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">معادن</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Ma'aden</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="stc">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">cell_tower</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">الاتصالات السعودية</span>
-<span class="font-label-caps text-label-caps text-text-secondary">STC</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="snb">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">account_balance</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">البنك الأهلي</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Saudi National Bank</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="riyad">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">account_balance_wallet</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">بنك الرياض</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Riyad Bank</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="saudia">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">flight_takeoff</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">السعودية</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Saudi Airlines</span>
-</div>
-</label>
-<label class="group relative bg-surface border border-border-subtle rounded-lg p-stack-sm cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[100px] text-center">
-<input class="peer sr-only" name="company" type="radio" value="almarai">
-<div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
-<span class="material-symbols-outlined filled absolute top-2 right-2 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300">check_circle</span>
-<div class="relative z-10 flex flex-col items-center gap-1">
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[32px] mb-1">restaurant</span>
-<span class="font-body-lg text-body-lg font-bold text-text-primary group-hover:text-primary transition-colors">المراعي</span>
-<span class="font-label-caps text-label-caps text-text-secondary">Almarai</span>
-</div>
-</label>
-</div>
-</fieldset>
-<!-- Q2: Role Track -->
-<fieldset class="space-y-stack-sm">
-<div class="flex justify-between items-baseline border-b border-border-subtle pb-2 mb-stack-sm">
-<h2 class="font-h2 text-h2 text-text-primary">المسار الوظيفي</h2>
-<span class="font-body-md text-body-md text-text-secondary text-right">Role Track</span>
-</div>
-<div class="flex flex-wrap gap-stack-sm">
-<label class="cursor-pointer">
-<input checked="" class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="technical">
-<div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">code</span>
-<span class="">تقني · Technical</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="business">
-<div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">business_center</span>
-<span class="">أعمال · Business</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="engineering">
-<div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">engineering</span>
-<span class="">الهندسة · Engineering</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="healthcare">
-<div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">medical_services</span>
-<span class="">الرعاية الصحية · Healthcare</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="energy">
-<div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">bolt</span>
-<span class="">الطاقة والاستدامة · Energy & Sustainability</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="legal">
-<div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">gavel</span>
-<span class="">القانون والامتثال · Legal & Compliance</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="track" onchange="syncSpecializationOptions()" type="radio" value="hospitality">
-<div class="px-6 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-all font-medium flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">hotel</span>
-<span class="">الضيافة والسياحة · Hospitality & Tourism</span>
-</div>
-</label>
-</div><div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" data-specialization-group id="technical-sub-roles">
-<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">التخصص التقني / Technical Specialization</p>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="sub_track" type="radio" value="cybersecurity">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">الأمن السيبراني · CyberSecurity</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input checked="" class="peer sr-only" name="sub_track" type="radio" value="software">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">هندسة البرمجيات · Software Engineering</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="sub_track" type="radio" value="data_science">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">علم البيانات · Data Science</span>
-</div>
-</label>
-</div>
-<div class="hidden flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" data-specialization-group id="business-sub-roles">
-<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">تخصص الأعمال / Business Specialization</p>
-<label class="cursor-pointer">
-<input checked="" class="peer sr-only" name="business_sub_track" type="radio" value="marketing">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">التسويق · Marketing</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="business_sub_track" type="radio" value="finance">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">المالية · Finance</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="business_sub_track" type="radio" value="human_resources">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">الموارد البشرية · Human Resources</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="business_sub_track" type="radio" value="operations">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">العمليات · Operations</span>
-</div>
-</label>
-<label class="cursor-pointer">
-<input class="peer sr-only" name="business_sub_track" type="radio" value="strategy">
-<div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2">
-<span class="font-medium">الاستراتيجية · Strategy</span>
-</div>
-</label>
-</div>
-<div class="hidden flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" data-specialization-group id="engineering-sub-roles">
-<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">التخصص الهندسي / Engineering Specialization</p>
-<label class="cursor-pointer"><input checked="" class="peer sr-only" name="engineering_sub_track" type="radio" value="mechanical"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الهندسة الميكانيكية · Mechanical</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="engineering_sub_track" type="radio" value="electrical"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الهندسة الكهربائية · Electrical</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="engineering_sub_track" type="radio" value="civil"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الهندسة المدنية · Civil</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="engineering_sub_track" type="radio" value="industrial"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الهندسة الصناعية · Industrial</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="engineering_sub_track" type="radio" value="chemical"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الهندسة الكيميائية · Chemical</span></div></label>
-</div>
-<div class="hidden flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" data-specialization-group id="healthcare-sub-roles">
-<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">تخصص الرعاية الصحية / Healthcare Specialization</p>
-<label class="cursor-pointer"><input checked="" class="peer sr-only" name="healthcare_sub_track" type="radio" value="healthcare_admin"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">إدارة الرعاية الصحية · Healthcare Administration</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="healthcare_sub_track" type="radio" value="clinical_operations"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">العمليات السريرية · Clinical Operations</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="healthcare_sub_track" type="radio" value="pharmacy"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الصيدلة · Pharmacy</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="healthcare_sub_track" type="radio" value="public_health"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الصحة العامة · Public Health</span></div></label>
-</div>
-<div class="hidden flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" data-specialization-group id="energy-sub-roles">
-<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">تخصص الطاقة / Energy Specialization</p>
-<label class="cursor-pointer"><input checked="" class="peer sr-only" name="energy_sub_track" type="radio" value="renewable_energy"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الطاقة المتجددة · Renewable Energy</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="energy_sub_track" type="radio" value="sustainability"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الاستدامة · Sustainability</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="energy_sub_track" type="radio" value="hse"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">السلامة والصحة والبيئة · HSE</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="energy_sub_track" type="radio" value="petroleum"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">هندسة البترول · Petroleum Engineering</span></div></label>
-</div>
-<div class="hidden flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" data-specialization-group id="legal-sub-roles">
-<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">تخصص القانون / Legal Specialization</p>
-<label class="cursor-pointer"><input checked="" class="peer sr-only" name="legal_sub_track" type="radio" value="compliance"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الامتثال · Compliance</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="legal_sub_track" type="radio" value="corporate_law"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">قانون الشركات · Corporate Law</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="legal_sub_track" type="radio" value="risk"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">إدارة المخاطر · Risk Management</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="legal_sub_track" type="radio" value="contracts"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">العقود · Contracts</span></div></label>
-</div>
-<div class="hidden flex flex-wrap gap-2 mt-4 pt-3 border-t border-border-subtle/50" data-specialization-group id="hospitality-sub-roles">
-<p class="w-full font-label-caps text-label-caps text-text-secondary mb-1">تخصص الضيافة والسياحة / Hospitality Specialization</p>
-<label class="cursor-pointer"><input checked="" class="peer sr-only" name="hospitality_sub_track" type="radio" value="hotel_operations"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">عمليات الفنادق · Hotel Operations</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="hospitality_sub_track" type="radio" value="tourism_management"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">إدارة السياحة · Tourism Management</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="hospitality_sub_track" type="radio" value="guest_experience"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">تجربة الضيوف · Guest Experience</span></div></label>
-<label class="cursor-pointer"><input class="peer sr-only" name="hospitality_sub_track" type="radio" value="food_beverage"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-all flex items-center gap-2"><span class="font-medium">الأغذية والمشروبات · Food & Beverage</span></div></label>
-</div>
-</fieldset>
-<!-- Q3: Language -->
-<fieldset class="space-y-stack-sm">
-<div class="flex justify-between items-baseline border-b border-border-subtle pb-2 mb-stack-sm">
-<h2 class="font-h2 text-h2 text-text-primary">لغة المقابلة</h2>
-<span class="font-body-md text-body-md text-text-secondary text-right">Language</span>
-</div>
-<div class="flex flex-col gap-3">
-<label class="language-option group relative flex items-center justify-between p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
-<input checked="" class="peer sr-only" name="language" type="radio" value="bilingual">
-<div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
-<div class="flex items-center gap-3 relative z-10">
-<div class="language-check w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200">
-<span class="material-symbols-outlined text-[15px] opacity-0 scale-50 transition-all duration-200">check</span>
-</div>
-<div class="flex flex-col">
-<span class="font-body-lg text-body-lg font-bold text-text-primary">ثنائية اللغة</span>
-<span class="font-body-md text-body-md text-text-secondary">Bilingual</span>
-</div>
-</div>
-<div class="relative z-10 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
-<span class="material-symbols-outlined text-[14px]">star</span>
-                                Recommended
+
+    <!-- Decorative Header Bar -->
+    <div class="h-2 w-full bg-gradient-to-r from-primary via-secondary to-primary-container"></div>
+
+    <div class="p-stack-md md:p-margin-desktop flex flex-col gap-stack-lg">
+
+        <!-- Header -->
+        <header class="text-center space-y-2">
+            <h1 class="font-h1 text-h1 text-primary">جهّز مقابلتك</h1>
+            <p class="font-body-lg text-body-lg text-text-secondary tracking-wide">Set up your interview</p>
+        </header>
+
+        <!-- Configuration Form -->
+        <form class="space-y-stack-lg" onsubmit="event.preventDefault();">
+
+            <!-- Q1: Target Company -->
+            <fieldset class="space-y-stack-sm">
+                <div class="flex justify-between items-baseline border-b border-border-subtle pb-2 mb-stack-sm">
+                    <h2 class="font-h2 text-h2 text-text-primary">الشركة المستهدفة</h2>
+                    <span class="font-body-md text-body-md text-text-secondary text-right">Target Company</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-stack-sm" id="company-selection">
+
+                    <!-- Aramco (Pre-selected) -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input checked="" class="peer sr-only" name="company" type="radio" value="aramco">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all shadow-[0_4px_16px_rgba(0,0,0,0.02)]"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">oil_barrel</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">أرامكو</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Aramco</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Energy</span>
+                        </div>
+                    </label>
+
+                    <!-- PIF -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="pif">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">savings</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">صندوق الاستثمارات</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">PIF</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Sovereign Fund</span>
+                        </div>
+                    </label>
+
+                    <!-- NEOM -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="neom">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">location_city</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">نيوم</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">NEOM</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Giga-Project</span>
+                        </div>
+                    </label>
+
+                    <!-- Qiddiya -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="qiddiya">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">attractions</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">القدية</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Qiddiya</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Giga-Project</span>
+                        </div>
+                    </label>
+
+                    <!-- Red Sea Global -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="redsea">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">beach_access</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">البحر الأحمر</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Red Sea Global</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Tourism</span>
+                        </div>
+                    </label>
+
+                    <!-- ROSHN -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="roshn">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">apartment</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">روشن</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">ROSHN</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Real Estate</span>
+                        </div>
+                    </label>
+
+                    <!-- Misk Foundation -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="misk">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">volunteer_activism</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">مسك</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Misk Foundation</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Non-Profit</span>
+                        </div>
+                    </label>
+
+                    <!-- SABIC -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="sabic">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">science</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">سابك</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">SABIC</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Petrochemicals</span>
+                        </div>
+                    </label>
+
+                    <!-- Ma'aden -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="maaden">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">diamond</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">معادن</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Ma'aden</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Mining</span>
+                        </div>
+                    </label>
+
+                    <!-- stc -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="stc">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">cell_tower</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">الاتصالات السعودية</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">stc</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Telecom</span>
+                        </div>
+                    </label>
+
+                    <!-- Saudi National Bank -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="snb">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">account_balance</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">البنك الأهلي</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Saudi National Bank</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Banking</span>
+                        </div>
+                    </label>
+
+                    <!-- Riyad Bank -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="riyad">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">account_balance_wallet</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">بنك الرياض</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Riyad Bank</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Banking</span>
+                        </div>
+                    </label>
+
+                    <!-- Saudia Airlines -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="saudia">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">flight_takeoff</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">السعودية</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Saudia Airlines</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Aviation</span>
+                        </div>
+                    </label>
+
+                    <!-- Almarai -->
+                    <label class="group relative bg-surface border border-border-subtle rounded-lg p-3 cursor-pointer hover:border-outline transition-all duration-200 flex flex-col items-center justify-center min-h-[110px] text-center">
+                        <input class="peer sr-only" name="company" type="radio" value="almarai">
+                        <div class="absolute inset-0 border-2 border-transparent rounded-lg peer-checked:border-secondary peer-checked:bg-surface-elevated transition-all"></div>
+                        <span class="material-symbols-outlined filled absolute top-1.5 right-1.5 text-secondary opacity-0 peer-checked:opacity-100 transition-opacity scale-75 peer-checked:scale-100 duration-300 text-[18px]">check_circle</span>
+                        <div class="relative z-10 flex flex-col items-center gap-0.5">
+                            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-[28px] mb-1">restaurant</span>
+                            <span class="font-body-md text-body-md font-bold text-text-primary group-hover:text-primary transition-colors leading-tight">المراعي</span>
+                            <span class="font-label-caps text-label-caps text-text-secondary">Almarai</span>
+                            <span class="mt-1 text-[10px] uppercase tracking-wider text-text-secondary/70 font-semibold">Food &amp; Beverage</span>
+                        </div>
+                    </label>
+
+                </div>
+            </fieldset>
+
+            <!-- Q2: Role Track + Specialization (linked via sibling selectors) -->
+            <fieldset class="space-y-stack-sm">
+                <div class="flex justify-between items-baseline border-b border-border-subtle pb-2 mb-stack-sm">
+                    <h2 class="font-h2 text-h2 text-text-primary">المسار الوظيفي</h2>
+                    <span class="font-body-md text-body-md text-text-secondary text-right">Role Track</span>
+                </div>
+
+                <!-- Track radios (kept as direct children of fieldset so the sibling CSS works) -->
+                <input class="peer sr-only" name="track" type="radio" id="track-it" value="it" checked>
+                <input class="peer sr-only" name="track" type="radio" id="track-engineering" value="engineering">
+                <input class="peer sr-only" name="track" type="radio" id="track-business" value="business">
+                <input class="peer sr-only" name="track" type="radio" id="track-healthcare" value="healthcare">
+                <input class="peer sr-only" name="track" type="radio" id="track-energy" value="energy">
+                <input class="peer sr-only" name="track" type="radio" id="track-legal" value="legal">
+                <input class="peer sr-only" name="track" type="radio" id="track-hospitality" value="hospitality">
+                <input class="peer sr-only" name="track" type="radio" id="track-media" value="media">
+                <input class="peer sr-only" name="track" type="radio" id="track-education" value="education">
+
+                <!-- Pills wrap -->
+                <div class="flex flex-wrap gap-stack-sm">
+                    <label for="track-it" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">computer</span>
+                            <span>تقنية المعلومات · Information Technology</span>
+                        </div>
+                    </label>
+                    <label for="track-engineering" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">engineering</span>
+                            <span>الهندسة · Engineering</span>
+                        </div>
+                    </label>
+                    <label for="track-business" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">business_center</span>
+                            <span>الأعمال والمالية · Business &amp; Finance</span>
+                        </div>
+                    </label>
+                    <label for="track-healthcare" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">medical_services</span>
+                            <span>الرعاية الصحية · Healthcare</span>
+                        </div>
+                    </label>
+                    <label for="track-energy" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">bolt</span>
+                            <span>الطاقة والاستدامة · Energy &amp; Sustainability</span>
+                        </div>
+                    </label>
+                    <label for="track-legal" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">gavel</span>
+                            <span>القانون والامتثال · Legal &amp; Compliance</span>
+                        </div>
+                    </label>
+                    <label for="track-hospitality" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">hotel</span>
+                            <span>الضيافة والسياحة · Hospitality &amp; Tourism</span>
+                        </div>
+                    </label>
+                    <label for="track-media" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">campaign</span>
+                            <span>الإعلام والاتصال · Media &amp; Communications</span>
+                        </div>
+                    </label>
+                    <label for="track-education" class="cursor-pointer track-pill">
+                        <div class="px-5 py-3 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-body-md hover:bg-surface-container-low transition-all font-medium flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px]">school</span>
+                            <span>التعليم والأكاديميا · Education &amp; Academia</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Dynamic Specialization Wrapper -->
+                <div class="spec-wrapper pt-4">
+
+                    <!-- IT Specializations -->
+                    <div class="spec-panel" id="spec-it">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="swe" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">هندسة البرمجيات · Software Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="ai" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الذكاء الاصطناعي · Artificial Intelligence</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="cyber" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الأمن السيبراني · Cybersecurity</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="data" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">تحليل البيانات · Data Analytics</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="cloud" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الحوسبة السحابية · Cloud Computing</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="devops" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">عمليات التطوير · DevOps Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="network" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">هندسة الشبكات · Network Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="it-support" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الدعم الفني · IT Support &amp; Infrastructure</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Engineering Specializations -->
+                    <div class="spec-panel" id="spec-engineering">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="petroleum" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">هندسة البترول · Petroleum Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="chemical" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهندسة الكيميائية · Chemical Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="mechanical" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهندسة الميكانيكية · Mechanical Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="civil" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهندسة المدنية · Civil Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="electrical" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهندسة الكهربائية · Electrical Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="industrial" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهندسة الصناعية · Industrial Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="architecture" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهندسة المعمارية · Architectural Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="aerospace" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">هندسة الطيران والفضاء · Aerospace Engineering</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Business & Finance Specializations -->
+                    <div class="spec-panel" id="spec-business">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="investment" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الخدمات المصرفية الاستثمارية · Investment Banking</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="financial" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">التحليل المالي · Financial Analysis</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="accounting" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">المحاسبة والتدقيق · Accounting &amp; Auditing</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="marketing" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">التسويق والعلامة التجارية · Marketing &amp; Branding</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="hr" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الموارد البشرية · Human Resources</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="pm" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة المشاريع · Project Management</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="supply" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة سلسلة الإمداد · Supply Chain Management</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="islamic-finance" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">التمويل الإسلامي · Islamic Finance</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Healthcare Specializations -->
+                    <div class="spec-panel" id="spec-healthcare">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="medicine" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الطب البشري · General Medicine</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="nursing" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">التمريض · Nursing</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="pharmacy" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الصيدلة · Pharmacy</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="dentistry" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">طب الأسنان · Dentistry</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="lab" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">المختبرات الطبية · Medical Laboratory Sciences</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="radiology" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الأشعة والتصوير الطبي · Radiology &amp; Medical Imaging</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="public-health" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الصحة العامة · Public Health</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="health-admin" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة المستشفيات · Hospital Administration</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Energy & Sustainability Specializations -->
+                    <div class="spec-panel" id="spec-energy">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="renewable" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الطاقة المتجددة · Renewable Energy</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="oil-gas" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">عمليات النفط والغاز · Oil &amp; Gas Operations</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="environmental" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهندسة البيئية · Environmental Engineering</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="sustainability" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة الاستدامة · Sustainability Management</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="hydrogen" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الهيدروجين الأخضر · Green Hydrogen</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="water" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">معالجة وتحلية المياه · Water &amp; Desalination</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="hse" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الصحة والسلامة والبيئة · Health, Safety &amp; Environment</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Legal & Compliance Specializations -->
+                    <div class="spec-panel" id="spec-legal">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="corporate-law" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">القانون التجاري · Corporate Law</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="sharia" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الامتثال الشرعي · Sharia Compliance</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="regulatory" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الشؤون التنظيمية · Regulatory Affairs</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="contracts" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة العقود · Contract Management</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="labor-law" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">قانون العمل · Labor Law</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="aml" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">مكافحة غسل الأموال · Anti-Money Laundering</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Hospitality & Tourism Specializations -->
+                    <div class="spec-panel" id="spec-hospitality">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="hotel-mgmt" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة الفنادق · Hotel Management</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="events" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة الفعاليات · Event Management</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="tourism-ops" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">عمليات السياحة · Tourism Operations</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="culinary" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">فنون الطهي · Culinary Arts</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="travel-retail" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">إدارة السفر والتجزئة · Travel &amp; Retail Management</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="heritage" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">السياحة التراثية · Heritage &amp; Cultural Tourism</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Media & Communications Specializations -->
+                    <div class="spec-panel" id="spec-media">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="journalism" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الصحافة · Journalism</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="pr" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">العلاقات العامة · Public Relations</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="digital-media" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الإعلام الرقمي · Digital Media</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="translation" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الترجمة واللغويات · Translation &amp; Linguistics</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="content" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">صناعة المحتوى · Content Creation</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="broadcasting" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الإذاعة والتلفزيون · Broadcasting</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="advertising" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">الإعلان · Advertising</div></label>
+                        </div>
+                    </div>
+
+                    <!-- Education & Academia Specializations -->
+                    <div class="spec-panel" id="spec-education">
+                        <div class="flex justify-between items-baseline border-b border-border-subtle/50 pb-2 mb-2">
+                            <h3 class="font-h2 text-[20px] text-text-primary">تخصص المجال</h3>
+                            <span class="font-body-md text-caption text-text-secondary text-right">Field Specialization</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="k12-teaching" checked class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">التعليم المدرسي · K-12 Teaching</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="higher-ed" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">التعليم العالي · Higher Education</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="curriculum" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">تصميم المناهج · Curriculum Design</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="edtech" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">تقنيات التعليم · Educational Technology</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="research" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">البحث العلمي · Academic Research</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="specialization" value="special-ed" class="peer sr-only"><div class="px-4 py-2 rounded-full border border-border-subtle bg-surface text-text-secondary font-body-md text-caption hover:bg-surface-container-low peer-checked:bg-secondary peer-checked:text-white peer-checked:border-secondary transition-all font-medium">التربية الخاصة · Special Education</div></label>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <!-- Q3: Language -->
+            <fieldset class="space-y-stack-sm">
+                <div class="flex justify-between items-baseline border-b border-border-subtle pb-2 mb-stack-sm">
+                    <h2 class="font-h2 text-h2 text-text-primary">لغة المقابلة</h2>
+                    <span class="font-body-md text-body-md text-text-secondary text-right">Language</span>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <label class="group relative flex items-center justify-between p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
+                        <input checked="" class="peer sr-only" name="language" type="radio" value="bilingual">
+                        <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
+                        <div class="flex items-center gap-3 relative z-10">
+                            <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
+                                <div class="w-2 h-2 rounded-full bg-surface scale-0 peer-checked:scale-100 transition-transform"></div>
                             </div>
-</label>
-<div class="grid grid-cols-2 gap-3">
-<label class="language-option group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
-<input class="peer sr-only" name="language" type="radio" value="arabic">
-<div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
-<div class="flex items-center gap-3 relative z-10">
-<div class="language-check w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200">
-<span class="material-symbols-outlined text-[15px] opacity-0 scale-50 transition-all duration-200">check</span>
-</div>
-<div class="flex flex-col">
-<span class="font-body-lg text-body-lg font-bold text-text-primary">العربية</span>
-<span class="font-body-md text-body-md text-text-secondary">Arabic Only</span>
-</div>
-</div>
-</label>
-<label class="language-option group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
-<input class="peer sr-only" name="language" type="radio" value="english">
-<div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
-<div class="flex items-center gap-3 relative z-10">
-<div class="language-check w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200">
-<span class="material-symbols-outlined text-[15px] opacity-0 scale-50 transition-all duration-200">check</span>
-</div>
-<div class="flex flex-col">
-<span class="font-body-lg text-body-lg font-bold text-text-primary">English</span>
-<span class="font-body-md text-body-md text-text-secondary">English Only</span>
-</div>
-</div>
-</label>
-</div>
-</div>
-</fieldset>
-<!-- Q4: First Name Input -->
-<fieldset class="space-y-stack-sm pt-stack-sm">
-<div class="flex justify-between items-baseline mb-2">
-<label class="font-h2 text-h2 text-text-primary" for="firstName">الاسم الأول</label>
-<span class="font-body-md text-body-md text-text-secondary text-right">First Name</span>
-</div>
-<div class="relative">
-<input class="w-full bg-surface-elevated border border-border-subtle rounded-xl p-4 font-body-lg text-body-lg text-text-primary placeholder:text-text-secondary/60 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all outline-none" dir="rtl" id="firstName" name="firstName" placeholder="فهد / Fahad" required type="text">
-<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-secondary/50">
-<span class="material-symbols-outlined">person</span>
-</div>
-</div>
-<p class="hidden text-error-red font-body-md text-caption" id="firstNameError">الاسم مطلوب للمتابعة / First name is required</p>
-</fieldset>
-<!-- Footer Actions -->
-<div class="pt-stack-md mt-stack-md border-t border-border-subtle flex flex-col gap-4">
-<!-- Mic Permission Note -->
-<!-- CTA Button -->
-<button class="group relative w-full bg-primary text-on-primary rounded-xl py-4 flex items-center justify-center gap-3 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:bg-primary-container" onclick="startInterviewWithSetup()" type="button">
-<!-- Button background hover effect -->
-<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-<span class="font-h2 text-h2 font-bold relative z-10">ابدأ المقابلة</span>
-<span class="opacity-70 font-body-lg text-body-lg relative z-10">· Start Interview Now</span>
-<span class="material-symbols-outlined relative z-10 transform group-hover:translate-x-[-4px] transition-transform rtl:group-hover:translate-x-[4px]">arrow_forward</span>
-</button>
-</div>
-</form>
-</div>
+                            <div class="flex flex-col">
+                                <span class="font-body-lg text-body-lg font-bold text-text-primary">ثنائية اللغة</span>
+                                <span class="font-body-md text-body-md text-text-secondary">Bilingual</span>
+                            </div>
+                        </div>
+                        <div class="relative z-10 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+                            <span class="material-symbols-outlined text-[14px]">star</span>
+                            Recommended
+                        </div>
+                    </label>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
+                            <input class="peer sr-only" name="language" type="radio" value="arabic">
+                            <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
+                            <div class="flex items-center gap-3 relative z-10">
+                                <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
+                                    <div class="w-2 h-2 rounded-full bg-surface scale-0 peer-checked:scale-100 transition-transform"></div>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-body-lg text-body-lg font-bold text-text-primary">العربية</span>
+                                    <span class="font-body-md text-body-md text-text-secondary">Arabic Only</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="group relative flex items-center p-4 rounded-lg border border-border-subtle bg-surface cursor-pointer hover:bg-surface-container-low transition-colors">
+                            <input class="peer sr-only" name="language" type="radio" value="english">
+                            <div class="absolute inset-0 rounded-lg border-2 border-transparent peer-checked:border-secondary pointer-events-none transition-colors"></div>
+                            <div class="flex items-center gap-3 relative z-10">
+                                <div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary transition-all">
+                                    <div class="w-2 h-2 rounded-full bg-surface scale-0 peer-checked:scale-100 transition-transform"></div>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-body-lg text-body-lg font-bold text-text-primary">English</span>
+                                    <span class="font-body-md text-body-md text-text-secondary">English Only</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Q4: First Name Input -->
+            <fieldset class="space-y-stack-sm pt-stack-sm">
+                <div class="flex justify-between items-baseline mb-2">
+                    <label class="font-h2 text-h2 text-text-primary" for="firstName">الاسم الأول</label>
+                    <span class="font-body-md text-body-md text-text-secondary text-right">First Name</span>
+                </div>
+                <div class="relative">
+                    <input class="w-full bg-surface-elevated border border-border-subtle rounded-xl p-4 font-body-lg text-body-lg text-text-primary placeholder:text-text-secondary/60 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all outline-none" dir="rtl" id="firstName" name="firstName" placeholder="فهد / Fahad" type="text">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-secondary/50">
+                        <span class="material-symbols-outlined">person</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Footer Actions -->
+            <div class="pt-stack-md mt-stack-md border-t border-border-subtle flex flex-col gap-4">
+                <!-- Mic Permission Note -->
+                <div class="flex items-center justify-center gap-2 text-text-secondary bg-surface-container-low py-3 px-4 rounded-lg">
+                    <span class="material-symbols-outlined text-[18px]">mic</span>
+                    <div class="flex items-center gap-2 font-caption text-caption">
+                        <span>نحتاج إلى صلاحية الميكروفون للبدء</span>
+                        <span class="opacity-50">·</span>
+                        <span>Microphone access is required to start</span>
+                    </div>
+                </div>
+                <!-- CTA Button -->
+                <button class="group relative w-full bg-primary text-on-primary rounded-xl py-4 flex items-center justify-center gap-3 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:bg-primary-container" type="button">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                    <span class="font-h2 text-h2 font-bold relative z-10">ابدأ المقابلة</span>
+                    <span class="opacity-70 font-body-lg text-body-lg relative z-10">· Start Interview Now</span>
+                    <span class="material-symbols-outlined relative z-10 transform group-hover:translate-x-[-4px] transition-transform rtl:group-hover:translate-x-[4px]">arrow_forward</span>
+                </button>
+            </div>
+        </form>
+    </div>
 </main>
+
 <script>
-        function getCheckedValue(name, fallback) {
-            const checked = document.querySelector(`input[name="${name}"]:checked`);
-            return checked ? checked.value : fallback;
-        }
+    // Style the track pill based on its associated radio's checked state.
+    // Stitch-friendly: pure DOM, no frameworks.
+    document.addEventListener('DOMContentLoaded', () => {
+        const pillSelectedClasses = ['bg-primary-container', 'text-on-primary-container', 'border-primary-container'];
+        const pillDefaultClasses  = ['bg-surface', 'text-text-secondary', 'border-border-subtle'];
 
-        function syncSpecializationOptions() {
-            const selectedTrack = getCheckedValue('track', 'technical');
-            const activeGroup = document.querySelector(`#${selectedTrack}-sub-roles`);
-
-            document.querySelectorAll('[data-specialization-group]').forEach(group => {
-                group.classList.toggle('hidden', group !== activeGroup);
+        function syncTrackPills() {
+            document.querySelectorAll('.track-pill').forEach(label => {
+                const forId = label.getAttribute('for');
+                const input = document.getElementById(forId);
+                const pill = label.querySelector('div');
+                if (!input || !pill) return;
+                if (input.checked) {
+                    pill.classList.remove(...pillDefaultClasses);
+                    pill.classList.add(...pillSelectedClasses);
+                } else {
+                    pill.classList.remove(...pillSelectedClasses);
+                    pill.classList.add(...pillDefaultClasses);
+                }
             });
         }
 
-        function startInterviewWithSetup() {
-            const firstNameInput = document.querySelector('#firstName');
-            const firstNameError = document.querySelector('#firstNameError');
-            const firstName = firstNameInput?.value.trim() || "";
+        // Initial sync + listen to any track change
+        syncTrackPills();
+        document.querySelectorAll('input[name="track"]').forEach(input => {
+            input.addEventListener('change', () => {
+                syncTrackPills();
+                // When track changes, reset specialization to the first option of the new panel
+                const activePanel = document.querySelector('.spec-panel:not([style*="display: none"])');
+                // CSS handles visibility; just ensure first radio in the visible panel is checked
+                const visiblePanel = [...document.querySelectorAll('.spec-panel')]
+                    .find(p => getComputedStyle(p).display !== 'none');
+                if (visiblePanel) {
+                    const firstSpec = visiblePanel.querySelector('input[name="specialization"]');
+                    if (firstSpec) firstSpec.checked = true;
+                }
+            });
+        });
 
-            if (!firstName) {
-                firstNameInput?.classList.add('border-error-red', 'ring-2', 'ring-error-red/20');
-                firstNameError?.classList.remove('hidden');
-                firstNameInput?.focus();
-                return;
-            }
+        // Subtle micro-animation on selection change for any fieldset
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', (e) => {
+                const container = e.target.closest('fieldset');
+                if (!container) return;
+                container.classList.add('scale-[0.99]');
+                setTimeout(() => container.classList.remove('scale-[0.99]'), 150);
+            });
+        });
 
-            firstNameInput?.classList.remove('border-error-red', 'ring-2', 'ring-error-red/20');
-            firstNameError?.classList.add('hidden');
+        // Start Interview button handler
+        document.querySelector('button[type="button"]').addEventListener('click', () => {
+            const company = (document.querySelector('input[name="company"]:checked') || {}).value || 'aramco';
+            const track   = (document.querySelector('input[name="track"]:checked') || {}).value || 'it';
+            const spec    = (document.querySelector('input[name="specialization"]:checked') || {}).value || 'swe';
+            const lang    = (document.querySelector('input[name="language"]:checked') || {}).value || 'bilingual';
+            const name    = document.getElementById('firstName').value.trim() || 'فهد';
 
-            const companyLabels = {
-                riyad: "Riyad Bank",
-                aramco: "Aramco",
-                pif: "PIF",
-                neom: "NEOM",
-                qiddiya: "Qiddiya",
-                red_sea: "Red Sea Global",
-                roshn: "ROSHN",
-                misk: "Misk Foundation",
-                sabic: "SABIC",
-                maaden: "Ma'aden",
-                stc: "STC",
-                snb: "Saudi National Bank",
-                saudia: "Saudi Airlines",
-                almarai: "Almarai"
-            };
-            const trackLabels = {
-                technical: "Technical",
-                business: "Business & Finance",
-                engineering: "Engineering",
-                healthcare: "Healthcare",
-                energy: "Energy & Sustainability",
-                legal: "Legal & Compliance",
-                hospitality: "Hospitality & Tourism"
-            };
-            const specializationLabels = {
-                cybersecurity: "Cybersecurity",
-                software: "Software Engineering",
-                data_science: "Data Science"
-            };
-            const businessSpecializationLabels = {
-                marketing: "Marketing",
-                finance: "Finance",
-                human_resources: "Human Resources",
-                operations: "Operations",
-                strategy: "Strategy"
-            };
-            const engineeringSpecializationLabels = {
-                mechanical: "Mechanical Engineering",
-                electrical: "Electrical Engineering",
-                civil: "Civil Engineering",
-                industrial: "Industrial Engineering",
-                chemical: "Chemical Engineering"
-            };
-            const healthcareSpecializationLabels = {
-                healthcare_admin: "Healthcare Administration",
-                clinical_operations: "Clinical Operations",
-                pharmacy: "Pharmacy",
-                public_health: "Public Health"
-            };
-            const energySpecializationLabels = {
-                renewable_energy: "Renewable Energy",
-                sustainability: "Sustainability",
-                hse: "HSE",
-                petroleum: "Petroleum Engineering"
-            };
-            const legalSpecializationLabels = {
-                compliance: "Compliance",
-                corporate_law: "Corporate Law",
-                risk: "Risk Management",
-                contracts: "Contracts"
-            };
-            const hospitalitySpecializationLabels = {
-                hotel_operations: "Hotel Operations",
-                tourism_management: "Tourism Management",
-                guest_experience: "Guest Experience",
-                food_beverage: "Food & Beverage"
-            };
-            const specializationByTrack = {
-                technical: specializationLabels[getCheckedValue('sub_track', 'software')],
-                business: businessSpecializationLabels[getCheckedValue('business_sub_track', 'marketing')],
-                engineering: engineeringSpecializationLabels[getCheckedValue('engineering_sub_track', 'mechanical')],
-                healthcare: healthcareSpecializationLabels[getCheckedValue('healthcare_sub_track', 'healthcare_admin')],
-                energy: energySpecializationLabels[getCheckedValue('energy_sub_track', 'renewable_energy')],
-                legal: legalSpecializationLabels[getCheckedValue('legal_sub_track', 'compliance')],
-                hospitality: hospitalitySpecializationLabels[getCheckedValue('hospitality_sub_track', 'hotel_operations')]
-            };
-            const languageLabels = {
-                arabic: "Arabic",
-                english: "English",
-                bilingual: "Bilingual"
+            const langMap = { bilingual: 'Bilingual', arabic: 'Arabic', english: 'English' };
+            const trackMap = {
+                it: 'Information Technology', engineering: 'Engineering',
+                business: 'Business & Finance', healthcare: 'Healthcare',
+                energy: 'Energy & Sustainability', legal: 'Legal & Compliance',
+                hospitality: 'Hospitality & Tourism', media: 'Media & Communications',
+                education: 'Education & Academia'
             };
             const selectedTrack = getCheckedValue('track', 'technical');
             const selectedSpecialization = specializationByTrack[selectedTrack];
 
             const setup = {
-                name: firstName,
-                company: companyLabels[getCheckedValue('company', 'aramco')] || "Aramco",
-                track: trackLabels[selectedTrack] || "Technical",
-                specialization: selectedSpecialization || "Software Engineering",
-                interviewLanguage: languageLabels[getCheckedValue('language', 'bilingual')] || "Bilingual"
+                name,
+                company,
+                track: trackMap[track] || track,
+                specialization: spec,
+                interviewLanguage: langMap[lang] || 'Bilingual',
             };
 
-            window.localStorage.setItem('interviewSetup', JSON.stringify(setup));
-            window.localStorage.removeItem('interviewAnswers');
-            window.location.href = '/interview';
-        }
+            try {
+                localStorage.setItem('interviewSetup', JSON.stringify(setup));
+                localStorage.removeItem('interviewAnswers');
+            } catch (e) {}
 
-        // Simple script to handle custom radio button styles if needed beyond CSS peer classes
-        // Currently handled purely by CSS peer-checked, keeping it lightweight as requested.
-        document.addEventListener('DOMContentLoaded', () => {
-            syncSpecializationOptions();
-
-            const inputs = document.querySelectorAll('input[type="radio"]');
-            inputs.forEach(input => {
-                input.addEventListener('change', (e) => {
-                    // Trigger a tiny subtle animation on the container when selection changes
-                    const container = e.target.closest('fieldset');
-                    container.classList.add('scale-[0.99]');
-                    setTimeout(() => container.classList.remove('scale-[0.99]'), 150);
-                });
-            });
+            // Navigate — works both standalone and inside an iframe
+            const target = window.top !== window ? window.top : window;
+            target.location.href = '/interview';
         });
-    </script>
-</body></html>
+    });
+</script>
+
+</body>
+</html>

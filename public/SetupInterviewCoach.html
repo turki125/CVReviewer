@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" style="">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -117,17 +117,6 @@
 </script>
 
 <style>
-        @view-transition { navigation: auto; }
-        html { scroll-behavior: smooth; }
-        body { animation: static-page-enter 780ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-        a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease; }
-        a:active, button:active { transform: translateY(1px) scale(0.985); }
-        ::view-transition-old(root) { animation: static-page-view-out 520ms cubic-bezier(0.33, 0, 0.2, 1) both; }
-        ::view-transition-new(root) { animation: static-page-view-in 760ms cubic-bezier(0.22, 1, 0.36, 1) both; }
-        @keyframes static-page-enter { from { opacity: 0; transform: translateY(12px) scale(0.992); filter: blur(8px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
-        @keyframes static-page-view-out { from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } to { opacity: 0; transform: translateY(-8px) scale(0.992); filter: blur(6px); } }
-        @keyframes static-page-view-in { from { opacity: 0; transform: translateY(12px) scale(0.992); filter: blur(8px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; } ::view-transition-old(root), ::view-transition-new(root), body { animation: none !important; } }
     .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
@@ -698,13 +687,12 @@
                     </div>
                 </div>
                 <!-- CTA Button -->
-                <button id="start-interview-btn" class="group relative w-full bg-primary text-on-primary rounded-xl py-4 flex items-center justify-center gap-3 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:bg-primary-container disabled:opacity-60 disabled:cursor-not-allowed" type="button">
+                <button class="group relative w-full bg-primary text-on-primary rounded-xl py-4 flex items-center justify-center gap-3 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:bg-primary-container" type="button">
                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                     <span class="font-h2 text-h2 font-bold relative z-10">ابدأ المقابلة</span>
                     <span class="opacity-70 font-body-lg text-body-lg relative z-10">· Start Interview Now</span>
                     <span class="material-symbols-outlined relative z-10 transform group-hover:translate-x-[-4px] transition-transform rtl:group-hover:translate-x-[4px]">arrow_forward</span>
                 </button>
-                <p id="start-interview-error" class="hidden text-error text-caption text-center"></p>
             </div>
         </form>
     </div>
@@ -760,102 +748,40 @@
             });
         });
 
-        // ---- Start Interview: collect setup + persist + navigate ----
-        const languageMap = {
-            arabic: 'Arabic',
-            english: 'English',
-            bilingual: 'Bilingual',
-        };
+        // Start Interview button handler
+        document.querySelector('button[type="button"]').addEventListener('click', () => {
+            const company = (document.querySelector('input[name="company"]:checked') || {}).value || 'Aramco';
+            const track   = (document.querySelector('input[name="track"]:checked') || {}).value || 'it';
+            const spec    = (document.querySelector('input[name="specialization"]:checked') || {}).value || 'swe';
+            const lang    = (document.querySelector('input[name="language"]:checked') || {}).value || 'bilingual';
+            const name    = document.getElementById('firstName').value.trim() || 'فهد';
 
-        function getCheckedRadio(name) {
-            return document.querySelector('input[name="' + name + '"]:checked');
-        }
+            const langMap = { bilingual: 'Bilingual', arabic: 'Arabic', english: 'English' };
+            const trackMap = {
+                it: 'Information Technology', engineering: 'Engineering',
+                business: 'Business & Finance', healthcare: 'Healthcare',
+                energy: 'Energy & Sustainability', legal: 'Legal & Compliance',
+                hospitality: 'Hospitality & Tourism', media: 'Media & Communications',
+                education: 'Education & Academia'
+            };
 
-        function readableLabelFor(input) {
-            if (!input) return '';
-            const label = input.closest('label');
-            if (!label) return input.value || '';
-            const arabic = label.querySelector('.font-body-md.font-bold, span.font-body-md.font-bold');
-            const english = label.querySelector('.font-label-caps');
-            const inline = label.querySelector('span:last-child');
-            if (arabic || english) {
-                const arText = arabic ? arabic.textContent.trim() : '';
-                const enText = english ? english.textContent.trim() : '';
-                if (arText && enText) return arText + ' / ' + enText;
-                return arText || enText;
-            }
-            // Track / specialization pills: text is inside a single span like "تقنية المعلومات · Information Technology"
-            const txt = (inline ? inline.textContent : label.textContent || '').trim();
-            return txt.replace(/\s+/g, ' ');
-        }
+            const setup = {
+                name,
+                company,
+                track: trackMap[track] || track,
+                specialization: spec,
+                interviewLanguage: langMap[lang] || 'Bilingual',
+            };
 
-        function readableSpecLabel() {
-            const visiblePanel = [...document.querySelectorAll('.spec-panel')]
-                .find(p => getComputedStyle(p).display !== 'none');
-            if (!visiblePanel) return '';
-            const checked = visiblePanel.querySelector('input[name="specialization"]:checked')
-                || visiblePanel.querySelector('input[name="specialization"]');
-            return readableLabelFor(checked);
-        }
+            try {
+                localStorage.setItem('interviewSetup', JSON.stringify(setup));
+                localStorage.removeItem('interviewAnswers');
+            } catch (e) {}
 
-        function showError(msg) {
-            const el = document.getElementById('start-interview-error');
-            if (!el) return;
-            el.textContent = msg;
-            el.classList.remove('hidden');
-        }
-
-        function clearError() {
-            const el = document.getElementById('start-interview-error');
-            if (!el) return;
-            el.textContent = '';
-            el.classList.add('hidden');
-        }
-
-        const startBtn = document.getElementById('start-interview-btn');
-        if (startBtn) {
-            startBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                clearError();
-
-                const firstNameInput = document.getElementById('firstName');
-                const name = (firstNameInput && firstNameInput.value || '').trim();
-                if (!name) {
-                    showError('الرجاء إدخال الاسم الأول · Please enter your first name');
-                    if (firstNameInput) firstNameInput.focus();
-                    return;
-                }
-
-                const company = getCheckedRadio('company');
-                const track = getCheckedRadio('track');
-                const language = getCheckedRadio('language');
-
-                const setup = {
-                    name,
-                    company: readableLabelFor(company) || 'Aramco',
-                    track: readableLabelFor(track) || 'Information Technology',
-                    specialization: readableSpecLabel() || 'Software Engineering',
-                    interviewLanguage: languageMap[language ? language.value : 'bilingual'] || 'Bilingual',
-                };
-
-                try {
-                    window.localStorage.setItem('interviewSetup', JSON.stringify(setup));
-                } catch (_) {
-                    // ignore storage errors
-                }
-
-                const target = '/interview';
-                try {
-                    if (window.top && window.top !== window.self) {
-                        window.top.location.assign(target);
-                        return;
-                    }
-                } catch (_) {
-                    // cross-origin or blocked — fall through to self nav
-                }
-                window.location.assign(target);
-            });
-        }
+            // Navigate — works both standalone and inside an iframe
+            const target = window.top !== window ? window.top : window;
+            target.location.href = '/interview';
+        });
     });
 </script>
 

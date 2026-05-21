@@ -3165,6 +3165,180 @@ p {
   }
 }
 
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    min-height: auto;
+    background: #ffffff !important;
+  }
+
+  body {
+    color: #1a1c1b !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .report-page {
+    min-height: auto;
+    background: #ffffff !important;
+  }
+
+  .report-header {
+    position: static;
+    border-bottom: 2px solid var(--primary);
+    background: #ffffff !important;
+    backdrop-filter: none;
+  }
+
+  .report-header-inner,
+  .report-main {
+    width: 100%;
+    max-width: none;
+  }
+
+  .report-header-inner {
+    min-height: auto;
+    padding-bottom: 10mm;
+  }
+
+  .report-close-button,
+  .report-download,
+  .copy-answer,
+  .landing-footer {
+    display: none !important;
+  }
+
+  .report-main {
+    display: block;
+    padding: 10mm 0 0;
+  }
+
+  .report-hero,
+  .report-analysis-grid,
+  .rewrite-grid,
+  .next-step-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm;
+  }
+
+  .report-hero {
+    align-items: center;
+    padding-bottom: 10mm;
+    border-bottom: 1px solid #d9dedb;
+  }
+
+  .report-hero h2 {
+    font-size: 24pt;
+    line-height: 1.15;
+  }
+
+  .report-hero-copy p,
+  .feedback-card p,
+  .answer-column p,
+  .next-step-card small {
+    color: #3f4944 !important;
+    font-size: 10pt;
+    line-height: 1.55;
+  }
+
+  .report-meta {
+    gap: 8mm;
+  }
+
+  .score-gauge {
+    width: 48mm;
+    box-shadow: none;
+  }
+
+  .score-gauge strong {
+    font-size: 32pt;
+  }
+
+  .report-analysis-grid {
+    margin-top: 10mm;
+    align-items: start;
+    break-inside: avoid;
+  }
+
+  .report-card,
+  .feedback-card,
+  .rewrite-panel,
+  .next-step-card {
+    border-color: #d9dedb;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  .report-card,
+  .feedback-card {
+    padding: 6mm;
+  }
+
+  .competency-card {
+    min-height: auto;
+    gap: 8mm;
+  }
+
+  .radar-wrap {
+    min-height: 82mm;
+  }
+
+  .radar-chart {
+    width: 58mm;
+  }
+
+  .feedback-stack {
+    gap: 5mm;
+  }
+
+  .feedback-card {
+    min-height: auto;
+  }
+
+  .feedback-card h3,
+  .section-heading h2 {
+    font-size: 15pt;
+  }
+
+  .feedback-card blockquote,
+  .answer-column p {
+    background: #f4f4f1 !important;
+  }
+
+  .rewrite-panel,
+  .next-steps {
+    margin-top: 10mm;
+    break-before: auto;
+  }
+
+  .rewrite-panel {
+    padding: 8mm;
+    background: #f4f4f1 !important;
+  }
+
+  .ai-badge {
+    position: static;
+    width: fit-content;
+    margin-bottom: 4mm;
+    translate: none;
+  }
+
+  .next-step-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .next-step-card {
+    min-height: auto;
+    padding: 6mm;
+  }
+}
+
 .features-page {
   background:
     radial-gradient(circle at 18% 8%, rgb(123 250 187 / 28%), transparent 26rem),

@@ -320,6 +320,10 @@ export default function FeedbackPage() {
     return () => window.cancelAnimationFrame(animationFrame);
   }, [report.scoreTarget]);
 
+  function handleDownloadPdf() {
+    window.print();
+  }
+
   return (
     <div className="report-page" dir={isEnglish ? "ltr" : "rtl"}>
       <header className="report-header">
@@ -334,7 +338,7 @@ export default function FeedbackPage() {
             </div>
           </div>
 
-          <button className="report-download" type="button">
+          <button className="report-download" type="button" onClick={handleDownloadPdf}>
             <Download size={20} strokeWidth={2.1} aria-hidden="true" />
             <span>{copy.download}</span>
           </button>

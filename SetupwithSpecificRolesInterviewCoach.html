@@ -305,11 +305,12 @@
 <span class="font-body-md text-body-md text-text-secondary text-right">First Name</span>
 </div>
 <div class="relative">
-<input class="w-full bg-surface-elevated border border-border-subtle rounded-xl p-4 font-body-lg text-body-lg text-text-primary placeholder:text-text-secondary/60 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all outline-none" dir="rtl" id="firstName" name="firstName" placeholder="فهد / Fahad" type="text">
+<input class="w-full bg-surface-elevated border border-border-subtle rounded-xl p-4 font-body-lg text-body-lg text-text-primary placeholder:text-text-secondary/60 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all outline-none" dir="rtl" id="firstName" name="firstName" placeholder="فهد / Fahad" required type="text">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-text-secondary/50">
 <span class="material-symbols-outlined">person</span>
 </div>
 </div>
+<p class="hidden text-error-red font-body-md text-caption" id="firstNameError">الاسم مطلوب للمتابعة / First name is required</p>
 </fieldset>
 <!-- Footer Actions -->
 <div class="pt-stack-md mt-stack-md border-t border-border-subtle flex flex-col gap-4">
@@ -333,6 +334,20 @@
         }
 
         function startInterviewWithSetup() {
+            const firstNameInput = document.querySelector('#firstName');
+            const firstNameError = document.querySelector('#firstNameError');
+            const firstName = firstNameInput?.value.trim() || "";
+
+            if (!firstName) {
+                firstNameInput?.classList.add('border-error-red', 'ring-2', 'ring-error-red/20');
+                firstNameError?.classList.remove('hidden');
+                firstNameInput?.focus();
+                return;
+            }
+
+            firstNameInput?.classList.remove('border-error-red', 'ring-2', 'ring-error-red/20');
+            firstNameError?.classList.add('hidden');
+
             const companyLabels = {
                 riyad: "Riyad Bank",
                 aramco: "Aramco",
@@ -354,7 +369,7 @@
             };
 
             const setup = {
-                name: document.querySelector('#firstName')?.value.trim() || "فهد",
+                name: firstName,
                 company: companyLabels[getCheckedValue('company', 'aramco')] || "Aramco",
                 track: trackLabels[getCheckedValue('track', 'technical')] || "Technical",
                 specialization: specializationLabels[getCheckedValue('sub_track', 'software')] || "Software Engineering",

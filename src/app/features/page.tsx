@@ -248,9 +248,6 @@ export default function FeaturesPage() {
               سجل الآن مجانا | Register Now
               <ArrowLeft size={21} strokeWidth={2.2} aria-hidden="true" />
             </Link>
-            <a className="features-cta-button secondary" href="/PricingInterviewCoach.html">
-              تحدث مع المبيعات | Sales
-            </a>
           </div>
         </section>
       </main>

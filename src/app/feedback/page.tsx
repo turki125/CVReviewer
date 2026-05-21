@@ -28,7 +28,7 @@ type SavedInterviewAnswer = {
 };
 
 const fallbackSetup: InterviewSetupInput = {
-  name: "فهد",
+  name: "",
   company: "Aramco",
   track: "Product Manager",
   specialization: "Software Engineering",
@@ -68,6 +68,7 @@ function getReportCopy(isEnglish: boolean) {
     modelAnswer: isEnglish ? "Model Answer" : "الإجابة النموذجية / Model Answer",
     nextSteps: isEnglish ? "Next Steps" : "الخطوات التالية",
     privacy: isEnglish ? "Privacy" : "الخصوصية / Privacy",
+    reportForName: (name: string) => (isEnglish ? `${name}'s interview report` : `تقرير مقابلة ${name}`),
     reportTitle: isEnglish ? "Your Interview Report" : "تقرير مقابلتك",
     rewriteHeading: isEnglish ? "Suggested rewrite" : "إعادة صياغة مقترحة",
     rewriteSubheading: isEnglish ? "Suggested Rewrite for Impact" : "Suggested Rewrite for Impact",
@@ -279,6 +280,7 @@ export default function FeedbackPage() {
   const isEnglish = setup.interviewLanguage === "English";
   const copy = useMemo(() => getReportCopy(isEnglish), [isEnglish]);
   const report = useMemo(() => createReport(answers, setup, isEnglish), [answers, setup, isEnglish]);
+  const candidateName = setup.name.trim();
   const scoreOffset = useMemo(
     () => scoreCircumference - (score / 100) * scoreCircumference,
     [score],
@@ -344,6 +346,9 @@ export default function FeedbackPage() {
             </Link>
             <div>
               <h1>{copy.reportTitle}</h1>
+              {candidateName ? (
+                <p className="report-candidate-name">{copy.reportForName(candidateName)}</p>
+              ) : null}
               {copy.subtitle ? <p dir="ltr">{copy.subtitle}</p> : null}
             </div>
           </div>

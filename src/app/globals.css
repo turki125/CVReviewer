@@ -2570,6 +2570,17 @@ p {
   color: var(--muted);
 }
 
+.report-title-group .report-candidate-name {
+  margin-top: 6px;
+  color: var(--primary);
+  font-family: Inter, "IBM Plex Sans Arabic", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: none;
+}
+
 .report-close-button,
 .report-download,
 .copy-answer {
